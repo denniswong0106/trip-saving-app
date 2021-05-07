@@ -54,17 +54,12 @@ first try npm install, if you run into errors relating to these, you may need to
 - npm install pg
 - npm install dotenv
 
-1. In express-back-end root, add .env file
-2. put in:
-   #DB_HOST=localhost
-   DB_USER=development
-   DB_PASS=development
-   DB_NAME=trip_savr
-   #DB_PORT=8080
-   #for heroku
-   #DB_SSL=true
-   #DB_PORT=5432
-   #DB_URL=<[heroku url here]>
+1. In express-back-end root, add .env file (use .env.example as template)
+2. set:
+
+   username as development
+   password as development
+   database name as trip_savr
 
 3. on command line, `cd [path to]/express-back-end`
 4. type `psql -U development`
