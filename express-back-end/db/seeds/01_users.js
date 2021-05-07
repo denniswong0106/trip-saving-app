@@ -1,0 +1,16 @@
+exports.seed = function (knex) {
+  // Deletes ALL existing entries
+  return knex("users")
+    .del()
+    .then(function () {
+      // Inserts seed entries
+      return knex("users").insert([
+        {
+          id: 1,
+          name: "Joe",
+          email: "tigerking2020@gmail.com",
+          daily_prize: true,
+        },
+      ]);
+    });
+};
