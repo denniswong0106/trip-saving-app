@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Trip from './components/Trip';
+import User from './components/User';
+import Home from './components/Home';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
@@ -25,12 +29,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/trip" component={Trip} />
+          <Route path="/user" component={User} />
+          <Route path="/">
+            <Home state={this.state} fetchData={this.fetchData} />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
