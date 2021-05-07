@@ -4,7 +4,7 @@ import User from './components/User';
 import Home from './components/Home';
 import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
