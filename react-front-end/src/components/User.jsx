@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core";
 import React from "react";
 import NavBar from "./NavBar";
 
@@ -15,14 +16,24 @@ const props = {
     bank_account: "0000-0000-0000-0000",
     daily_prize: false,
   },
+  trips: {},
 };
 
-const User = () => {
+const User = (props) => {
   return (
-    <div>
+    <main class="user-info">
       <NavBar />
-      <h3>User!</h3>
-    </div>
+
+      <section>
+        <div>image</div>
+        <div>
+          <h2>Trips</h2>
+          <container>
+            <article>trip</article>
+          </container>
+        </div>
+      </section>
+    </main>
   );
 };
 
