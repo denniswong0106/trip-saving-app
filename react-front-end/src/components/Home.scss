@@ -1,0 +1,14 @@
+.trip-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .text-and-heading {
+        text-align: left;
+        max-width:450px;
+        max-height:450px;
+    }
+    img {
+        max-width:450px;
+        max-height:450px;
+    }
+}
