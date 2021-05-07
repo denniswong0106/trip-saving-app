@@ -36,11 +36,37 @@ And don't forget to update the README!
 
 You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
 
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
+- [Later Cart](https://github.com/bonitac/later-cart)
+- [Buddi.io](https://github.com/Danny-Tran/buddi.io)
 
 If you'd like your project added to the list, please shoot me a message.
 
 ## Contact
 
 Please contact me on Slack (@garrettgsb) or Nima at `nima@lighthouselabs.com` if you have any questions, requests, or feedback, or post an issue to this repo. If you are using the boilerplate, I'd love to hear from you as well!
+
+### How to set up database
+
+Set up:
+first try npm install, if you run into errors relating to these, you may need to additonally install these:
+
+- npm install knex
+- npm install pg
+- npm install dotenv
+
+1. In express-back-end root, add .env file (use .env.example as template)
+2. set:
+
+   username as development
+   password as development
+   database name as trip_savr
+
+3. on command line, `cd [path to]/express-back-end`
+4. type `psql -U development`
+5. should ask for password - put `development`
+6. in psql, type `CREATE DATABASE trip_savr`
+7. on command line, run `npx knex migrate:latest`
+8. if successful, will see
+   "Using environment: development
+   Batch 1 run: 1 migrations"
+9. on command line, run `npx knex seed:run`
