@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Trip from './components/Trip';
 import User from './components/User';
 import Home from './components/Home';
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
 

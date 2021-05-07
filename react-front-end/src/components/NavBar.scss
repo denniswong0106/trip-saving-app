@@ -1,0 +1,13 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9572e7;
+  height: 50px;
+}
+
+.login-trips {
+  display: flex;
+  flex-direction: row;
+}
