@@ -14,7 +14,7 @@
 // }
 
 .user-display {
-  width: 1600px;
+  // width: 1600px;
   column-count: 2;
   display: flex;
 }
@@ -37,4 +37,9 @@
   .trips-container {
     width: 50%;
   }
+}
+
+.friend-avatar {
+  width: 2em;
+  height: 2em;
 }

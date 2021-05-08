@@ -14,7 +14,7 @@ const TripItemList = (props) => {
         stretch_goal={trip.stretch_goal}
         description={trip.description}
         location={trip.location}
-        group_id={trip.group_id}
+        group={trip.group}
         user_id={trip.user_id}
         key={trip.id}
       />
