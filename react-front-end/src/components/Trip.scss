@@ -26,5 +26,18 @@ img {
         min-height:300px;
         margin: 100px;
         text-align: center;
+        // align-items: flex-end;
+        // justify-content: center;
+        Button {
+            background-color: green;
+        }
+    }
+}
+
+.dialog-actions {
+    text-align: center;
+    margin: 50px;
+    #start {
+        background-color: green;
     }
 }
