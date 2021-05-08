@@ -27,7 +27,7 @@ const TripItem = (props) => {
       </Button>
     ) : (
       <Button variant="contained" color="grey">
-        Add more Savings!
+        Already claimed
       </Button>
     );
   };
