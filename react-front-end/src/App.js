@@ -63,12 +63,18 @@ export default function Application(props) {
     });
   };
 
+  const getUserById = (id) => {
+    const user = state.users.filter((user) => user.id === id);
+    console.log("user", user[0]);
+    return user[0];
+  };
+
   return (
     <Router>
       <Switch>
         <Route path="/trip" component={Trip} />
-        <Route path="/user" component={User}>
-          <User trips={getUserTrips(1)} />
+        <Route path="/user">
+          <User trips={getUserTrips(1)} {...getUserById(1)} />
         </Route>
         <Route path="/group" component={Group} />
         <Route path="/">

@@ -10,7 +10,11 @@ import Button from "@material-ui/core/Button";
 
 const TripItem = (props) => {
   const value = calculatePercentage(props.savings, props.cost);
-  const daysRemaining = calculateDaysRemaining(50, 100, 1);
+  const daysRemaining = calculateDaysRemaining(
+    props.savings,
+    props.cost,
+    props.daily_drip
+  );
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (

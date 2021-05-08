@@ -61,15 +61,18 @@
   }
 }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-}
+.trips-info {
+  width: fill;
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.trips-container {
-  margin-right: 6em;
-}
+  .trips-container {
+    margin-right: 6em;
+  }
 
-.trip-description {
-  margin-top: 1em;
+  .trip-description {
+    margin-top: 1em;
+  }
 }
