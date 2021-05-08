@@ -2,6 +2,7 @@ import { Container } from "@material-ui/core";
 import React from "react";
 import NavBar from "./NavBar";
 import "./User.scss";
+import TripItemList from "./User_tripItemList";
 
 // if user props passed in - has no user
 // redirect back to homepage
@@ -45,7 +46,7 @@ const props = {
   ],
 };
 
-const User = (props) => {
+const User = () => {
   return (
     <main className="user-page">
       <NavBar />
@@ -63,11 +64,7 @@ const User = (props) => {
         </div>
         <div className="trips-info">
           <h2>Trips</h2>
-          <div className="trips-container">
-            <article>trip_saving_1</article>
-            <article>trip_saving_2</article>
-            <article>trip_saving_3</article>
-          </div>
+          <TripItemList trips={props.trips} />
         </div>
       </section>
     </main>
