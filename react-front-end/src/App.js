@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Trip from './components/Trip';
 import User from './components/User';
 import Home from './components/Home';
+import Group from './components/Group';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import './App.scss';
@@ -33,6 +34,7 @@ class App extends Component {
         <Switch>
           <Route path="/trip" component={Trip} />
           <Route path="/user" component={User} />
+          <Route path="/group" component={Group} />
           <Route path="/">
             <Home state={this.state} fetchData={this.fetchData} />
           </Route>
