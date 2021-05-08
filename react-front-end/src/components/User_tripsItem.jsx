@@ -33,7 +33,7 @@ const TripItem = (props) => {
       <h2>{props.trip_name}!</h2>
       <div className="header-container">
         <div className="header-location">
-          <h4>{props.location}!</h4>
+          <h4>{props.location}</h4>
           <FriendsIcon group={props.group} />
         </div>
         <div>{dailyPrizeRecieved(props.daily_prize)}</div>
@@ -41,10 +41,13 @@ const TripItem = (props) => {
       <div>
         <LinearWithValueLabel value={value} />
       </div>
-      <div>
-        ${props.savings} of ${props.cost} goal!
+      <div className="footer-container">
+        <div>
+          ${props.savings} of ${props.cost} goal!
+        </div>
+        <div>{daysRemaining} days until you reach your goal!</div>
       </div>
-      <div>{props.description}</div>
+      <div className="trip-description">{props.description}</div>
     </article>
   );
 };

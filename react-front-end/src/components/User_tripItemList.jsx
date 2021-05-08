@@ -3,6 +3,7 @@ import React from "react";
 import TripItem from "./User_tripsItem";
 
 const TripItemList = (props) => {
+  // Test function that allows for button click in users page
   const onClick = (tripId) => {
     console.log(tripId, "from TripItemList");
   };

@@ -58,3 +58,16 @@
     display: flex;
   }
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trips-container {
+  margin-right: 6em;
+}
+
+.trip-description {
+  margin-top: 1em;
+}
