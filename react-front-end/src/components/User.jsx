@@ -14,7 +14,7 @@ const props = {
   user: {
     name: "Joe the builder",
     email: "bobsfriend@builders.com",
-    avatar_image: require("../pics/ryan-rey.png"),
+    avatar: require("../pics/ryan-rey.png"),
     bank_account: "0000-0000-0000-0000",
   },
   trips: [
@@ -34,13 +34,13 @@ const props = {
         {
           name: "Bob the builder",
           email: "bobssfriend@builders.com",
-          avatar_image: require("../pics/ryan-rey.png"),
+          avatar: require("../pics/ryan-rey.png"),
           bank_account: "0000-0000-0000-0000",
         },
         {
           name: "Jane the painter",
           email: "bobbfriend@builders.com",
-          avatar_image: require("../pics/ryan-rey.png"),
+          avatar: require("../pics/ryan-rey.png"),
           bank_account: "0000-0000-0000-0000",
         },
       ],
@@ -61,13 +61,13 @@ const props = {
         {
           name: "Bob the builder",
           email: "bobssfriend@builders.com",
-          avatar_image: require("../pics/ryan-rey.png"),
+          avatar: require("../pics/ryan-rey.png"),
           bank_account: "0000-0000-0000-0000",
         },
         {
           name: "Jane the painter",
           email: "bobbfriend@builders.com",
-          avatar_image: require("../pics/ryan-rey.png"),
+          avatar: require("../pics/ryan-rey.png"),
           bank_account: "0000-0000-0000-0000",
         },
       ],
@@ -75,7 +75,8 @@ const props = {
   ],
 };
 
-const User = () => {
+const User = (prop) => {
+  console.log(prop);
   return (
     <main className="user-page">
       <NavBar />
@@ -83,11 +84,7 @@ const User = () => {
       <section className="user-display">
         <div className="user-avatar-info">
           <div>
-            <img
-              className="avatar"
-              src={props.user.avatar_image}
-              alt="avatar"
-            />
+            <img className="avatar" src={props.user.avatar} alt="avatar" />
           </div>
           <h2 className="username"> {props.user.name}</h2>
         </div>
