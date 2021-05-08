@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
-import LinearProgressWithLabel from "./LinearProgressWithLabel";
+import LinearProgressWithLabel from "./helper_components/LinearProgressWithLabel";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import "./Group.scss"
 
 const Group = (props) => {
@@ -24,6 +25,9 @@ const Group = (props) => {
         <img className="avatar-img" alt="rex" src="https://i.imgur.com/LpaY82x.png" />
         <h4>Rex Raptor</h4>
         <LinearProgressWithLabel value={55} />
+      </div>
+      <div>
+        <AddCircleOutlineIcon />
       </div>
 
     </>

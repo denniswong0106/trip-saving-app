@@ -18,11 +18,11 @@ App.get('/api/users', (req, res) => res.json({
 }));
 
 App.get('/api/trips', (req, res) => res.json([
-  {id: 1, savings: 100, daily_drip: 1, trip_name: "Ice Land Adventures", cost: 1400, location: "Ice Land", description: "It's cold", user_id: 1, group_id: 1},
-  {id: 2, savings: 1000, daily_drip: 10, trip_name: "Ice Land Adventures", cost: 1400, location: "Ice Land", description: "It's cold", user_id: 2, group_id: 1},
-  {id: 3, savings: 500, daily_drip: 4, trip_name: "Ice Land Adventures", cost: 1400, location: "Ice Land", description: "It's cold", user_id: 3, group_id: 1},
-  {id: 4, savings: 350, daily_drip: 2, trip_name: "Ice Land Adventures", cost: 1400, location: "Ice Land", description: "It's cold", user_id: 4, group_id: 1},
-  {id: 5, savings: 100, daily_drip: 1, trip_name: "Ice Land Adventures", cost: 1400, location: "Ice Land", description: "It's cold", user_id: 5, group_id: 1}
+  {id: 1, savings: 100, daily_drip: 1, trip_name: "Ice Land Adventures", cost: 1495, location: "Ice Land", description: "It's cold", user_id: 1, group_id: 1},
+  {id: 2, savings: 1000, daily_drip: 10, trip_name: "Ice Land Adventures", cost: 1495, location: "Ice Land", description: "It's cold", user_id: 2, group_id: 1},
+  {id: 3, savings: 500, daily_drip: 4, trip_name: "Ice Land Adventures", cost: 1495, location: "Ice Land", description: "It's cold", user_id: 3, group_id: 1},
+  {id: 4, savings: 350, daily_drip: 2, trip_name: "Ice Land Adventures", cost: 1495, location: "Ice Land", description: "It's cold", user_id: 4, group_id: 1},
+  {id: 5, savings: 100, daily_drip: 1, trip_name: "Ice Land Adventures", cost: 1495, location: "Ice Land", description: "It's cold", user_id: 5, group_id: 1}
 ]));
 
 App.get('/api/groups', (req, res) => res.json([
