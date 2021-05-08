@@ -35,6 +35,8 @@ export default function Application(props) {
     });
   }, []);
 
+  // gives you the user trips for a given user - on each trip, append an array
+  // of user objects of users with the same group_id.
   const getUserTrips = (userId) => {
     // filter out trips of given user
     const userTrips = state.trips.filter((trip) => trip.user_id === userId);
