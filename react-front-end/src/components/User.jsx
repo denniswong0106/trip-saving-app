@@ -15,6 +15,7 @@ const props = {
   user: {
     name: "Joe the builder",
     email: "bobsfriend@builders.com",
+    avatar_image: require("../pics/ryan-rey.png"),
     bank_account: "0000-0000-0000-0000",
     daily_prize: false,
   },
@@ -56,11 +57,11 @@ const User = () => {
           <div>
             <img
               className="avatar"
-              src={require("../pics/ryan-rey.png")}
+              src={props.user.avatar_image}
               alt="avatar"
             />
           </div>
-          <div className="username"> Joe User</div>
+          <div className="username"> {props.user.name}</div>
         </div>
         <div className="trips-info">
           <h2>Trips</h2>
