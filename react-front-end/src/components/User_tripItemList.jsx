@@ -3,6 +3,10 @@ import React from "react";
 import TripItem from "./User_tripsItem";
 
 const TripItemList = (props) => {
+  const onClick = (tripId) => {
+    console.log(tripId, "from TripItemList");
+  };
+
   const trips = props.trips.map((trip) => {
     return (
       <TripItem
@@ -15,8 +19,10 @@ const TripItemList = (props) => {
         description={trip.description}
         location={trip.location}
         group={trip.group}
+        daily_prize={trip.daily_prize}
         user_id={trip.user_id}
         key={trip.id}
+        onclick={onClick}
       />
     );
   });
