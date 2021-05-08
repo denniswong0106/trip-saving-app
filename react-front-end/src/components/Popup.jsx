@@ -11,8 +11,10 @@ import Slider from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core/styles';
 
 const Popup = (props) => {
-  const marks = [{value: 0},{value: 2.5}, {value: 5}, {value: 7.5}, {value: 10}];
+  //where the tick marks are on the slider
+  const marks = [{value: 0, label: "0"},{value: 2.5}, {value: 5, label: "5"}, {value: 7.5}, {value: 10, label: "10"}];
 
+  //slider style settings
   const IOSSlider = withStyles({
     root: {
       color: '#3880ff',
@@ -39,7 +41,13 @@ const Popup = (props) => {
     },
   })(Slider);
 
-  return (
+  //for days estimate
+  function days(drip, goal) {
+    const daysTotal = goal / drip;
+    return daysTotal.toFixed(1);
+  };
+
+   return (
     <Dialog open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
       <DialogTitle id="form-dialog-title">Book your trip</DialogTitle>
       <DialogContent>
@@ -54,20 +62,17 @@ const Popup = (props) => {
               Iceland $6522
           </h3>
           <IOSSlider
-              defaultValue={1}
-              getAriaValueText={props.valuetext}
+              defaultValue={props.value}
               valueLabelDisplay="auto"
               step={0.25}
               marks={marks}
               min={0}
               max={10}
-              value={props.value}
-              onChange={props.handleChange}
-              // onChangeCommitted={props.handleChange}
+              onChangeCommitted={props.handleChange}
           />
           <div class="math">
             <h5>${props.value} per day</h5>
-            <h5>{props.days(props.value, 6522)} days</h5>
+            <h5>{days(props.value, 6522)} days</h5>
           </div>
       </DialogContent>
       <div class="dialog-actions">
