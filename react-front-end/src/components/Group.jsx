@@ -23,7 +23,7 @@ const Group = (props) => {
       <div className="group-progress">
         <img className="avatar-img" alt="rex" src="https://i.imgur.com/LpaY82x.png" />
         <h4>Rex Raptor</h4>
-        <LinearProgressWithLabel value={55} />
+        <LinearProgressWithLabel value={75} />
       </div>
 
     </>
