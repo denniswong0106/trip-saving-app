@@ -1,13 +1,13 @@
 import React from 'react';
-import NavBar from './NavBar';
-import LinearProgressWithLabel from "./helper_components/LinearProgressWithLabel";
+import NavBar from '../NavBar';
+import LinearProgressWithLabel from "./LinearProgressWithLabel";
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 
-import "./Group.scss"
+import "./styles.scss"
 
 const Group = (props) => {
 
