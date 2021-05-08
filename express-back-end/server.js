@@ -111,7 +111,8 @@ App.get("/api/trips", (req, res) =>
       trip_name: "Ice Land Adventures",
       cost: 1400,
       location: "Ice Land",
-      description: "It's cold",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
       daily_prize: false,
       user_id: 3,
       group_id: 1,
@@ -123,10 +124,11 @@ App.get("/api/trips", (req, res) =>
       trip_name: "Fire Land Adventures",
       cost: 1800,
       location: "Fire Land",
-      description: "It's hot",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
       daily_prize: false,
       user_id: 1,
-      group_id: 1,
+      group_id: 2,
     },
     {
       id: 5,
@@ -135,16 +137,21 @@ App.get("/api/trips", (req, res) =>
       trip_name: "Earth Land Adventures",
       cost: 3400,
       location: "Earth Land",
-      description: "It's earthy",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
       daily_prize: true,
       user_id: 1,
-      group_id: 1,
+      group_id: 3,
     },
   ])
 );
 
 App.get("/api/groups", (req, res) =>
-  res.json([{ id: 1, name: "Ice Land 2077" }])
+  res.json([
+    { id: 1, name: "Ice Land 2077" },
+    { id: 2, name: "Ice Land 2077" },
+    { id: 3, name: "Ice Land 2077" },
+  ])
 );
 
 App.listen(PORT, () => {
