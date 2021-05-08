@@ -35,6 +35,7 @@ const TripItem = (props) => {
         <div className="header-location">
           <h4>{props.location}</h4>
           <FriendsIcon group={props.group} />
+          <h5>Daily Drip Amount: ${props.daily_drip}</h5>
         </div>
         <div>{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>

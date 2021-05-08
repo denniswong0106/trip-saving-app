@@ -44,18 +44,20 @@
   }
 }
 
-.friend-avatar {
-  width: 2em;
-  height: 2em;
-  margin-left: 1em;
-  border: 2px solid rgb(85, 21, 114);
-}
-
 .header-container {
   display: flex;
   justify-content: space-between;
   .header-location {
     display: flex;
+    h5 {
+      margin-left: 1em;
+    }
+    .friend-avatar {
+      width: 2em;
+      height: 2em;
+      margin-left: 1em;
+      border: 2px solid rgb(85, 21, 114);
+    }
   }
 }
 

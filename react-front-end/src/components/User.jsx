@@ -89,7 +89,7 @@ const User = () => {
               alt="avatar"
             />
           </div>
-          <div className="username"> {props.user.name}</div>
+          <h2 className="username"> {props.user.name}</h2>
         </div>
         <div className="trips-info">
           <h2>Trips</h2>
