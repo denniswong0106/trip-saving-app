@@ -4,7 +4,7 @@ import {
   calculatePercentage,
   calculateDaysRemaining,
 } from "../helperfunctions/calculateFunctions";
-import LinearWithValueLabel from "./LinearProgressWithLabel";
+import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
 
