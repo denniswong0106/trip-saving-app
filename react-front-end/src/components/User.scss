@@ -12,29 +12,67 @@
 //     max-height: 450px;
 //   }
 // }
+.user-page {
+  background-color: rgb(243, 194, 243);
+  .user-display {
+    column-count: 2;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+  }
 
-.user-display {
-  width: 1600px;
-  column-count: 2;
-  display: flex;
+  .user-avatar-info {
+    flex-direction: column;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    max-width: 375px;
+
+    .avatar {
+      width: 10em;
+      height: 10em;
+      padding: 6em;
+    }
+    .username {
+      align-content: center;
+    }
+
+    .trips-container {
+      width: 50%;
+    }
+  }
 }
 
-.user-avatar-info {
-  flex-direction: column;
-  width: 50%;
+.header-container {
   display: flex;
-  align-items: center;
-
-  .avatar {
-    width: 300px;
-    height: 300px;
-    padding: 50px;
+  justify-content: space-between;
+  .header-location {
+    display: flex;
+    h5 {
+      margin-left: 1em;
+    }
+    .friend-avatar {
+      width: 2em;
+      height: 2em;
+      margin-left: 1em;
+      border: 2px solid rgb(85, 21, 114);
+    }
   }
-  .username {
-    align-content: center;
+}
+
+.trips-info {
+  width: fill;
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
   }
 
   .trips-container {
-    width: 50%;
+    margin-right: 6em;
+  }
+
+  .trip-description {
+    margin-top: 1em;
   }
 }
