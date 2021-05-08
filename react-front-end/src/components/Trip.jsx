@@ -8,23 +8,21 @@ import Popup from './Popup.jsx';
 
 const Trip = () => {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState(0)
+    const [value, setValue] = React.useState(1)
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+    const handleClickOpen = () => { setOpen(true); };
+    const handleClose = () => { setOpen(false); };
+    
+    function valuetext(value) { return `$${value}`; };
 
     function handleChange (event, value) {
         setValue(value);
     };
 
-    function valuetext(value) {
-        return `$${value}`;
-      }
+    function days(drip, goal) {
+        const daysTotal = goal / drip;
+        return daysTotal.toFixed(1);
+    };
 
     return (
         <div>
@@ -43,7 +41,7 @@ const Trip = () => {
                     </Card>
                 </div>
             </div>
-            <Popup valuetext={valuetext} value={value} open={open} handleClose={handleClose} handleChange={handleChange} />
+            <Popup days={days} valuetext={valuetext} value={value} open={open} handleClose={handleClose} handleChange={handleChange} />
         </div>
     );
 };
