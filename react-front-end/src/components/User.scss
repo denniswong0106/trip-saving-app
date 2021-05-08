@@ -1,0 +1,40 @@
+// .trip-container {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   .text-and-heading {
+//     text-align: left;
+//     max-width: 450px;
+//     max-height: 450px;
+//   }
+//   img {
+//     max-width: 450px;
+//     max-height: 450px;
+//   }
+// }
+
+.user-display {
+  width: 1600px;
+  column-count: 2;
+  display: flex;
+}
+
+.user-avatar-info {
+  flex-direction: column;
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  .avatar {
+    width: 300px;
+    height: 300px;
+    padding: 50px;
+  }
+  .username {
+    align-content: center;
+  }
+
+  .trips-container {
+    width: 50%;
+  }
+}
