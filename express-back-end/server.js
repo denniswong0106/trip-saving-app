@@ -2,6 +2,7 @@ const Express = require("express");
 const App = Express();
 const BodyParser = require("body-parser");
 const PORT = 8080;
+const knex = require("./db/knex.js");
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -38,6 +39,12 @@ App.use(Express.static("public"));
 // );
 
 // Sample GET route
+App.get("/api/user", (req, res) => {
+  knex("users").then((res) => {
+    console.log("res", res);
+  });
+});
+
 App.get("/api/users", (req, res) =>
   res.json([
     {

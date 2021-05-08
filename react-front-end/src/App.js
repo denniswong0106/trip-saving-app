@@ -69,6 +69,15 @@ export default function Application(props) {
     return user[0];
   };
 
+  const fetchData = () => {
+    axios
+      .get("/api/user") // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        console.log(response.data); // The entire response from the Rails API
+      });
+  };
+
   return (
     <Router>
       <Switch>
@@ -78,7 +87,7 @@ export default function Application(props) {
         </Route>
         <Route path="/group" component={Group} />
         <Route path="/">
-          <Home state={state} />
+          <Home state={state} fetchData={fetchData} />
         </Route>
       </Switch>
     </Router>
