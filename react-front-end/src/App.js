@@ -35,11 +35,41 @@ export default function Application(props) {
     });
   }, []);
 
+  const getUserTrips = (userId) => {
+    // filter out trips of given user
+    const userTrips = state.trips.filter((trip) => trip.user_id === userId);
+
+    // function that generates array of userIds for a given groupId
+    const getUsersIdByGroupId = (groupId) => {
+      // first filter out trips with same group id
+      const tripsInGroup = state.trips.filter(
+        (trip) => trip.group_id === groupId
+      );
+      // next map each trip to only give user id
+      const userIdInGroup = tripsInGroup.map((trip) => trip.user_id);
+
+      // filters state.users, if user.id is not part of the user id array,
+      // filter out the user.
+      const usersInGroup = state.users.filter((user) => {
+        return userIdInGroup.includes(user.id);
+      });
+      return usersInGroup;
+    };
+    return userTrips.map((trip) => {
+      return {
+        ...trip,
+        group: getUsersIdByGroupId(trip.id),
+      };
+    });
+  };
+
   return (
     <Router>
       <Switch>
         <Route path="/trip" component={Trip} />
-        <Route path="/user" component={User} />
+        <Route path="/user" component={User}>
+          <User trips={getUserTrips(1)} />
+        </Route>
         <Route path="/group" component={Group} />
         <Route path="/">
           <Home state={state} />
