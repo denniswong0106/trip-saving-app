@@ -80,6 +80,16 @@ export default function Application(props) {
       });
   };
 
+  const fetchData2 = () => {
+    console.log("clicked");
+    axios
+      .delete("/api/debug/deletealldata") // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        console.log(response.data); // The entire response from the Rails API
+      });
+  };
+
   return (
     <Router>
       <Switch>
@@ -89,7 +99,7 @@ export default function Application(props) {
         </Route>
         <Route path="/group" component={Group} />
         <Route path="/">
-          <Home state={state} fetchData={fetchData} />
+          <Home state={state} fetchData={fetchData} fetchData2={fetchData2} />
         </Route>
       </Switch>
     </Router>
