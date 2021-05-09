@@ -52,9 +52,6 @@ const Home = (props) => {
       <Button variant="contained" color="primary" onClick={props.fetchData}>
         Fetch Data
       </Button>
-      <Button variant="contained" color="primary" onClick={props.fetchData2}>
-        Fetch Data2
-      </Button>
     </div>
   );
 };

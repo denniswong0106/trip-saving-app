@@ -38,7 +38,8 @@ App.use(Express.static("public"));
 //   })
 // );
 
-App.delete("/api/debug/deletealldata", (req, res) => {
+// clear database function
+App.get("/api/debug/deletealldata", (req, res) => {
   console.log("clearing database");
 
   Promise.all([
@@ -47,6 +48,7 @@ App.delete("/api/debug/deletealldata", (req, res) => {
     knex("group_trip").del(),
   ]).then((all) => {
     console.log("Database data cleared!");
+    return res.json("database cleared");
   });
 });
 
