@@ -38,6 +38,17 @@ App.use(Express.static("public"));
 //   })
 // );
 
+App.get("/api/debug/deletealldata", (req, res) => {
+  knex("users").del();
+  // Promise.all([
+  //   knex("users").del(),
+  //   knex("trip_savings").del(),
+  //   knex("group_trip").del(),
+  // ]).then((all) => {
+  //   console.log("all data deleted!");
+  // });
+});
+
 // Sample GET route
 App.get("/api/user", (req, res) => {
   knex("users").then((res) => {
