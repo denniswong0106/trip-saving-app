@@ -12,7 +12,7 @@ exports.down = function (knex) {
   return knex.schema.table("trip_savings", function (t) {
     t.dropColumn("daily_prize");
     t.dropColumn("booking_date");
-    t.string("trip_name").notNull();
+    t.dropColumn("trip_name");
   });
 };
 
