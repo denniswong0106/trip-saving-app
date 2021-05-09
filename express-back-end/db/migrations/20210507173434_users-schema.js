@@ -25,18 +25,8 @@ exports.up = function (knex) {
       table.string("stretch_goal", 255).notNullable();
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
-      table
-        .integer("user_id")
-        .references("id")
-        .inTable("users")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
-      table
-        .integer("group_id")
-        .references("id")
-        .inTable("group_trip")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
+      table.integer("user_id").references("id").inTable("users");
+      table.integer("group_id").references("id").inTable("group_trip");
     });
 };
 
