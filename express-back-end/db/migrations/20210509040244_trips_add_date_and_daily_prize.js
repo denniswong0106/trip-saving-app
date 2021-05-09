@@ -4,6 +4,7 @@ exports.up = function (knex) {
   return knex.schema.table("trip_savings", function (t) {
     t.boolean("daily_prize").notNull().defaultTo(false);
     t.date("booking_date").notNull();
+    t.string("trip_name").notNull();
   });
 };
 
@@ -11,6 +12,7 @@ exports.down = function (knex) {
   return knex.schema.table("trip_savings", function (t) {
     t.dropColumn("daily_prize");
     t.dropColumn("booking_date");
+    t.string("trip_name").notNull();
   });
 };
 
