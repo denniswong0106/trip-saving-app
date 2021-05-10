@@ -3,8 +3,11 @@ import explosion from '../../helperfunctions/explosion';
 
 function Canvas(props) {
     const canvasRef = useRef(null);
-    let coin = new Image();
-    coin.src = '../../pics/coin.gif';
+    let coin = document.createElement("img");
+    coin.src = require('../../pics/coin.gif');
+    
+    let bag = document.createElement("img");
+    bag.src = require('../../pics/moneyBag.gif');
 
     useEffect(() => {
         const canvas = canvasRef.current
@@ -14,6 +17,7 @@ function Canvas(props) {
 
     return (
     <>
+        {/* <img src={require('../../pics/coin.gif')} /> */}
         <canvas ref={canvasRef} {...props}/>
     </>
     )

@@ -14,12 +14,16 @@ function explosion(canvas, ctx, coin) {
     particleNumber: 800,
     maxParticleSize: 10,
     maxSpeed: 40,
-    colorVariation: 25
+    colorVariation: 25,
     };
+    let imageSize = 75;
+    let coinX = 0;
+    let coinY = 0;
 
     // Colors
     var colorPalette = {
-        bg: {r:12,g:9,b:29},
+        // bg: {r:12,g:9,b:29},
+        bg: {r:248,g:248,b:255},
         matter: [
         {r:205,g:202,b:191}, 
         {r:246,g:202,b:27},
@@ -98,16 +102,15 @@ function explosion(canvas, ctx, coin) {
         });
     };
 
-
     var initParticles = function (numParticles, x, y) {
+        coinX = x-imageSize/2;
+        coinY = y-imageSize/2;
         for (let i = 0; i < numParticles; i++) {
             particles.push(new Particle(x, y));
         }
         particles.forEach((p) => {
             drawParticle(p.x, p.y, p.r, p.c);
         });
-        //image in the center
-        // ctx.drawImage(coin, x, y)
     };
 
     // That thing
@@ -133,6 +136,7 @@ function explosion(canvas, ctx, coin) {
     particles.forEach((p) => {
         drawParticle(p.x, p.y, p.r, p.c);
     });
+    ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
     // Play the same song? Ok!
     window.requestAnimFrame(frame);
     };
