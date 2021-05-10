@@ -2,6 +2,7 @@ import React from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
+  expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
@@ -10,10 +11,16 @@ import Button from "@material-ui/core/Button";
 const TripItem = (props) => {
   const value = calculatePercentage(props.savings, props.cost);
   const daysRemaining = calculateDaysRemaining(
-    props.savings,
+    props.daily_drip,
     props.cost,
-    props.daily_drip
+    props.savings
   );
+
+  const finishDate = expectedDate(new Date(), daysRemaining);
+
+  console.log("currentDate", new Date());
+  console.log("daysRemaining", daysRemaining);
+  console.log("finishDate", finishDate);
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (

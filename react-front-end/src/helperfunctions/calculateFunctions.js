@@ -6,8 +6,21 @@ const calculatePercentage = (saving, totalCost) => {
 // calculate days remaining until total cost is reached, given
 // the savings so far and the daily drip amount
 
-const calculateDaysRemaining = (saving, totalCost, dailyDrip) => {
+const calculateDaysRemaining = (dailyDrip, totalCost, saving = 0) => {
   return Math.ceil((totalCost - saving) / dailyDrip);
 };
 
-export { calculatePercentage, calculateDaysRemaining };
+// calculate the date at which savings will be finished.
+// returns a date string with year month date.
+const expectedDate = (currentDate, days) => {
+  const current = new Date(currentDate);
+
+  const output = new Date(current.setDate(current.getDate() + days));
+  return output.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+export { calculatePercentage, calculateDaysRemaining, expectedDate };
