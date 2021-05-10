@@ -76,11 +76,11 @@ first try npm install, if you run into errors relating to these, you may need to
 For debug see below:
 
 1. run `http://localhost:8080/api/debug/deletealldata` in browser or `curl http://localhost:8080/api/debug/deletealldata` to clear all data from database - you should see a database cleared message
-2. run `npx knex migrate:list` to check which migration you are currently running
+2. In cd /express-backend, run `npx knex migrate:list` to check which migration you are currently running
    (2.1 if you are not running the latest, run `npx knex migrate:latest` to update)
 3. run `npx knex seed:run` to populate the database with data
 
 ### Debug
 
 To revert database to original:
-clear data using 1. , then run `npx knex migrate:rollback`. You can choose specifically which migration to rollback to by doing `knex migrate:down xxxx_migration_name.js` to move up a migration, do `knex migrate:up xxxx_migration_name.js`
+clear data using 1. , then run `npx knex migrate:rollback` to rollback to the original database. You can choose specifically which migration to rollback to by doing `knex migrate:down xxxx_migration_name.js` to move up a migration, do `knex migrate:up xxxx_migration_name.js`
