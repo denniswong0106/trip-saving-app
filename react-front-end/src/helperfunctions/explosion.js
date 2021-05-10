@@ -1,6 +1,6 @@
 // taken from https://codepen.io/deanwagman/pen/EjLBdQ and modified
 
-function explosion(canvas, ctx, coin) {
+function explosion(canvas, ctx, coin, bag) {
     // Little Canvas things
     // var canvas = document.querySelector("#canvas"),
     // ctx = canvas.getContext('2d');
@@ -19,6 +19,7 @@ function explosion(canvas, ctx, coin) {
     let imageSize = 75;
     let coinX = 0;
     let coinY = 0;
+    let showBag = true;
 
     // Colors
     var colorPalette = {
@@ -136,17 +137,28 @@ function explosion(canvas, ctx, coin) {
     particles.forEach((p) => {
         drawParticle(p.x, p.y, p.r, p.c);
     });
-    ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
+    if (showBag) {
+        ctx.drawImage(bag, (canvas.width/2)-imageSize/2, (canvas.height/2)-imageSize/2, imageSize, imageSize);
+    };
+    // ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
     // Play the same song? Ok!
     window.requestAnimFrame(frame);
     };
 
     // Click listener
     document.body.addEventListener("click", function (event) {
-        var x = event.offsetX,
-            y = event.offsetY;
+        let x = event.offsetX, y = event.offsetY;
+        //if the click is inside the bounds of money bag x/y
+        if ((x > (canvas.width/2)-imageSize/2) &&
+        (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
+        (y > (canvas.height/2)-imageSize/2) &&
+        (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
+        showBag === true
+        ) {
+        showBag = false;
         cleanUpArray();
         initParticles(config.particleNumber, x, y);
+        }
     });
 
     // First Frame
