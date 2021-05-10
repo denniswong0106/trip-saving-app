@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import DataContext from "../helperfunctions/DataContext";
 import "./Home.scss";
+import Canvas from './helper_components/Canvas';
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -53,6 +54,8 @@ const Home = () => {
       <br />
       <br />
       <br />
+      <Canvas/>
+      <br/><br/><br/>
       <h1>{currentState.message}</h1>
       <Button variant="contained" color="primary" onClick={fetchData}>
         Fetch Data
