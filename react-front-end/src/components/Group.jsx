@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/core/Menu';
@@ -40,20 +39,25 @@ const addFriendsList = [
 
 const Group = (props) => {
 
+  // grabs today's date and converts it to a Mont, Day, Year format
   const today = new Date();
   const currentDay = today.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
 
+  // state that the menu from material ui uses
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
+  // click handler that the menu from material ui uses
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  // closing click handler that the menu from material ui uses
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map(friend => {
     return (
       <GroupItem 
@@ -65,11 +69,11 @@ const Group = (props) => {
     )
   });
 
+  // maps through an array of "friends" not yet added to the group
   const addGroupFriendsList = addFriendsList.map(friend => <MenuItem>{friend.name}</MenuItem>);
 
   return(
     <>
-      <NavBar />
       <div className="group-title">
         <h1>Iceland 2077!</h1>
         <h2>Date: {currentDay}</h2>
