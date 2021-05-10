@@ -10,6 +10,7 @@ import "./App.scss";
 
 export default function Application(props) {
 
+  // separated the data fetching logic to ./hooks/dataAccessor
   const { 
     state, 
     getUserTrips, 
@@ -18,13 +19,16 @@ export default function Application(props) {
   } = dataAccessor();
   
   return (
-    <DataContext.Provider value={{}}>
+    <DataContext.Provider value={{
+      state, 
+      getUserTrips, 
+      getUserById, 
+      fetchData 
+      }}>
       <Router>
         <Switch>
           <Route path="/trip" component={Trip} />
-          <Route path="/user">
-            <User trips={getUserTrips(1)} {...getUserById(1)} />
-          </Route>
+          <Route path="/user" component={User} />
           <Route path="/group" component={Group} />
           <Route path="/">
             <Home state={state} fetchData={fetchData} />
