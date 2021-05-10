@@ -16,10 +16,20 @@ function explosion(canvas, ctx, coin, bag) {
     maxSpeed: 40,
     colorVariation: 25,
     };
-    let imageSize = 75;
+    let imageSize = 150;
     let coinX = 0;
     let coinY = 0;
     let showBag = true;
+    let shake = false;
+
+    //////////
+    function preShake(x, y) {
+        let newX = x+Math.random()*10;
+        let newY = y+Math.random()*10;
+        return [newX, newY];
+      }
+      
+    /////////////
 
     // Colors
     var colorPalette = {
@@ -124,7 +134,6 @@ function explosion(canvas, ctx, coin, bag) {
         };
     })();
 
-
     // Our Frame function
     var frame = function () {
     // Draw background first
@@ -138,7 +147,14 @@ function explosion(canvas, ctx, coin, bag) {
         drawParticle(p.x, p.y, p.r, p.c);
     });
     if (showBag) {
-        ctx.drawImage(bag, (canvas.width/2)-imageSize/2, (canvas.height/2)-imageSize/2, imageSize, imageSize);
+        let x = (canvas.width/2)-imageSize/2;
+        let y = (canvas.height/2)-imageSize/2;
+        if (shake) {
+            let newCoords = preShake(x, y);
+            x = newCoords[0];
+            y = newCoords[1];
+        };
+        ctx.drawImage(bag, x, y, imageSize, imageSize);
     };
     // ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
     // Play the same song? Ok!
@@ -159,6 +175,18 @@ function explosion(canvas, ctx, coin, bag) {
         cleanUpArray();
         initParticles(config.particleNumber, x, y);
         }
+    });
+
+    document.body.addEventListener("mousemove", (event) => {
+        // console.log(event.offsetX, event.offsetY, shake);
+        let x = event.offsetX, y = event.offsetY;
+        //if you are over the bag x/y bounds shake will be true
+        if ((x > (canvas.width/2)-imageSize/2) &&
+        (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
+        (y > (canvas.height/2)-imageSize/2) &&
+        (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
+        showBag === true) {shake = true;}
+            else {shake = false;};
     });
 
     // First Frame
