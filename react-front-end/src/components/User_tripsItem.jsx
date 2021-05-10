@@ -12,9 +12,9 @@ import Button from "@material-ui/core/Button";
 const TripItem = (props) => {
   const value = calculatePercentage(props.savings, props.cost);
   const daysRemaining = calculateDaysRemaining(
-    props.savings,
+    props.daily_drip,
     props.cost,
-    props.daily_drip
+    props.savings
   );
 
   const finishDate = expectedDate(new Date(), daysRemaining);

@@ -6,7 +6,7 @@ const calculatePercentage = (saving, totalCost) => {
 // calculate days remaining until total cost is reached, given
 // the savings so far and the daily drip amount
 
-const calculateDaysRemaining = (saving, totalCost, dailyDrip) => {
+const calculateDaysRemaining = (dailyDrip, totalCost, saving = 0) => {
   return Math.ceil((totalCost - saving) / dailyDrip);
 };
 
