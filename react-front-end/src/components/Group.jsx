@@ -54,6 +54,7 @@ const Group = (props) => {
     setAnchorEl(null);
   };
 
+  // map through users list to add in group page
   const groupFriendList = friendsList.map(friend => {
     return (
       <GroupItem 
@@ -65,6 +66,7 @@ const Group = (props) => {
     )
   });
 
+  // map through friendslist
   const addGroupFriendsList = addFriendsList.map(friend => <MenuItem>{friend.name}</MenuItem>);
 
   return(
