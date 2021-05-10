@@ -1,6 +1,6 @@
 // taken from https://codepen.io/deanwagman/pen/EjLBdQ and modified
 
-function explosion(canvas, ctx, coin, bag) {
+function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
     // Little Canvas things
     // var canvas = document.querySelector("#canvas"),
     // ctx = canvas.getContext('2d');
@@ -143,6 +143,7 @@ function explosion(canvas, ctx, coin, bag) {
         });
         if (showBag === true) {
             if (shake === true) {
+                sfxShake.play();
                 x = x+Math.random()*10;
                 y = y+Math.random()*10;
             };
@@ -167,6 +168,8 @@ function explosion(canvas, ctx, coin, bag) {
             (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
             (showBag === true)
         ) {
+            sfx2Boom.play();
+            sfxBoom.play();
             showBag = false;
             cleanUpArray();
             initParticles(config.particleNumber, x, y);
