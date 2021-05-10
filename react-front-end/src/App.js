@@ -32,9 +32,7 @@ export default function Application(props) {
           <Route path="/trip"  component={Trip}  />
           <Route path="/user"  component={User}  />
           <Route path="/group" component={Group} />
-          <Route path="/">
-            <Home state={state} fetchData={fetchData} />
-          </Route>
+          <Route path="/"      component={Home}  />
         </Switch>
       </Router>
     </DataContext.Provider>
