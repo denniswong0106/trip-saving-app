@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-exoport default createContext();
+export default createContext();
