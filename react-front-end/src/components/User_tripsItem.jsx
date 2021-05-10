@@ -3,6 +3,7 @@ import React from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
+  expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
@@ -15,6 +16,12 @@ const TripItem = (props) => {
     props.cost,
     props.daily_drip
   );
+
+  const finishDate = expectedDate(new Date(), daysRemaining);
+
+  console.log("currentDate", new Date());
+  console.log("daysRemaining", daysRemaining);
+  console.log("finishDate", finishDate);
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
