@@ -3,6 +3,7 @@ import NavBar from './NavBar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './Home.scss';
+import Canvas from './helper_components/Canvas';
 
 //Moved from App.js then props passed in
 const Home = (props) => {
@@ -27,6 +28,8 @@ const Home = (props) => {
                 </div>
                 <img src={require('../pics/waterfall.jpg')} alt="waterfall" />
             </div>
+            <br/><br/><br/>
+            <Canvas/>
             <br/><br/><br/>
             <h1>{ props.state.message }</h1>
             <Button variant="contained" color="primary" onClick={props.fetchData} >
