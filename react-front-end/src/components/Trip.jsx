@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import './Trip.scss';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -21,7 +20,6 @@ const Trip = () => {
 
     return (
         <div>
-            <NavBar/>
             <div class="all">
                 <img src={require('../pics/waterfall.jpg')} alt="waterfall" />
                 <div class="text-and-price">

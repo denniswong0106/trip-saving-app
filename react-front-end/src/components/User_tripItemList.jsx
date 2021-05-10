@@ -1,4 +1,3 @@
-import { Container } from "@material-ui/core";
 import React from "react";
 import TripItem from "./User_tripsItem";
 
