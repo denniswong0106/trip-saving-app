@@ -3,9 +3,6 @@ import explosion from '../../helperfunctions/explosion';
 
 function Canvas(props) {
     const canvasRef = useRef(null);
-    let coin = document.createElement("img");
-    coin.src = require('../../pics/coin.gif');
-
     let bag = document.createElement("img");
     bag.src = require('../../pics/moneyBag.png');
 

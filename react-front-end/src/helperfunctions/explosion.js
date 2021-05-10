@@ -1,10 +1,6 @@
 // taken from https://codepen.io/deanwagman/pen/EjLBdQ and modified
 
 function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
-    // Little Canvas things
-    // var canvas = document.querySelector("#canvas"),
-    // ctx = canvas.getContext('2d');
-
     // Set Canvas to be window size
     canvas.width = 500//window.innerWidth;
     canvas.height = 500//window.innerHeight;
@@ -26,7 +22,7 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
 
     // Colors
     var colorPalette = {
-        // bg: {r:12,g:9,b:29},
+        //backroud colour
         bg: {r:248,g:248,b:255},
         matter: [
         {r:205,g:202,b:191}, 
@@ -141,7 +137,9 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
         particles.forEach((p) => {
             drawParticle(p.x, p.y, p.r, p.c);
         });
+        // Draw bag if needed
         if (showBag === true) {
+            // Shake bag if needed
             if (shake === true) {
                 sfxShake.play();
                 x = x+Math.random()*10;
@@ -149,6 +147,7 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
             };
             ctx.drawImage(bag, x, y, imageSize, imageSize);
         } else {
+            // Draw text after opening
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText(text, canvas.width/2, canvas.height/2);
@@ -168,6 +167,7 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
             (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
             (showBag === true)
         ) {
+            // Sfx on opening
             sfx2Boom.play();
             sfxBoom.play();
             showBag = false;
@@ -178,7 +178,6 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
 
     // Listens for mouse over
     document.body.addEventListener("mousemove", (event) => {
-        // console.log(event.offsetX, event.offsetY, shake);
         let x = event.offsetX, y = event.offsetY;
         //if you are over the bag x/y bounds shake will be true
         if ((x > (canvas.width/2)-imageSize/2) &&
