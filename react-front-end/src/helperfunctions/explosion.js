@@ -17,19 +17,12 @@ function explosion(canvas, ctx, coin, bag) {
     colorVariation: 25,
     };
     let imageSize = 150;
-    let coinX = 0;
-    let coinY = 0;
+    // let coinX = 0;
+    // let coinY = 0;
     let showBag = true;
     let shake = false;
-
-    //////////
-    function preShake(x, y) {
-        let newX = x+Math.random()*10;
-        let newY = y+Math.random()*10;
-        return [newX, newY];
-      }
-      
-    /////////////
+    ctx.font = "30px Arial";
+    let text = "$4.50 added to your account!";
 
     // Colors
     var colorPalette = {
@@ -114,8 +107,8 @@ function explosion(canvas, ctx, coin, bag) {
     };
 
     var initParticles = function (numParticles, x, y) {
-        coinX = x-imageSize/2;
-        coinY = y-imageSize/2;
+        // coinX = x-imageSize/2;
+        // coinY = y-imageSize/2;
         for (let i = 0; i < numParticles; i++) {
             particles.push(new Particle(x, y));
         }
@@ -136,29 +129,32 @@ function explosion(canvas, ctx, coin, bag) {
 
     // Our Frame function
     var frame = function () {
-    // Draw background first
-    drawBg(ctx, colorPalette.bg);
-    // Update Particle models to new position
-    particles.map((p) => {
-        return updateParticleModel(p);
-    });
-    // Draw em'
-    particles.forEach((p) => {
-        drawParticle(p.x, p.y, p.r, p.c);
-    });
-    if (showBag) {
         let x = (canvas.width/2)-imageSize/2;
         let y = (canvas.height/2)-imageSize/2;
-        if (shake) {
-            let newCoords = preShake(x, y);
-            x = newCoords[0];
-            y = newCoords[1];
-        };
-        ctx.drawImage(bag, x, y, imageSize, imageSize);
-    };
-    // ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
-    // Play the same song? Ok!
-    window.requestAnimFrame(frame);
+        // Draw background first
+        drawBg(ctx, colorPalette.bg);
+        // Update Particle models to new position
+        particles.map((p) => {
+            return updateParticleModel(p);
+        });
+        // Draw em'
+        particles.forEach((p) => {
+            drawParticle(p.x, p.y, p.r, p.c);
+        });
+        if (showBag === true) {
+            if (shake === true) {
+                x = x+Math.random()*10;
+                y = y+Math.random()*10;
+            };
+            ctx.drawImage(bag, x, y, imageSize, imageSize);
+        } else {
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText(text, canvas.width/2, canvas.height/2);
+        }
+        // ctx.drawImage(coin, coinX, coinY, imageSize, imageSize);
+        // Play the same song? Ok!
+        window.requestAnimFrame(frame);
     };
 
     // Click listener
@@ -166,17 +162,18 @@ function explosion(canvas, ctx, coin, bag) {
         let x = event.offsetX, y = event.offsetY;
         //if the click is inside the bounds of money bag x/y
         if ((x > (canvas.width/2)-imageSize/2) &&
-        (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
-        (y > (canvas.height/2)-imageSize/2) &&
-        (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
-        showBag === true
+            (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
+            (y > (canvas.height/2)-imageSize/2) &&
+            (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
+            (showBag === true)
         ) {
-        showBag = false;
-        cleanUpArray();
-        initParticles(config.particleNumber, x, y);
+            showBag = false;
+            cleanUpArray();
+            initParticles(config.particleNumber, x, y);
         }
     });
 
+    // Listens for mouse over
     document.body.addEventListener("mousemove", (event) => {
         // console.log(event.offsetX, event.offsetY, shake);
         let x = event.offsetX, y = event.offsetY;
@@ -185,7 +182,8 @@ function explosion(canvas, ctx, coin, bag) {
         (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
         (y > (canvas.height/2)-imageSize/2) &&
         (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
-        showBag === true) {shake = true;}
+        showBag === true)
+            {shake = true;}
             else {shake = false;};
     });
 
