@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "./Home.scss";
@@ -8,7 +7,6 @@ import "./Home.scss";
 const Home = (props) => {
   return (
     <div className="App">
-      <NavBar />
       <h2>Start saving for your next trip!</h2>
       <hr class="solid" />
       <form noValidate autoComplete="off">

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import NavBar from "./NavBar";
 import TripItemList from "./User_tripItemList";
 import DataContext from "../helperfunctions/DataContext";
 import "./User.scss";
@@ -88,8 +87,6 @@ const User = () => {
 
   return (
     <main className="user-page">
-      <NavBar />
-
       <section className="user-display">
         <div className="user-avatar-info">
           <div>

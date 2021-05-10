@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/core/Menu';
@@ -75,7 +74,6 @@ const Group = (props) => {
 
   return(
     <>
-      <NavBar />
       <div className="group-title">
         <h1>Iceland 2077!</h1>
         <h2>Date: {currentDay}</h2>

@@ -6,6 +6,7 @@ import Group from "./components/Group";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DataContext from "./helperfunctions/DataContext";
 import dataAccessor from "./hooks/dataAccessor";
+import NavBar from "./components/NavBar";
 import "./App.scss";
 
 export default function Application(props) {
@@ -26,9 +27,10 @@ export default function Application(props) {
       fetchData 
       }}>
       <Router>
+        <NavBar />
         <Switch>
-          <Route path="/trip" component={Trip} />
-          <Route path="/user" component={User} />
+          <Route path="/trip"  component={Trip}  />
+          <Route path="/user"  component={User}  />
           <Route path="/group" component={Group} />
           <Route path="/">
             <Home state={state} fetchData={fetchData} />
