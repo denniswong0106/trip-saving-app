@@ -1,7 +1,7 @@
-const Express    = require("express");
-const App        = Express();
+const Express = require("express");
+const App = Express();
 const BodyParser = require("body-parser");
-const PORT       = 8080;
+const PORT = 8080;
 
 
 // Express Configuration
@@ -10,16 +10,16 @@ App.use(BodyParser.json());
 App.use(Express.static("public"));
 
 // Separated Routes for each Resource
-const usersRouter  = require('./routes/users-router');
-const tripsRouter  = require('./routes/trips-router');
-const groupsRouter = require('./routes/groups-router');
+const usersRouter = require("./routes/users-router");
+const tripsRouter = require("./routes/trips-router");
+const groupsRouter = require("./routes/groups-router");
+const clearDataRouter = require("./routes/clear-data-router");
 
 // Mount all resource routes
 App.use("/api/users", usersRouter);
 App.use("/api/trips", tripsRouter);
 App.use("/api/groups", groupsRouter);
-
-
+App.use("/api/debug", clearDataRouter);
 
 // Sample GET route
 // App.get("/api/user", (req, res) => {
@@ -52,20 +52,20 @@ App.use("/api/groups", groupsRouter);
 //       daily_prize: false,
 //       avatar: "https://i.imgur.com/FK8V841.jpg",
 //     },
-    // {
-    //   id: 4,
-    //   name: "Megan Mann",
-    //   bank_account: 1305,
-    //   daily_prize: true,
-    //   avatar: "https://i.imgur.com/TdOAdde.jpg",
-    // },
-    // {
-    //   id: 5,
-    //   name: "Nima Toed",
-    //   bank_account: 1005,
-    //   daily_prize: false,
-    //   avatar: "https://i.imgur.com/nPywAp1.jpg",
-    // },
+// {
+//   id: 4,
+//   name: "Megan Mann",
+//   bank_account: 1305,
+//   daily_prize: true,
+//   avatar: "https://i.imgur.com/TdOAdde.jpg",
+// },
+// {
+//   id: 5,
+//   name: "Nima Toed",
+//   bank_account: 1005,
+//   daily_prize: false,
+//   avatar: "https://i.imgur.com/nPywAp1.jpg",
+// },
 //   ])
 // );
 
