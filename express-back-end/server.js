@@ -12,25 +12,13 @@ App.use(Express.static("public"));
 const usersRouter = require("./routes/users-router");
 const tripsRouter = require("./routes/trips-router");
 const groupsRouter = require("./routes/groups-router");
+const clearDataRouter = require("./routes/clear-data-router");
 
 // Mount all resource routes
 App.use("/api/users", usersRouter);
 App.use("/api/trips", tripsRouter);
 App.use("/api/groups", groupsRouter);
-
-// clear database function
-App.get("/api/debug/deletealldata", (req, res) => {
-  console.log("clearing database");
-
-  Promise.all([
-    knex("users").del(),
-    knex("trip_savings").del(),
-    knex("group_trip").del(),
-  ]).then((all) => {
-    console.log("Database data cleared!");
-    return res.json("database cleared");
-  });
-});
+App.use("/api/debug", clearDataRouter);
 
 // Sample GET route
 // App.get("/api/user", (req, res) => {
