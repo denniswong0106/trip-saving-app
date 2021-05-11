@@ -6,6 +6,7 @@ import Group from "./components/Group";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DataContext from "./helperfunctions/DataContext";
 import dataAccessor from "./hooks/dataAccessor";
+import apiAccessor from "./hooks/apiAccessor";
 import NavBar from "./components/NavBar";
 import "./App.scss";
 
@@ -21,6 +22,8 @@ export default function Application(props) {
     getTripByGroupAndUserId,
     getUsersIdNotInGroup
   } = dataAccessor();
+
+  const {someFunc} = apiAccessor();
   
   return (
     <DataContext.Provider value={{

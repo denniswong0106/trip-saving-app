@@ -1,37 +1,53 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import DataContext from "../helperfunctions/DataContext";
+import apiAccessor from "../hooks/apiAccessor";
+import useDebounce from "../hooks/useDebounce";
 import "./Home.scss";
 import Canvas from './helper_components/Canvas';
+import axios from "axios";
 
 //Moved from App.js then props passed in
 const Home = () => {
 
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { state, fetchData } = useContext(DataContext);
-  
+  const { search, setSearch } = apiAccessor();
+  const term = useDebounce(search, 700);
+
+  const [value, setValue] = useState("");
+  console.log("search: ", search);
+
+  useEffect(() => {
+    //axios call with term
+    axios.get(`https://rest.gadventures.com/tour_dossiers/?name=${term}`, {
+      headers: {
+        'X-Application-Key': process.env.REACT_APP_SECRET_KEY
+      },
+    }).then((result)=>{
+      console.log("res.data1: ", result.data.results);
+    }) 
+  }, [term]);
+
   const currentState = state;
 
   return (
     <div className="App">
       <h2>Start saving for your next trip!</h2>
-      <hr class="solid" />
+      <hr className="solid" />
       <form noValidate autoComplete="off">
-        <TextField id="standard-basic" label="name" />
+        <TextField id="standard-basic" label="search" value={search} onChange={(event) => {setSearch(event.target.value)}}/>
         &nbsp;&nbsp;&nbsp;
-        <TextField id="standard-basic" label="email" />
-        &nbsp;&nbsp;&nbsp;
-        <TextField id="standard-basic" label="password" />
-        <Button variant="contained" color="primary">
-          Sign up
+        <Button variant="contained" onSubmit={()=>{}} color="primary">
+          Search
         </Button>
       </form>
       <br />
       <br />
       <br />
-      <div class="trip-container">
-        <div class="text-and-heading">
+      <div className="trip-container">
+        <div className="text-and-heading">
           <h4>Iceland</h4>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
