@@ -70,7 +70,7 @@ const Group = () => {
   });
 
   // maps through an array of "friends" not yet added to the group
-  const addGroupFriendsList = allUsers.map(friend => <MenuItem>{friend.name}</MenuItem>);
+  const addGroupFriendsList = allUsers.map(friend => <MenuItem onClick={handleClose}>{friend.name}</MenuItem>);
 
   return(
     <>
