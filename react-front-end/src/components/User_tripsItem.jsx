@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
@@ -10,10 +10,11 @@ import Button from "@material-ui/core/Button";
 import UserPopup from "./User_popup.jsx";
 
 const TripItem = (props) => {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(1);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("");
 
   const handleClickOpen = () => {
+    setMode("SAVING");
     setOpen(true);
   };
   const handleClose = () => {
@@ -69,7 +70,12 @@ const TripItem = (props) => {
         <div>{finishDate}</div>
       </div>
       <div className="trip-description">{props.description}</div>
-      <UserPopup value={value} open={open} handleClose={handleClose} />
+      <UserPopup
+        mode={mode}
+        setMode={setMode}
+        open={open}
+        handleClose={handleClose}
+      />
     </article>
   );
 };

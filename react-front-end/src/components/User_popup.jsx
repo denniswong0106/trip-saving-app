@@ -14,13 +14,10 @@ import "./Popup.scss";
 import { withStyles } from "@material-ui/core/styles";
 
 const UserPopup = (props) => {
-  //where the tick marks are on the slider
-
-  //for days estimate
-  function days(drip, goal) {
-    const daysTotal = goal / drip;
-    return daysTotal.toFixed(1);
-  }
+  // setTimeout to mimic saving for 2 seconds:
+  setTimeout(function () {
+    props.setMode("TRANSITION");
+  }, 3000);
 
   return (
     <Dialog
@@ -28,22 +25,37 @@ const UserPopup = (props) => {
       onClose={props.handleClose}
       aria-labelledby="form-dialog-title"
     >
-      <DialogTitle id="form-dialog-title">
-        Adding to your savings...
-      </DialogTitle>
-      <DialogContent>
-        <img
-          class="loading-gif"
-          src={require("../pics/piggybank.gif")}
-          alt="piggybank"
-        />
-      </DialogContent>
-      <div class="dialog-actions">
-        {/* <Button onClick={handleClose}>Cancel</Button> */}
-        <Button id="start" onClick={props.handleClose}>
-          Start Saving!
-        </Button>
-      </div>
+      {props.mode === "SAVING" && (
+        <div>
+          <DialogTitle id="form-dialog-title">
+            Adding to your savings...
+          </DialogTitle>
+          <DialogContent>
+            <img
+              class="loading-gif"
+              src={require("../pics/piggybank.gif")}
+              alt="piggybank"
+            />
+          </DialogContent>
+        </div>
+      )}
+      {props.mode === "TRANSITION" && (
+        <div>
+          <DialogTitle id="form-dialog-title">Succesfully Added!</DialogTitle>
+          <DialogContent>
+            <img
+              class="loading-gif"
+              src={require("../pics/piggybank.gif")}
+              alt="piggybank"
+            />
+          </DialogContent>
+          <div class="dialog-actions">
+            <Button id="start" onClick={props.handleClose}>
+              Start Saving!
+            </Button>
+          </div>
+        </div>
+      )}
     </Dialog>
   );
 };
