@@ -10,13 +10,6 @@ import { calculatePercentage } from "../helperfunctions/calculateFunctions";
 
 import "./Group.scss";
 
-// hardcode for now
-// const addFriendsList = [
-//   {name: "Egg Eggerson"},
-//   {name: "Bob Belcher"},
-//   {name: "Brandom Neym"}
-// ]
-
 const Group = () => {
 
   // import DataContext functions
@@ -101,6 +94,7 @@ const Group = () => {
           TransitionComponent={Fade}
         >
           {addGroupFriendsList}
+          <MenuItem onClick={handleClose}>Cancel</MenuItem>
         </Menu>
       </div>
     </>
