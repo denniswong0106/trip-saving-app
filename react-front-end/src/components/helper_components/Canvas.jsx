@@ -4,7 +4,7 @@ import explosion from '../../helperfunctions/explosion';
 function Canvas(props) {
     const canvasRef = useRef(null);
     let bag = document.createElement("img");
-    bag.src = require('../../pics/moneyBag.png');
+    bag.src = require('../../pics/moneyBag.gif');
 
     let sfx = document.createElement("audio");
     sfx.src = require('../../pics/coins-drop.mp3')
