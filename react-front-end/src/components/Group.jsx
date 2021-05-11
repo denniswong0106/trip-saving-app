@@ -87,13 +87,11 @@ const Group = (props) => {
       <div className="group-title">
         <h1>Iceland 2077!</h1>
         <h2>Date: {currentDay}</h2>
-        <h4>Only 364 days to go!</h4>
-      </div>
-      <div>
+        <p>Only 364 days to go!</p>
         <h1>Progress:</h1>
       </div>
-      <ul>{groupFriendList}</ul>
-      <div>
+      <ul class="progress-bars">{groupFriendList}</ul>
+      <div id="add">
         <Fab
           size="large"
           color="primary"

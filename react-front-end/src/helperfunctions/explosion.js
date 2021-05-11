@@ -2,8 +2,8 @@
 
 function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
     // Set Canvas to be window size
-    canvas.width = 500//window.innerWidth;
-    canvas.height = 500//window.innerHeight;
+    canvas.width = 500;//window.innerWidth;
+    canvas.height = 500;//window.innerHeight;
 
     // Configuration, Play with these
     var config = {
@@ -178,7 +178,8 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
 
     // Listens for mouse over
     document.body.addEventListener("mousemove", (event) => {
-        let x = event.offsetX, y = event.offsetY;
+        let x = event.offsetX;
+        let y = event.offsetY;
         //if you are over the bag x/y bounds shake will be true
         if ((x > (canvas.width/2)-imageSize/2) &&
         (x < ((canvas.width/2)-imageSize/2)+imageSize) &&

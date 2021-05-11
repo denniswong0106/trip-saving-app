@@ -5,7 +5,23 @@
   width: 80%;
 }
 
-.add-icon {
+.group-title {
   display: flex;
-  justify-self: center;
+  flex-direction: column;
+  margin-left: 5%;
+  h1 {
+    margin-bottom: 0;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.progress-bars {
+  margin-left: 5%;
+}
+
+#add {
+  display: flex;
+  justify-content: center;
 }
