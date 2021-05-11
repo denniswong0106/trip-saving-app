@@ -92,6 +92,6 @@ export default function dataAccessor() {
     getUserById,
     fetchData,
     getUsersIdByGroupId,
-    getTripByGroupAndUserId 
+    getTripByGroupAndUserId
   };
 }
