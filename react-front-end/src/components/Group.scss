@@ -15,6 +15,9 @@
   h2 {
     margin-bottom: 0;
   }
+  p {
+    margin: 0;
+  }
 }
 
 .progress-bars {
@@ -24,4 +27,8 @@
 #add {
   display: flex;
   justify-content: center;
+  Menu {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
