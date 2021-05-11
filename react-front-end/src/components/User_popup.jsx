@@ -44,14 +44,14 @@ const UserPopup = (props) => {
           <DialogTitle id="form-dialog-title">Succesfully Added!</DialogTitle>
           <DialogContent>
             <img
-              class="loading-gif"
+              id="loading-gif"
               src={require("../pics/piggybank.gif")}
               alt="piggybank"
             />
           </DialogContent>
           <div class="dialog-actions">
             <Button id="start" onClick={props.handleClose}>
-              Start Saving!
+              Click Here to For Your Chance to Win!
             </Button>
           </div>
         </div>
