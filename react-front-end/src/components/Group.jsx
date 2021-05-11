@@ -8,7 +8,7 @@ import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
 import { calculatePercentage } from "../helperfunctions/calculateFunctions";
 
-import "./Group.scss"
+import "./Group.scss";
 
 // hardcode for now
 // const addFriendsList = [
@@ -60,7 +60,7 @@ const Group = () => {
     const progress = calculatePercentage(trip.savings, trip.cost);
     
     return (
-      <GroupItem 
+      <GroupItem
         key={friend.id}
         name={friend.name}
         avatar={friend.avatar}
@@ -72,7 +72,7 @@ const Group = () => {
   // maps through an array of "friends" not yet added to the group
   const addGroupFriendsList = allUsers.map(friend => <MenuItem onClick={handleClose}>{friend.name}</MenuItem>);
 
-  return(
+  return (
     <>
       <div className="group-title">
         <h1>{trip.trip_name}</h1>
@@ -82,12 +82,15 @@ const Group = () => {
       <div>
         <h1>Progress:</h1>
       </div>
-      <ul>
-        {groupFriendList}
-      </ul>
-      <div>
-        <Fab size="large" color="primary" aria-label="add" onClick={handleClick}>
-          <AddIcon fontSize="large"/>
+      <ul class="progress-bars">{groupFriendList}</ul>
+      <div id="add">
+        <Fab
+          size="large"
+          color="primary"
+          aria-label="add"
+          onClick={handleClick}
+        >
+          <AddIcon fontSize="large" />
         </Fab>
         <Menu
           id="fade-menu"
@@ -102,6 +105,6 @@ const Group = () => {
       </div>
     </>
   );
-}
+};
 
 export default Group;

@@ -2,6 +2,7 @@ import React from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
+  expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
@@ -10,11 +11,19 @@ import Button from "@material-ui/core/Button";
 const TripItem = (props) => {
   const value = calculatePercentage(props.savings, props.cost);
   const daysRemaining = calculateDaysRemaining(
-    props.savings,
+    props.daily_drip,
     props.cost,
-    props.daily_drip
+    props.savings
   );
 
+  const finishDate = expectedDate(new Date(), daysRemaining);
+  const bookingDate = new Date(props.bookingDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  console.log(bookingDate);
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
       <Button
@@ -34,6 +43,7 @@ const TripItem = (props) => {
   return (
     <article>
       <h2>{props.trip_name}!</h2>
+      <h3>{bookingDate}</h3>
       <div className="header-container">
         <div className="header-location">
           <h4>{props.location}</h4>
@@ -50,6 +60,7 @@ const TripItem = (props) => {
           ${props.savings} of ${props.cost} goal!
         </div>
         <div>{daysRemaining} days until you reach your goal!</div>
+        <div>{finishDate}</div>
       </div>
       <div className="trip-description">{props.description}</div>
     </article>

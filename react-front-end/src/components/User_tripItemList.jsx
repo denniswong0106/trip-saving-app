@@ -22,6 +22,7 @@ const TripItemList = (props) => {
         daily_prize={trip.daily_prize}
         user_id={trip.user_id}
         key={trip.id}
+        bookingDate={trip.booking_date}
         onclick={onClick}
       />
     );
