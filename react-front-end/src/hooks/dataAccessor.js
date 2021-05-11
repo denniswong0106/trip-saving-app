@@ -45,6 +45,18 @@ export default function dataAccessor() {
     return usersInGroup;
   };
 
+  // gets all the users that are not in the group array
+  const getUsersIdNotInGroup = (groupId) => {
+    
+    const usersInGroup = getUsersIdByGroupId(groupId);
+    const mappedIds = usersInGroup.map((user) => user.id)
+    const allUsers = state.users;
+    const usersNotIncluded = allUsers.filter((users) => !mappedIds.includes(users.id));
+    
+    return usersNotIncluded;
+  };
+
+
   const getTripByGroupAndUserId = (groupId, userId) => {
     const tripsInWithGroupId = state.trips.filter(
       (trip) => trip.group_id === groupId
@@ -92,6 +104,7 @@ export default function dataAccessor() {
     getUserById,
     fetchData,
     getUsersIdByGroupId,
-    getTripByGroupAndUserId
+    getTripByGroupAndUserId,
+    getUsersIdNotInGroup
   };
 }

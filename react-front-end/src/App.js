@@ -18,7 +18,8 @@ export default function Application(props) {
     getUserById, 
     fetchData,
     getUsersIdByGroupId,
-    getTripByGroupAndUserId  
+    getTripByGroupAndUserId,
+    getUsersIdNotInGroup
   } = dataAccessor();
   
   return (
@@ -28,7 +29,8 @@ export default function Application(props) {
       getUserById, 
       fetchData,
       getUsersIdByGroupId,
-      getTripByGroupAndUserId 
+      getTripByGroupAndUserId,
+      getUsersIdNotInGroup
       }}>
       <Router>
         <NavBar />

@@ -11,34 +11,32 @@ import { calculatePercentage } from "../helperfunctions/calculateFunctions";
 import "./Group.scss"
 
 // hardcode for now
-const addFriendsList = [
-  {name: "Egg Eggerson"},
-  {name: "Bob Belcher"},
-  {name: "Brandom Neym"}
-]
+// const addFriendsList = [
+//   {name: "Egg Eggerson"},
+//   {name: "Bob Belcher"},
+//   {name: "Brandom Neym"}
+// ]
 
 const Group = () => {
 
   // import DataContext functions
-  const { getUsersIdByGroupId, getTripByGroupAndUserId } = useContext(DataContext);
+  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup } = useContext(DataContext);
 
   // assigns data to variables
   const trip = {...getTripByGroupAndUserId(1, 1)};
   const friendsList = getUsersIdByGroupId(1);
-
-  console.log("trip", trip);
+  const allUsers = getUsersIdNotInGroup(1);
  
-  // grabs today's date and converts it to a Month, Day, Year format
+  // grabs today's date and the trip date and calculates remaining days
   const today = new Date();
   const tripDay = new Date(trip.booking_date);
-
-  console.log("today ", today);
-  console.log("tripDay ", tripDay);
-
+  
   const timeDiff = Math.abs(today - tripDay);
   const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
   
+  // grabs today's date and converts it to a Month, Day, Year format
   const currentDay = today.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
+  
   // state that the menu from material ui uses
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -72,7 +70,7 @@ const Group = () => {
   });
 
   // maps through an array of "friends" not yet added to the group
-  const addGroupFriendsList = addFriendsList.map(friend => <MenuItem>{friend.name}</MenuItem>);
+  const addGroupFriendsList = allUsers.map(friend => <MenuItem>{friend.name}</MenuItem>);
 
   return(
     <>
