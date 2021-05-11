@@ -16,7 +16,9 @@ export default function Application(props) {
     state, 
     getUserTrips, 
     getUserById, 
-    fetchData 
+    fetchData,
+    getUsersIdByGroupId,
+    getTripByGroupAndUserId  
   } = dataAccessor();
   
   return (
@@ -24,7 +26,9 @@ export default function Application(props) {
       state, 
       getUserTrips, 
       getUserById, 
-      fetchData 
+      fetchData,
+      getUsersIdByGroupId,
+      getTripByGroupAndUserId 
       }}>
       <Router>
         <NavBar />

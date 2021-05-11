@@ -1,34 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import GroupItem from "./GroupItem";
+import DataContext from "../helperfunctions/DataContext";
+import { calculatePercentage, calculateDaysRemaining } from "../helperfunctions/calculateFunctions";
 
 import "./Group.scss"
-
-// hardcode for now
-const friendsList = [
-  {
-    id: 1,
-    name: 'Rex Raptor',
-    avatar: 'https://i.imgur.com/LpaY82x.png',
-    progress: 65
-  },
-  {
-    id: 2,
-    name: 'Megan Mann',
-    avatar: 'https://i.imgur.com/TdOAdde.jpg',
-    progress: 33
-  }, 
-  {
-    id: 3,
-    name: 'Weavile Underwood',
-    avatar: 'https://i.imgur.com/FK8V841.jpg',
-    progress: 57
-  }
-]
 
 // hardcode for now
 const addFriendsList = [
@@ -37,9 +17,16 @@ const addFriendsList = [
   {name: "Brandom Neym"}
 ]
 
-const Group = (props) => {
+const Group = () => {
 
-  // grabs today's date and converts it to a Mont, Day, Year format
+  // import DataContext functions
+  const { getUsersIdByGroupId, getTripByGroupAndUserId } = useContext(DataContext);
+
+  // assigns data to variables
+  
+  const friendsList = getUsersIdByGroupId(1);
+ 
+  // grabs today's date and converts it to a Month, Day, Year format
   const today = new Date();
   const currentDay = today.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
 
@@ -59,12 +46,16 @@ const Group = (props) => {
 
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map(friend => {
+    
+    const trip = getTripByGroupAndUserId(1, friend.id);
+    const progress = calculatePercentage(trip.savings, trip.cost);
+    console.log("progress", progress);
     return (
       <GroupItem 
         key={friend.id}
         name={friend.name}
         avatar={friend.avatar}
-        progress={friend.progress}
+        progress={progress}
       />
     )
   });
