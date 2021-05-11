@@ -17,11 +17,13 @@ const TripItem = (props) => {
   );
 
   const finishDate = expectedDate(new Date(), daysRemaining);
+  const bookingDate = new Date(props.bookingDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
-  console.log("currentDate", new Date());
-  console.log("daysRemaining", daysRemaining);
-  console.log("finishDate", finishDate);
-
+  console.log(bookingDate);
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
       <Button
@@ -41,6 +43,7 @@ const TripItem = (props) => {
   return (
     <article>
       <h2>{props.trip_name}!</h2>
+      <h3>{bookingDate}</h3>
       <div className="header-container">
         <div className="header-location">
           <h4>{props.location}</h4>
@@ -57,6 +60,7 @@ const TripItem = (props) => {
           ${props.savings} of ${props.cost} goal!
         </div>
         <div>{daysRemaining} days until you reach your goal!</div>
+        <div>{finishDate}</div>
       </div>
       <div className="trip-description">{props.description}</div>
     </article>
