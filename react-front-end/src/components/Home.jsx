@@ -5,29 +5,21 @@ import DataContext from "../helperfunctions/DataContext";
 import apiAccessor from "../hooks/apiAccessor";
 import useDebounce from "../hooks/useDebounce";
 import "./Home.scss";
-import Canvas from './helper_components/Canvas';
+import Canvas from "./helper_components/Canvas";
 import axios from "axios";
 
 //Moved from App.js then props passed in
 const Home = () => {
-
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { state, fetchData } = useContext(DataContext);
-  const { search, setSearch } = apiAccessor();
-  const term = useDebounce(search, 700);
 
+  const { setSearch } = apiAccessor();
   const [value, setValue] = useState("");
-  console.log("search: ", search);
+
+  const term = useDebounce(value, 700);
 
   useEffect(() => {
-    //axios call with term
-    axios.get(`https://rest.gadventures.com/tour_dossiers/?name=${term}`, {
-      headers: {
-        'X-Application-Key': process.env.REACT_APP_SECRET_KEY
-      },
-    }).then((result)=>{
-      console.log("res.data1: ", result.data.results);
-    }) 
+    setSearch(term);
   }, [term]);
 
   const currentState = state;
@@ -37,9 +29,16 @@ const Home = () => {
       <h2>Start saving for your next trip!</h2>
       <hr className="solid" />
       <form noValidate autoComplete="off">
-        <TextField id="standard-basic" label="search" value={search} onChange={(event) => {setSearch(event.target.value)}}/>
+        <TextField
+          id="standard-basic"
+          label="search"
+          value={value}
+          onChange={(event) => {
+            setValue(event.target.value);
+          }}
+        />
         &nbsp;&nbsp;&nbsp;
-        <Button variant="contained" onSubmit={()=>{}} color="primary">
+        <Button variant="contained" onSubmit={() => {}} color="primary">
           Search
         </Button>
       </form>
@@ -70,8 +69,10 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <Canvas/>
-      <br/><br/><br/>
+      <Canvas />
+      <br />
+      <br />
+      <br />
       <h1>{currentState.message}</h1>
       <Button variant="contained" color="primary" onClick={fetchData}>
         Fetch Data
