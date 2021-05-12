@@ -6,11 +6,14 @@ const TripItem = (props) => {
 
   return (
     <>
-      <div className="text-and-heading">
-        <h4>{props.name}</h4>
-        <p>{props.description}</p>
+      <div class="trip-block">
+        <div className="text-and-heading">
+          <h3>{props.name}</h3>
+          <p>{props.description}</p>
+        </div>
+        <img src={props.image} alt="waterfall" />
       </div>
-      <img src={props.image} alt="waterfall" />
+      <br/>
     </>
   );
 };
