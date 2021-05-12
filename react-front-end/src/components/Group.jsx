@@ -7,6 +7,7 @@ import Fade from '@material-ui/core/Fade';
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
 import { calculatePercentage } from "../helperfunctions/calculateFunctions";
+import axios from "axios";
 
 import "./Group.scss";
 
@@ -44,13 +45,40 @@ const Group = () => {
     setAnchorEl(null);
   };
 
+  // adds users to the list
+  const handleAdd = (id, tripName, price, locationName, description) => {
+    console.log("price: ", price);
+    console.log("tripName: ", tripName);
+    console.log("id: ", id);
+    console.log("locationName: ", locationName);
+    console.log("description: ", description);
+
+    axios.put(`/api/trips`, {
+      savings: 0,
+      daily_drip: 0,
+      trip_name: tripName,
+      cost: price,
+      location: locationName,
+      description: description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: id,
+      group_id: 1,
+    }).then((result)=>{
+      console.log("from the front in Group.jsx, res.data: ", result.data.results);
+    });
+
+    setAnchorEl(null);
+  }
+
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map(friend => {
     
     // grabs the specific trip the group is on
-    const trip = getTripByGroupAndUserId(1, friend.id);
+    const tripForEach = getTripByGroupAndUserId(1, friend.id);
     // calculates the progress 
-    const progress = calculatePercentage(trip.savings, trip.cost);
+    const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
     
     return (
       <GroupItem
@@ -63,7 +91,27 @@ const Group = () => {
   });
 
   // maps through an array of "friends" not yet added to the group
-  const addGroupFriendsList = allUsers.map(friend => <MenuItem onClick={handleClose}>{friend.name}</MenuItem>);
+  const addGroupFriendsList = allUsers.map(friend => {
+    
+    const tripForEach = getTripByGroupAndUserId(1, 1);
+
+    return (
+      <MenuItem 
+        key={friend.id}
+        onClick={() => 
+          handleAdd(
+            friend.id,
+            tripForEach.trip_name,
+            tripForEach.cost,
+            tripForEach.location,
+            tripForEach.description,
+          )}
+      >
+        {friend.name}
+      </MenuItem>
+    )
+    
+  });
 
   return (
     <>
