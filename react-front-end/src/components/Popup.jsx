@@ -28,12 +28,23 @@ const Popup = (props) => {
   //database put call
   function bookTrip() {
     //db call
-    //redirect
     console.log("-----Booked!------");
-    console.log("price", props.price);
+    //ID
+    //savings 0
     console.log("drip", props.value);
-    console.log("trip ID");
     console.log("trip name", tripName);
+    console.log("cost", props.price);
+    console.log("location", props.locationName);
+    console.log("description", props.description);
+    //daily prize true
+    //booking date today
+    //streatch goal
+    //user ID
+    //group ID
+    console.log("trip ID", props.tripId);
+    //redirect
+    setTripName("");
+    props.handleClose();
   }
 
   //slider style settings
@@ -96,8 +107,8 @@ const Popup = (props) => {
           max={10}
           onChangeCommitted={props.handleChange}
         />
-        <div class="math">
-          <div class="top-line">
+        <div className="math">
+          <div className="top-line">
             <h5>${props.value} per day</h5>
             <h5>{calculateDaysRemaining(props.value, props.price)} days</h5>
           </div>
@@ -109,7 +120,7 @@ const Popup = (props) => {
           </h5>
         </div>
       </DialogContent>
-      <div class="dialog-actions">
+      <div className="dialog-actions">
         {/* <Button onClick={handleClose}>Cancel</Button> */}
         <Button id="start" onClick={bookTrip}>
           Start Saving!
