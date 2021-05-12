@@ -7,6 +7,7 @@ import useDebounce from "../hooks/useDebounce";
 import "./Home.scss";
 import Canvas from './helper_components/Canvas';
 import axios from "axios";
+import SearchItem from "./SearchItem";
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -14,10 +15,16 @@ const Home = () => {
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { state, fetchData } = useContext(DataContext);
   const { search, setSearch } = apiAccessor();
+  const [ description, setDescription ] = useState("");
+  const [ name, setName ] = useState("");
+  const [ image, setImage ] = useState("");
   const term = useDebounce(search, 700);
+  const idNumbers = [];
+  const tripsArray = [];
 
   const [value, setValue] = useState("");
   console.log("search: ", search);
+  
 
   useEffect(() => {
     //axios call with term
@@ -25,10 +32,58 @@ const Home = () => {
       headers: {
         'X-Application-Key': process.env.REACT_APP_SECRET_KEY
       },
-    }).then((result)=>{
-      console.log("res.data1: ", result.data.results);
-    }) 
+    })
+    .then((result)=>{
+      console.log("possible error? ",result.data.results);
+      if (result.data.results[0]) {
+        console.log("res.data1: ", result.data.results[0].id);
+        for (let i = 0; i < 5; i++) {
+          idNumbers.push(result.data.results[i].id);
+        }
+        tripSearch();
+      }
+    })
+        // return axios.get(`https://rest.gadventures.com/tour_dossiers/${idNumber}`, {
+        //   headers: {
+        //     'X-Application-Key': process.env.REACT_APP_SECRET_KEY
+        //   },
+        // })
+        // }}).then((result) => {
+        //   if (result) {
+        //     console.log("dossiers: ", result.data);
+        //     setDescription(result.data.description);
+        //     setName(result.data.name);
+        //     setImage(result.data.images[2].image_href);
+        //   }
+        // });
   }, [term]);
+
+  // const tripSearchItem;
+  function tripSearch() {
+    const tripSearchItems = idNumbers.map((id) => {
+      axios.get(`https://rest.gadventures.com/tour_dossiers/${id}`, {
+        headers: {
+          'X-Application-Key': process.env.REACT_APP_SECRET_KEY
+        },
+      })
+      .then((res)=>{
+        console.log("array push!");
+        tripsArray.push(res);
+      })
+    })
+  }
+  let tripSearchItem;
+  useEffect(() => {
+  tripSearchItem = tripsArray.map((trip) => {
+    return(
+      <SearchItem
+        name={trip.data.name}
+        description={trip.data.description}
+        image={trip.data.images[2].image_href}
+      />
+    )
+  })
+  }, [tripsArray])
 
   const currentState = state;
 
@@ -47,25 +102,14 @@ const Home = () => {
       <br />
       <br />
       <div className="trip-container">
-        <div className="text-and-heading">
-          <h4>Iceland</h4>
+        {tripSearchItem[0]}
+        {/* <div className="text-and-heading">
+          <h4>{name}</h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            blandit lorem eget aliquam placerat. Nulla eleifend quis felis vitae
-            eleifend. Quisque nec tincidunt tortor, sit amet auctor ipsum. Etiam
-            nec metus eu urna lacinia tempus. Aliquam sed sem urna. Integer sit
-            amet nibh euismod lacus vulputate convallis ac vel purus. Nulla
-            consectetur tristique sapien. Maecenas rhoncus nec lectus ac
-            fringilla. Maecenas in luctus sem. Nunc laoreet accumsan ligula, et
-            bibendum risus tempor venenatis. Nam erat nunc, sagittis vel
-            imperdiet non, dapibus vel dui. Etiam euismod elementum placerat.
-            Suspendisse venenatis ligula augue, cursus ultricies ex lobortis
-            eget. Cras lectus ipsum, sollicitudin in tristique aliquam, rutrum a
-            velit. Nunc nisi diam, ullamcorper eu sollicitudin in, suscipit a
-            mi.
+            {description}
           </p>
         </div>
-        <img src={require("../pics/waterfall.jpg")} alt="waterfall" />
+        <img src={image} alt="pic" /> */}
       </div>
       <br />
       <br />

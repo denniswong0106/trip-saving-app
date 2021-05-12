@@ -23,7 +23,7 @@ export default function apiAccessor() {
         'X-Application-Key': process.env.REACT_APP_SECRET_KEY
       },
     }).then((result)=>{
-      console.log("res.data2: ", result.data.results);
+      // console.log("res.data2: ", result.data.results);
     }) 
   }, []);
 

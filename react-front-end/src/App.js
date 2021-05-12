@@ -23,7 +23,7 @@ export default function Application(props) {
     getUsersIdNotInGroup
   } = dataAccessor();
 
-  const {someFunc} = apiAccessor();
+  const { someFunc } = apiAccessor();
   
   return (
     <DataContext.Provider value={{

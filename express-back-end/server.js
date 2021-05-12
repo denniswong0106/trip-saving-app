@@ -23,7 +23,6 @@ App.use("/api/trips", tripsRouter);
 App.use("/api/groups", groupsRouter);
 App.use("/api/debug", clearDataRouter);
 
-
 // Sample GET route
 // App.get("/api/user", (req, res) => {
 //   knex("users").then((res) => {
