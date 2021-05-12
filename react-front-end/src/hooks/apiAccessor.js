@@ -62,21 +62,6 @@ export default function apiAccessor() {
     });
   }, [search]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://rest.gadventures.com/departures?availability.status=AVAILABLE",
-  //       {
-  //         headers: {
-  //           "X-Application-Key": process.env.REACT_APP_SECRET_KEY,
-  //         },
-  //       }
-  //     )
-  //     .then((result) => {
-  //       console.log("res.data2: ", result.data.results);
-  //     });
-  // }, []);
-
   return {
     search,
     setSearch,
