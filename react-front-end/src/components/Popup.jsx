@@ -56,9 +56,9 @@ const Popup = (props) => {
       booking_date: "2021-11-20",
       stretch_goal: 0,
       user_id: 1,
-      group_id: 1,
+      group_id: null,
     }).then((result)=>{
-      console.log("res.data1: ", result.data.results);
+      console.log("from the front, res.data: ", result.data.results);
     }) 
 
     //redirect
