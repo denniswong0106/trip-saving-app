@@ -9,6 +9,7 @@ import {
   expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
+import axios from "axios";
 
 //slider
 import Slider from "@material-ui/core/Slider";
@@ -42,6 +43,24 @@ const Popup = (props) => {
     //user ID
     //group ID
     console.log("trip ID", props.tripId);
+
+    //axios call with term
+    axios.put(`/api/trips`, {
+      savings: 0,
+      daily_drip: props.value,
+      trip_name: tripName,
+      cost: props.price,
+      location: props.locationName,
+      description: props.description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: 1,
+      group_id: 1,
+    }).then((result)=>{
+      console.log("res.data1: ", result.data.results);
+    }) 
+
     //redirect
     setTripName("");
     props.handleClose();
