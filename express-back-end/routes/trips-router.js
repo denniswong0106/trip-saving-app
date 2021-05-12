@@ -24,4 +24,16 @@ router.get("/:id", (req, res) => {
 
 });
 
+// PUT /api/trips
+router.put("/", (req, res) => {
+  console.log("from the back: ", req.body);
+  // knex("trip_savings")
+  //   .insert(req.body)
+  //   .then((result) => {
+  //     console.log("SELECT * FROM trip_savings: ", result);
+  //     return res.json(result);
+  //   });
+  return res;
+});
+
 module.exports = router;
