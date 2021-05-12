@@ -1,9 +1,11 @@
+@import './helper_components/ColourPalette.scss';
+
 .nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #9572e7;
+  background-color: $primary-teal;
   height: 50px;
 }
 
