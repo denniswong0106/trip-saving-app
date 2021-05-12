@@ -4,15 +4,15 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Popup from './Popup.jsx';
 
-
 const Trip = () => {
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(1);
+    const [price, setPrice] = React.useState(6522);
 
     //handles if popup is open/closed
     const handleClickOpen = () => { setOpen(true); };
     const handleClose = () => { setOpen(false); };
-    
+
     //updates state from slider
     function handleChange (event, value) {
         setValue(value);
@@ -34,7 +34,7 @@ const Trip = () => {
                     </Card>
                 </div>
             </div>
-            <Popup handleChange={handleChange} value={value} open={open} handleClose={handleClose} />
+            <Popup price={price} handleChange={handleChange} value={value} open={open} handleClose={handleClose} />
         </div>
     );
 };

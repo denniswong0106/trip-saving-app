@@ -15,6 +15,7 @@ import Slider from "@material-ui/core/Slider";
 import { withStyles } from "@material-ui/core/styles";
 
 const Popup = (props) => {
+  const [tripName, setTripName] = React.useState("");
   //where the tick marks are on the slider
   const marks = [
     { value: 0, label: "0" },
@@ -23,6 +24,17 @@ const Popup = (props) => {
     { value: 7.5 },
     { value: 10, label: "10" },
   ];
+
+  //database put call
+  function bookTrip() {
+    //db call
+    //redirect
+    console.log("-----Booked!------");
+    console.log("price", props.price);
+    console.log("drip", props.value);
+    console.log("trip ID");
+    console.log("trip name", tripName);
+  }
 
   //slider style settings
   const IOSSlider = withStyles({
@@ -68,11 +80,13 @@ const Popup = (props) => {
         <TextField
           autoFocus
           margin="dense"
-          id="name"
+          id="trip-name"
           label="Trip name"
+          value={tripName}
+          onChange={(event) => {setTripName(event.target.value)}}
           fullWidth
         />
-        <h3>Iceland $6522</h3>
+        <h3>Iceland ${props.price}</h3>
         <IOSSlider
           defaultValue={props.value}
           valueLabelDisplay="auto"
@@ -85,19 +99,19 @@ const Popup = (props) => {
         <div class="math">
           <div class="top-line">
             <h5>${props.value} per day</h5>
-            <h5>{calculateDaysRemaining(props.value, 6522)} days</h5>
+            <h5>{calculateDaysRemaining(props.value, props.price)} days</h5>
           </div>
           <h5>
             {expectedDate(
               new Date(),
-              calculateDaysRemaining(props.value, 6522)
+              calculateDaysRemaining(props.value, props.price)
             )}
           </h5>
         </div>
       </DialogContent>
       <div class="dialog-actions">
         {/* <Button onClick={handleClose}>Cancel</Button> */}
-        <Button id="start" onClick={props.handleClose}>
+        <Button id="start" onClick={bookTrip}>
           Start Saving!
         </Button>
       </div>
