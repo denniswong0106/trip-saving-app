@@ -17,7 +17,8 @@ const Home = () => {
   return (
     <div className="App">
       <h2>Start saving for your next trip!</h2>
-      <hr className="solid" />
+      {/* <hr className="solid" /> */}
+      <br/>
       <Searchbar
         onSearch={(search) => {
           setSearch(search);
@@ -26,11 +27,9 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <TripItemList trips={data} />
-      <br />
-      <br />
-      <br />
-      <Canvas />
+      <div class="trips-container">
+        <TripItemList trips={data} />
+      </div>
       <br />
       <br />
       <br />
