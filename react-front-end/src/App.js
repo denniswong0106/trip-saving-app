@@ -11,37 +11,41 @@ import NavBar from "./components/NavBar";
 import "./App.scss";
 
 export default function Application(props) {
-
   // separated the data fetching logic to ./hooks/dataAccessor
-  const { 
-    state, 
-    getUserTrips, 
-    getUserById, 
+  const {
+    state,
+    getUserTrips,
+    getUserById,
     fetchData,
     getUsersIdByGroupId,
     getTripByGroupAndUserId,
-    getUsersIdNotInGroup
+    getUsersIdNotInGroup,
   } = dataAccessor();
 
+<<<<<<< HEAD
   const { someFunc } = apiAccessor();
   
+=======
+>>>>>>> 5598c3068b065be290b909317e3e26e576fbfea8
   return (
-    <DataContext.Provider value={{
-      state, 
-      getUserTrips, 
-      getUserById, 
-      fetchData,
-      getUsersIdByGroupId,
-      getTripByGroupAndUserId,
-      getUsersIdNotInGroup
-      }}>
+    <DataContext.Provider
+      value={{
+        state,
+        getUserTrips,
+        getUserById,
+        fetchData,
+        getUsersIdByGroupId,
+        getTripByGroupAndUserId,
+        getUsersIdNotInGroup,
+      }}
+    >
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/trip"  component={Trip}  />
-          <Route path="/user"  component={User}  />
+          <Route path="/trip" component={Trip} />
+          <Route path="/user" component={User} />
           <Route path="/group" component={Group} />
-          <Route path="/"      component={Home}  />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     </DataContext.Provider>

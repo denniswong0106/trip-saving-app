@@ -1,18 +1,22 @@
 import React, { useContext, useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import DataContext from "../helperfunctions/DataContext";
-import apiAccessor from "../hooks/apiAccessor";
-import useDebounce from "../hooks/useDebounce";
 import "./Home.scss";
+<<<<<<< HEAD
 import Canvas from './helper_components/Canvas';
 import axios from "axios";
 import SearchItem from "./SearchItem";
+=======
+import Canvas from "./helper_components/Canvas";
+import Searchbar from "./Searchbar";
+import apiAccessor from "../hooks/apiAccessor";
+import TripItemList from "./Home_tripItemList";
+>>>>>>> 5598c3068b065be290b909317e3e26e576fbfea8
 
 //Moved from App.js then props passed in
 const Home = () => {
-
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
+<<<<<<< HEAD
   const { state, fetchData } = useContext(DataContext);
   const { search, setSearch } = apiAccessor();
   const [ description, setDescription ] = useState("");
@@ -86,21 +90,30 @@ const Home = () => {
   }, [tripsArray])
 
   const currentState = state;
+=======
+  // const { state, fetchData } = useContext(DataContext);
 
+  const { search, setSearch, data, setData } = apiAccessor();
+>>>>>>> 5598c3068b065be290b909317e3e26e576fbfea8
+
+  console.log("render data", data);
   return (
     <div className="App">
       <h2>Start saving for your next trip!</h2>
       <hr className="solid" />
-      <form noValidate autoComplete="off">
-        <TextField id="standard-basic" label="search" value={search} onChange={(event) => {setSearch(event.target.value)}}/>
-        &nbsp;&nbsp;&nbsp;
-        <Button variant="contained" onSubmit={()=>{}} color="primary">
-          Search
-        </Button>
-      </form>
+      <Searchbar
+        onSearch={(search) => {
+          setSearch(search);
+        }}
+      />
       <br />
       <br />
       <br />
+      <TripItemList trips={data} />
+      <br />
+      <br />
+      <br />
+<<<<<<< HEAD
       <div className="trip-container">
         {tripSearchItem[0]}
         {/* <div className="text-and-heading">
@@ -111,15 +124,12 @@ const Home = () => {
         </div>
         <img src={image} alt="pic" /> */}
       </div>
+=======
+      <Canvas />
+>>>>>>> 5598c3068b065be290b909317e3e26e576fbfea8
       <br />
       <br />
       <br />
-      <Canvas/>
-      <br/><br/><br/>
-      <h1>{currentState.message}</h1>
-      <Button variant="contained" color="primary" onClick={fetchData}>
-        Fetch Data
-      </Button>
     </div>
   );
 };
