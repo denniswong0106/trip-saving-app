@@ -6,21 +6,21 @@ import apiAccessor from "../hooks/apiAccessor";
 import useDebounce from "../hooks/useDebounce";
 import "./Home.scss";
 import Canvas from "./helper_components/Canvas";
-import axios from "axios";
+import Searchbar from "./Searchbar";
 
 //Moved from App.js then props passed in
 const Home = () => {
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { state, fetchData } = useContext(DataContext);
 
-  const { setSearch } = apiAccessor();
-  const [value, setValue] = useState("");
+  // const { setSearch } = apiAccessor();
+  // const [value, setValue] = useState("");
 
-  const term = useDebounce(value, 700);
+  // const term = useDebounce(value, 700);
 
-  useEffect(() => {
-    setSearch(term);
-  }, [term]);
+  // useEffect(() => {
+  //   setSearch(term);
+  // }, [term]);
 
   const currentState = state;
 
@@ -28,7 +28,8 @@ const Home = () => {
     <div className="App">
       <h2>Start saving for your next trip!</h2>
       <hr className="solid" />
-      <form noValidate autoComplete="off">
+      <Searchbar />
+      {/* <form noValidate autoComplete="off">
         <TextField
           id="standard-basic"
           label="search"
@@ -41,7 +42,7 @@ const Home = () => {
         <Button variant="contained" onSubmit={() => {}} color="primary">
           Search
         </Button>
-      </form>
+      </form> */}
       <br />
       <br />
       <br />
