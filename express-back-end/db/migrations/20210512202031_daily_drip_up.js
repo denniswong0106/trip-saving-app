@@ -1,9 +1,9 @@
 //$$$ the money update: creates tables as numeric $$$
 exports.up = function(knex) {
     return knex.schema.alterTable("trip_savings", (table) => {
-        table.numeric("daily_drip").notNullable();
-        table.numeric("savings").notNullable();
-        table.numeric("cost").notNullable();
+        table.decimal("daily_drip").notNullable();
+        table.decimal("savings").notNullable();
+        table.decimal("cost").notNullable();
     });
 };
 
