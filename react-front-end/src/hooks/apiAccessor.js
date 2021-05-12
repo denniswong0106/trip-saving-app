@@ -19,19 +19,8 @@ export default function apiAccessor() {
   // ---------------------------------------
 
   useEffect(() => {
-<<<<<<< HEAD
-    axios.get("https://rest.gadventures.com/departures?availability.status=AVAILABLE", {
-      headers: {
-        'X-Application-Key': process.env.REACT_APP_SECRET_KEY
-      },
-    }).then((result)=>{
-      // console.log("res.data2: ", result.data.results);
-    }) 
-  }, []);
-=======
     const firstUrl = `https://rest.gadventures.com/tour_dossiers/?name=${search}`;
     const secondUrl = `https://rest.gadventures.com/tour_dossiers/`;
->>>>>>> 5598c3068b065be290b909317e3e26e576fbfea8
 
     // this callback takes in api call for ids, return an array of only ids
     const findSearchIds = (result) => {
@@ -74,9 +63,9 @@ export default function apiAccessor() {
   }, [search]);
 
   return {
-    search,
-    setSearch,
     data,
+    search,
     setData,
+    setSearch,
   };
 }
