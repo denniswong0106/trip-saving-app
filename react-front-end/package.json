@@ -30,6 +30,8 @@
   ],
   "proxy": "http://localhost:8080",
   "react-dotenv": {
-    "whitelist": ["SECRET_KEY"]
+    "whitelist": [
+      "SECRET_KEY"
+    ]
   }
 }
