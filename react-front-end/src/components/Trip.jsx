@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Popup from "./Popup.jsx";
 import DataContext from "../helperfunctions/DataContext";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 
 const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
@@ -35,7 +35,7 @@ const Trip = () => {
       description: trip.description,
       tripId: params.id,
       price: trip.advertised_departures[1]
-        ? `$${trip.advertised_departures[1].amount}`
+        ? parseInt(`${trip.advertised_departures[1].amount}`)
         : "Price currently unavailable",
       pics: trip.images[2].image_href,
     };
@@ -51,6 +51,7 @@ const Trip = () => {
   };
   const handleClose = () => {
     setOpen(false);
+    history.push(`/user/1`);
   };
 
   //updates state from slider
@@ -69,7 +70,7 @@ const Trip = () => {
           </div>
           <Card className="price-card">
             <h5>5 days</h5>
-            <h2>{price}</h2>
+            <h2>${price}</h2>
             <Button size="medium" onClick={handleClickOpen}>
               Book now
             </Button>
