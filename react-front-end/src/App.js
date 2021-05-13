@@ -6,33 +6,51 @@ import Group from "./components/Group";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DataContext from "./helperfunctions/DataContext";
 import dataAccessor from "./hooks/dataAccessor";
+import apiAccessor from "./hooks/apiAccessor";
 import NavBar from "./components/NavBar";
 import "./App.scss";
 
 export default function Application(props) {
-
   // separated the data fetching logic to ./hooks/dataAccessor
-  const { 
-    state, 
-    getUserTrips, 
-    getUserById, 
-    fetchData 
+  const {
+    state,
+    setState,
+    handleAdd,
+    fetchData,
+    getUserById,
+    getUserTrips,
+    getUsersIdByGroupId,
+    getTripByGroupAndUserId,
+    getUsersIdNotInGroup,
   } = dataAccessor();
-  
+
+  const { data, search, setData, setSearch } = apiAccessor();
+
   return (
-    <DataContext.Provider value={{
-      state, 
-      getUserTrips, 
-      getUserById, 
-      fetchData 
-      }}>
+    <DataContext.Provider
+      value={{
+        data,
+        state,
+        search,
+        setData,
+        setState,
+        setSearch,
+        fetchData,
+        handleAdd,
+        getUserById,
+        getUserTrips,
+        getUsersIdByGroupId,
+        getTripByGroupAndUserId,
+        getUsersIdNotInGroup,
+      }}
+    >
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/trip"  component={Trip}  />
-          <Route path="/user"  component={User}  />
+          <Route path="/trip/:id" component={Trip} />
+          <Route path="/user" component={User} />
           <Route path="/group" component={Group} />
-          <Route path="/"      component={Home}  />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     </DataContext.Provider>

@@ -28,28 +28,53 @@ export default function dataAccessor() {
     });
   }, []);
 
+  // function that generates array of userIds for a given groupId
+  const getUsersIdByGroupId = (groupId) => {
+    // first filter out trips with same group id
+    const tripsInGroup = state.trips.filter(
+      (trip) => trip.group_id === groupId
+    );
+    // next map each trip to only give user id
+    const userIdInGroup = tripsInGroup.map((trip) => trip.user_id);
+
+    // filters state.users, if user.id is not part of the user id array,
+    // filter out the user.
+    const usersInGroup = state.users.filter((user) => {
+      return userIdInGroup.includes(user.id);
+    });
+    return usersInGroup;
+  };
+
+  // gets all the users that are not in the group array
+  const getUsersIdNotInGroup = (groupId) => {
+    
+    const usersInGroup = getUsersIdByGroupId(groupId);
+    const mappedIds = usersInGroup.map((user) => user.id)
+    const allUsers = state.users;
+    const usersNotIncluded = allUsers.filter((users) => !mappedIds.includes(users.id));
+    
+    return usersNotIncluded;
+  };
+
+
+  const getTripByGroupAndUserId = (groupId, userId) => {
+    const tripsInWithGroupId = state.trips.filter(
+      (trip) => trip.group_id === groupId
+    );
+    
+    const tripWithUserId = tripsInWithGroupId.filter(
+      (trip) => trip.user_id === userId
+    );
+
+    return tripWithUserId[0];
+  };
+
   // gives you the user trips for a given user - on each trip, append an array
   // of user objects of users with the same group_id.
   const getUserTrips = (userId) => {
     // filter out trips of given user
     const userTrips = state.trips.filter((trip) => trip.user_id === userId);
 
-    // function that generates array of userIds for a given groupId
-    const getUsersIdByGroupId = (groupId) => {
-      // first filter out trips with same group id
-      const tripsInGroup = state.trips.filter(
-        (trip) => trip.group_id === groupId
-      );
-      // next map each trip to only give user id
-      const userIdInGroup = tripsInGroup.map((trip) => trip.user_id);
-
-      // filters state.users, if user.id is not part of the user id array,
-      // filter out the user.
-      const usersInGroup = state.users.filter((user) => {
-        return userIdInGroup.includes(user.id);
-      });
-      return usersInGroup;
-    };
     return userTrips.map((trip) => {
       return {
         ...trip,
@@ -66,17 +91,64 @@ export default function dataAccessor() {
 
   const fetchData = () => {
     axios
-      .get("/api/user") // You can simply make your requests to "/api/whatever you want"
+      .get("/api/users") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
         console.log(response.data); // The entire response from the Rails API
       });
   };
 
+  // adds users to the group list
+  const handleAdd = (id, tripName, price, locationName, description) => {
+    console.log("price: ", price);
+    console.log("tripName: ", tripName);
+    console.log("id: ", id);
+    console.log("locationName: ", locationName);
+    console.log("description: ", description);
+
+    const newTrip = { 
+      id:999,
+      savings: 0,
+      daily_drip: 0,
+      trip_name: tripName,
+      cost: price,
+      location: locationName,
+      description: description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: id,
+      group_id: 1
+    };
+
+    axios.put(`/api/trips`, {
+      savings: 0,
+      daily_drip: 0,
+      trip_name: tripName,
+      cost: price,
+      location: locationName,
+      description: description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: id,
+      group_id: 1,
+    }).then((result)=>{
+      console.log("from the front in Group.jsx, res.data: ", result);
+    });
+    
+    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
+  }
+
   return {
     state,
+    setState,
     getUserTrips,
     getUserById,
-    fetchData
+    fetchData,
+    getUsersIdByGroupId,
+    getTripByGroupAndUserId,
+    getUsersIdNotInGroup,
+    handleAdd
   };
 }

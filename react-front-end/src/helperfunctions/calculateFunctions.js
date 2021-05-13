@@ -23,4 +23,21 @@ const expectedDate = (currentDate, days) => {
   });
 };
 
-export { calculatePercentage, calculateDaysRemaining, expectedDate };
+// grabs today's date
+const today = new Date();
+
+// uses booking the booking days to calculate remaining days untill the trip
+const daysRemaining = (bookingDate) => {
+  const tripDay = new Date(bookingDate);
+  const timeDiff = Math.abs(today - tripDay);
+  
+  return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+};
+
+// grabs today's date and converts it to a Month, Day, Year format
+const currentDay = () => {
+  return today.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
+};
+
+
+export { calculatePercentage, calculateDaysRemaining, expectedDate, daysRemaining, currentDay };

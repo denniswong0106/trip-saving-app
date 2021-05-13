@@ -1,7 +1,9 @@
+require("dotenv").config();
 const Express = require("express");
 const App = Express();
 const BodyParser = require("body-parser");
 const PORT = 8080;
+const axios = require('axios');
 
 
 // Express Configuration
@@ -20,6 +22,7 @@ App.use("/api/users", usersRouter);
 App.use("/api/trips", tripsRouter);
 App.use("/api/groups", groupsRouter);
 App.use("/api/debug", clearDataRouter);
+
 
 // Sample GET route
 // App.get("/api/user", (req, res) => {
