@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import DataContext from "../helperfunctions/DataContext";
+
 import {
   calculateDaysRemaining,
   expectedDate,
@@ -17,6 +19,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const Popup = (props) => {
   const [tripName, setTripName] = React.useState("");
+  const { setState } = useContext(DataContext);
   //where the tick marks are on the slider
   const marks = [
     { value: 0, label: "0" },
@@ -45,25 +48,28 @@ const Popup = (props) => {
     console.log("trip ID", props.tripId);
 
     //axios call with term
-    axios.put(`/api/trips`, {
-      savings: 0,
-      daily_drip: props.value,
-      trip_name: tripName,
-      cost: props.price,
-      location: props.locationName,
-      description: props.description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: 1,
-      group_id: null,
-    }).then((result)=>{
-      console.log("from the front, res.data: ", result.data.results);
-    }) 
+    axios
+      .put(`/api/trips`, {
+        savings: 0,
+        daily_drip: props.value,
+        trip_name: tripName,
+        cost: props.price,
+        location: props.locationName,
+        description: props.description,
+        daily_prize: true,
+        booking_date: "2021-11-20",
+        stretch_goal: 0,
+        user_id: 1,
+        group_id: null,
+      })
+      .then((result) => {
+        console.log("from the front, res.data: ", result.data);
 
-    //redirect
-    setTripName("");
-    props.handleClose();
+        const newTrip = result.data[0];
+        setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
+        //redirect
+        props.handleClose();
+      });
   }
 
   //slider style settings
@@ -113,7 +119,9 @@ const Popup = (props) => {
           id="trip-name"
           label="Trip name"
           value={tripName}
-          onChange={(event) => {setTripName(event.target.value)}}
+          onChange={(event) => {
+            setTripName(event.target.value);
+          }}
           fullWidth
         />
         <h3>Iceland ${props.price}</h3>

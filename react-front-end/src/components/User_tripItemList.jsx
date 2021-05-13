@@ -23,7 +23,6 @@ const TripItemList = (props) => {
         user_id={trip.user_id}
         key={trip.id}
         bookingDate={trip.booking_date}
-        onclick={onClick}
       />
     );
   });
