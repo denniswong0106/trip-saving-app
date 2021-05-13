@@ -24,7 +24,7 @@ export default function Application(props) {
     getUsersIdNotInGroup,
   } = dataAccessor();
 
-  const { data, search, setData, setSearch } = apiAccessor();
+  const { data, search, setData, setSearch, loadRemainingData } = apiAccessor();
 
   return (
     <DataContext.Provider
@@ -33,6 +33,7 @@ export default function Application(props) {
         state,
         search,
         setData,
+        loadRemainingData,
         setState,
         setSearch,
         fetchData,
