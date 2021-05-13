@@ -98,13 +98,57 @@ export default function dataAccessor() {
       });
   };
 
+  // adds users to the group list
+  const handleAdd = (id, tripName, price, locationName, description) => {
+    console.log("price: ", price);
+    console.log("tripName: ", tripName);
+    console.log("id: ", id);
+    console.log("locationName: ", locationName);
+    console.log("description: ", description);
+
+    const newTrip = { 
+      id:999,
+      savings: 0,
+      daily_drip: 0,
+      trip_name: tripName,
+      cost: price,
+      location: locationName,
+      description: description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: id,
+      group_id: 1
+    };
+
+    axios.put(`/api/trips`, {
+      savings: 0,
+      daily_drip: 0,
+      trip_name: tripName,
+      cost: price,
+      location: locationName,
+      description: description,
+      daily_prize: true,
+      booking_date: "2021-11-20",
+      stretch_goal: 0,
+      user_id: id,
+      group_id: 1,
+    }).then((result)=>{
+      console.log("from the front in Group.jsx, res.data: ", result);
+    });
+    
+    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
+  }
+
   return {
     state,
+    setState,
     getUserTrips,
     getUserById,
     fetchData,
     getUsersIdByGroupId,
     getTripByGroupAndUserId,
-    getUsersIdNotInGroup
+    getUsersIdNotInGroup,
+    handleAdd
   };
 }

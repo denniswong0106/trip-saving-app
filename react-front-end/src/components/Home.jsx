@@ -8,9 +8,9 @@ import TripItemList from "./Home_tripItemList";
 
 //Moved from App.js then props passed in
 const Home = () => {
-  // uses useContext to grab the appropriate functions to use it instead of prop drilling
   // const { state, fetchData } = useContext(DataContext);
-
+  
+  // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { search, setSearch, data, setData } = useContext(DataContext);
 
   console.log("render data", data);
