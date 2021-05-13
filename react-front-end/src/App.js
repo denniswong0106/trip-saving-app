@@ -24,12 +24,7 @@ export default function Application(props) {
     getUsersIdNotInGroup,
   } = dataAccessor();
 
-  const { 
-    data,
-    search,
-    setData,
-    setSearch 
-  } = apiAccessor();
+  const { data, search, setData, setSearch } = apiAccessor();
 
   return (
     <DataContext.Provider
@@ -52,7 +47,7 @@ export default function Application(props) {
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/trip" component={Trip} />
+          <Route path="/trip/:id" component={Trip} />
           <Route path="/user" component={User} />
           <Route path="/group" component={Group} />
           <Route path="/" component={Home} />
