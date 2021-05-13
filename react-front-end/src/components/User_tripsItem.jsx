@@ -27,22 +27,23 @@ const TripItem = (props) => {
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
       <Button
+        className="active"
         variant="contained"
         color="primary"
         onClick={() => props.onclick(props.id)}
       >
         Add to savings
       </Button>
-      ) : (
-      <Button variant="contained" color="grey">
-        Already claimed
-      </Button>
+      ) : ( <div></div>
+      // <Button variant="contained" className="disabled" color="grey">
+      //   Already claimed
+      // </Button>
     );
   };
 
   return (
     <>
-    <article class="single-trip">
+    <article className="single-trip">
       <h3>{props.trip_name}!</h3>
       {/* <h3>{bookingDate}</h3> */}
       <div className="header-container">
@@ -51,7 +52,7 @@ const TripItem = (props) => {
           <FriendsIcon group={props.group} />
           {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
-        <div className="prize-button">{dailyPrizeRecieved(props.daily_prize)}</div>
+        <div>{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>
       <LinearWithValueLabel value={value} />
       <div className="footer-container">
