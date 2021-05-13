@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import DataContext from "../helperfunctions/DataContext";
+
 import {
   calculateDaysRemaining,
   expectedDate,
@@ -17,6 +19,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const Popup = (props) => {
   const [tripName, setTripName] = React.useState("");
+  const { setState } = useContext(DataContext);
   //where the tick marks are on the slider
   const marks = [
     { value: 0, label: "0" },
@@ -60,12 +63,13 @@ const Popup = (props) => {
         group_id: null,
       })
       .then((result) => {
-        console.log("from the front, res.data: ", result.data.results);
-      });
+        console.log("from the front, res.data: ", result.data);
 
-    //redirect
-    setTripName("");
-    props.handleClose();
+        const newTrip = result.data[0];
+        setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
+        //redirect
+        props.handleClose();
+      });
   }
 
   //slider style settings
