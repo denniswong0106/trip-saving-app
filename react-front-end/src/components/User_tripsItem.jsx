@@ -41,6 +41,7 @@ const TripItem = (props) => {
   };
 
   return (
+    <>
     <article class="single-trip">
       <h3>{props.trip_name}!</h3>
       {/* <h3>{bookingDate}</h3> */}
@@ -59,8 +60,9 @@ const TripItem = (props) => {
           {finishDate}
       </div>
       <div className="trip-description">{props.description}</div>
-      <br/><br/>
     </article>
+    <br/><br/>
+    </>
   );
 };
 
