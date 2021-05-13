@@ -33,7 +33,7 @@ const TripItem = (props) => {
       >
         Add more Savings!
       </Button>
-    ) : (
+      ) : (
       <Button variant="contained" color="grey">
         Already claimed
       </Button>
@@ -42,27 +42,26 @@ const TripItem = (props) => {
 
   return (
     <article>
-      <h2>{props.trip_name}!</h2>
-      <h3>{bookingDate}</h3>
+      <h3>{props.trip_name}!</h3>
+      {/* <h3>{bookingDate}</h3> */}
       <div className="header-container">
         <div className="header-location">
           <h4>{props.location}</h4>
           <FriendsIcon group={props.group} />
-          <h5>Daily Drip Amount: ${props.daily_drip}</h5>
+          {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
-        <div>{dailyPrizeRecieved(props.daily_prize)}</div>
+        {/* <div>{dailyPrizeRecieved(props.daily_prize)}</div> */}
       </div>
       <div>
         <LinearWithValueLabel value={value} />
       </div>
       <div className="footer-container">
-        <div>
-          ${props.savings} of ${props.cost} goal!
-        </div>
-        <div>{daysRemaining} days until you reach your goal!</div>
-        <div>{finishDate}</div>
+          <b>${props.savings} of ${props.cost} goal!</b>
+          {/* <div>{daysRemaining} days until you reach your goal!</div> */}
+          {finishDate}
       </div>
       <div className="trip-description">{props.description}</div>
+      <br/><br/>
     </article>
   );
 };

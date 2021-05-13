@@ -1,35 +1,24 @@
 @import './helper_components/ColourPalette.scss';
 
-// .trip-container {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   .text-and-heading {
-//     text-align: left;
-//     max-width: 450px;
-//     max-height: 450px;
-//   }
-//   img {
-//     max-width: 450px;
-//     max-height: 450px;
-//   }
-// }
 .user-page {
-  background-color: rgb(243, 194, 243);
+  h2, h4 {
+    margin: 0;
+  }
   .user-display {
     column-count: 2;
     display: flex;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: white;
   }
 
   .user-avatar-info {
     flex-direction: column;
-    width: 50%;
+    width: 30%;
     display: flex;
     align-items: center;
-    max-width: 375px;
+    margin-right: 5%;
+    // max-width: 375px;
 
     .avatar {
       width: 10em;
@@ -41,7 +30,7 @@
     }
 
     .trips-container {
-      width: 50%;
+      width: 60%;
     }
   }
 }
