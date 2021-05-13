@@ -1,22 +1,30 @@
-import React, { useContext, useState } from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
+import React, { useContext, useState } from "react";
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Fade from "@material-ui/core/Fade";
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
-import { calculatePercentage, daysRemaining, currentDay } from "../helperfunctions/calculateFunctions";
+import {
+  calculatePercentage,
+  daysRemaining,
+  currentDay,
+} from "../helperfunctions/calculateFunctions";
 
 import "./Group.scss";
 
 const Group = () => {
-
   // import DataContext functions
-  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, handleAdd } = useContext(DataContext);
+  const {
+    getUsersIdByGroupId,
+    getTripByGroupAndUserId,
+    getUsersIdNotInGroup,
+    handleAdd,
+  } = useContext(DataContext);
 
   // assigns data to variables
-  const trip = {...getTripByGroupAndUserId(1, 1)};
+  const trip = { ...getTripByGroupAndUserId(1, 1) };
   const friendsList = getUsersIdByGroupId(1);
   const allUsers = getUsersIdNotInGroup(1);
 
@@ -33,15 +41,14 @@ const Group = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   // maps through an array of users that are already in the group
-  const groupFriendList = friendsList.map(friend => {
-    
+  const groupFriendList = friendsList.map((friend) => {
     // grabs the specific trip the group is on
     const tripForEach = getTripByGroupAndUserId(1, friend.id);
-    // calculates the progress 
+    // calculates the progress
     const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
-    
+
     return (
       <GroupItem
         key={friend.id}
@@ -51,14 +58,13 @@ const Group = () => {
       />
     );
   });
-  
+
   // maps through an array of "friends" not yet added to the group
-  const addGroupFriendsList = allUsers.map(friend => {
-    
+  const addGroupFriendsList = allUsers.map((friend) => {
     const tripForEach = getTripByGroupAndUserId(1, 1);
 
     return (
-      <MenuItem 
+      <MenuItem
         key={friend.id}
         onClick={() => {
           handleAdd(
@@ -66,15 +72,14 @@ const Group = () => {
             tripForEach.trip_name,
             tripForEach.cost,
             tripForEach.location,
-            tripForEach.description,
-          )
-          setAnchorEl(null)
+            tripForEach.description
+          );
+          setAnchorEl(null);
         }}
       >
         {friend.name}
       </MenuItem>
-    )
-    
+    );
   });
 
   return (

@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("trip_savings").insert([
         {
-          // id: 1,
+          id: 1,
           savings: 100,
           daily_drip: 1,
           trip_name: "Ice Land Adventures",
@@ -20,7 +20,7 @@ exports.seed = function (knex) {
           group_id: 1,
         },
         {
-          // id: 2,
+          id: 2,
           savings: 1000,
           daily_drip: 10,
           trip_name: "Ice Land Adventures",
@@ -34,7 +34,7 @@ exports.seed = function (knex) {
           group_id: 1,
         },
         {
-          // id: 3,
+          id: 3,
           savings: 500,
           daily_drip: 4,
           trip_name: "Ice Land Adventures",
@@ -49,7 +49,7 @@ exports.seed = function (knex) {
           group_id: 1,
         },
         {
-          // id: 4,
+          id: 4,
           savings: 100,
           daily_drip: 2,
           trip_name: "Fire Land Adventures",
@@ -64,7 +64,7 @@ exports.seed = function (knex) {
           group_id: 2,
         },
         {
-          // id: 5,
+          id: 5,
           savings: 200,
           daily_drip: 1,
           trip_name: "Earth Land Adventures",
