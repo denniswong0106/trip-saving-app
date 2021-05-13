@@ -4,6 +4,11 @@
   h2, h4 {
     margin: 0;
   }
+
+  .single-trip {
+    background-color: $neutral-offWhite;
+  }
+
   .user-display {
     column-count: 2;
     display: flex;
@@ -54,6 +59,11 @@
 
 .trips-info {
   width: fill;
+  .bar {
+    height: 20px;
+    border-radius: 5px;
+    margin: 10px;
+  }
   .footer-container {
     display: flex;
     justify-content: space-between;

@@ -31,7 +31,7 @@ const TripItem = (props) => {
         color="primary"
         onClick={() => props.onclick(props.id)}
       >
-        Add more Savings!
+        Add to savings
       </Button>
       ) : (
       <Button variant="contained" color="grey">
@@ -41,7 +41,7 @@ const TripItem = (props) => {
   };
 
   return (
-    <article>
+    <article class="single-trip">
       <h3>{props.trip_name}!</h3>
       {/* <h3>{bookingDate}</h3> */}
       <div className="header-container">
@@ -50,11 +50,9 @@ const TripItem = (props) => {
           <FriendsIcon group={props.group} />
           {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
-        {/* <div>{dailyPrizeRecieved(props.daily_prize)}</div> */}
+        <div>{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>
-      <div>
-        <LinearWithValueLabel value={value} />
-      </div>
+      <LinearWithValueLabel value={value} />
       <div className="footer-container">
           <b>${props.savings} of ${props.cost} goal!</b>
           {/* <div>{daysRemaining} days until you reach your goal!</div> */}
