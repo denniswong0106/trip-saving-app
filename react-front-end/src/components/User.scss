@@ -1,35 +1,28 @@
 @import './helper_components/ColourPalette.scss';
 
-// .trip-container {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   .text-and-heading {
-//     text-align: left;
-//     max-width: 450px;
-//     max-height: 450px;
-//   }
-//   img {
-//     max-width: 450px;
-//     max-height: 450px;
-//   }
-// }
+body {
+  background-color: $neutral-offWhite;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+}
+
 .user-page {
-  background-color: rgb(243, 194, 243);
-  .user-display {
-    column-count: 2;
-    display: flex;
-    margin-left: 10%;
-    margin-right: 10%;
-    background-color: white;
+  column-count: 2;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: $neutral-offWhite;
+  // background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  h2, h4 {
+    margin: 0;
   }
 
   .user-avatar-info {
     flex-direction: column;
-    width: 50%;
+    width: 30%;
     display: flex;
     align-items: center;
-    max-width: 375px;
+    margin-right: 5%;
 
     .avatar {
       width: 10em;
@@ -39,42 +32,73 @@
     .username {
       align-content: center;
     }
+  }
 
-    .trips-container {
-      width: 50%;
+  .trips-info {
+    width: fill;
+    .single-trip {
+      background-color: $secondary-sand;
+      border-radius: 5px;
+      border: 0 0 5px 5px solid;
+      box-shadow: 5px 5px 5px lightgrey;
+      padding: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+      background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+
+      Button {
+        margin-bottom: 10px;
+        background-color: $primaryDark-teal;
+      }
+
+      .whole-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .bar {
+          height: 20px;
+          border-radius: 7px;
+          margin: 10px;
+          margin-left: 0;
+          background-color: $secondary-teal;
+          color:black;
+          //change color
+        }
+
+        .barText {
+          font-weight: bolder;
+          color: black;
+        }
+      } 
+    
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    
+      .trip-description {
+        margin-top: 1em;
+      }
     }
   }
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  .header-location {
-    display: flex;
-    h5 {
-      margin-left: 1em;
-    }
-    .friend-avatar {
-      width: 2em;
-      height: 2em;
-      margin-left: 1em;
-      border: 2px solid rgb(85, 21, 114);
-    }
-  }
-}
-
-.trips-info {
-  width: fill;
-  .footer-container {
+  
+  .header-container {
     display: flex;
     justify-content: space-between;
-  }
 
-  .trips-container {
-    margin-right: 6em;
-  }
+    .header-location {
+      display: flex;
 
-  .trip-description {
-    margin-top: 1em;
+      h5 {
+        margin-left: 1em;
+      }
+
+      .friend-avatar {
+        width: 2em;
+        height: 2em;
+        margin-left: 1em;
+      }
+    }
   }
 }
