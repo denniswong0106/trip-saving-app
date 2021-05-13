@@ -11,7 +11,7 @@ const Searchbar = (props) => {
 
   const [value, setValue] = useState("");
 
-  const term = useDebounce(value, 700);
+  const term = useDebounce(value, 400);
 
   useEffect(() => {
     props.onSearch(term);
