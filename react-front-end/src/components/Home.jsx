@@ -9,7 +9,7 @@ const Home = () => {
   // const { state, fetchData } = useContext(DataContext);
   
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
-  const { search, loading, setSearch, data, setData } = useContext(DataContext);
+  const { search, loading, empty, setSearch, data, setData } = useContext(DataContext);
 
   console.log("render data", data);
   return (
@@ -26,8 +26,9 @@ const Home = () => {
       <br />
       <br />
       <div className="trips-container">
-        
-        { loading? <img alt="loading" src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif" /> : <TripItemList trips={data} />}
+        { empty ? <img alt="empty" src="https://i.pinimg.com/originals/d1/2a/65/d12a65ae002f97284e19a819a0a4f0b0.gif" /> : <TripItemList trips={data} />}
+        { empty ? <h2>No Results Found.</h2> : <TripItemList trips={data} />}
+        { loading ? <img alt="loading" src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif" /> : <TripItemList trips={data} />}
       </div>
       <br />
       <br />

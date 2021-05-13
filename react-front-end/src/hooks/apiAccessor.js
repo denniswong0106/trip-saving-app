@@ -10,6 +10,7 @@ export default function apiAccessor() {
 
   // This state will keep track if the data's loading state
   const [ loading, setLoading ] = useState(true);
+  const [ empty, setEmpty ] = useState(false);
 
   // --------------------------------------
   // this header is always the same;
@@ -31,6 +32,7 @@ export default function apiAccessor() {
 
     // sets the loading boolean to true when called in the first call
     setLoading(true);
+    setEmpty(false);
 
     searchResults.reduce((unique, item) => {
       if (unique.includes(item.name)) {
@@ -73,6 +75,8 @@ export default function apiAccessor() {
           return trip.data;
         });
 
+        // checks if the trip array is empty
+        tripArr.length === 0 ? setEmpty(true) : setEmpty(false); 
         // sets the loading boolean to false when done
         setLoading(false);
 
@@ -86,6 +90,7 @@ export default function apiAccessor() {
 
   return {
     data,
+    empty,
     search,
     loading,
     setData,
