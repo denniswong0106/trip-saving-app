@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
@@ -7,9 +7,21 @@ import {
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
+import UserPopup from "./User_popup.jsx";
 
 const TripItem = (props) => {
-  const value = calculatePercentage(props.savings, props.cost);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState("");
+
+  const handleClickOpen = () => {
+    setMode("SAVING");
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const progress = calculatePercentage(props.savings, props.cost);
   const daysRemaining = calculateDaysRemaining(
     props.daily_drip,
     props.cost,
@@ -23,15 +35,10 @@ const TripItem = (props) => {
     day: "numeric",
   });
 
-  console.log(bookingDate);
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => props.onclick(props.id)}
-      >
-        Add more Savings!
+      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+        Double my Drip!
       </Button>
     ) : (
       <Button variant="contained" color="grey">
@@ -53,7 +60,7 @@ const TripItem = (props) => {
         <div>{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>
       <div>
-        <LinearWithValueLabel value={value} />
+        <LinearWithValueLabel value={progress} />
       </div>
       <div className="footer-container">
         <div>
@@ -63,6 +70,12 @@ const TripItem = (props) => {
         <div>{finishDate}</div>
       </div>
       <div className="trip-description">{props.description}</div>
+      <UserPopup
+        mode={mode}
+        setMode={setMode}
+        open={open}
+        handleClose={handleClose}
+      />
     </article>
   );
 };
