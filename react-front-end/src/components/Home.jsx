@@ -27,7 +27,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      <div class="trips-container">
+      <div className="trips-container">
         <TripItemList trips={data} />
       </div>
       <br />

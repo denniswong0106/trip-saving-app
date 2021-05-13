@@ -11,7 +11,6 @@ import {
   daysRemaining,
   currentDay,
 } from "../helperfunctions/calculateFunctions";
-import axios from "axios";
 
 import "./Group.scss";
 
@@ -21,7 +20,6 @@ const Group = () => {
     getUsersIdByGroupId,
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
-    setState,
     handleAdd,
   } = useContext(DataContext);
 
@@ -94,7 +92,7 @@ const Group = () => {
       <div>
         <h1>Progress:</h1>
       </div>
-      <ul class="progress-bars">{groupFriendList}</ul>
+      <ul className="progress-bars">{groupFriendList}</ul>
       <div id="add">
         <Fab
           size="large"

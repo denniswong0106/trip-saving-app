@@ -20,8 +20,8 @@ export default function Application(props) {
     getUserById,
     getUserTrips,
     getUsersIdByGroupId,
-    getTripByGroupAndUserId,
     getUsersIdNotInGroup,
+    getTripByGroupAndUserId,
   } = dataAccessor();
 
   const { 
@@ -45,8 +45,8 @@ export default function Application(props) {
         getUserById,
         getUserTrips,
         getUsersIdByGroupId,
-        getTripByGroupAndUserId,
         getUsersIdNotInGroup,
+        getTripByGroupAndUserId,
       }}
     >
       <Router>
