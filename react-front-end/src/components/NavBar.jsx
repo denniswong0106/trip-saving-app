@@ -1,23 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.scss";
-import Button from '@material-ui/core/Button';
-
+import Button from "@material-ui/core/Button";
 
 const NavBar = (props) => {
   return (
     <nav className="nav-bar">
       <div className="trickle-logo">
         <Link to="/">
-          <Button color="primary">Trickle Trip </Button> 
+          <Button color="primary">Trickle Trip </Button>
         </Link>
       </div>
       <div className="login-trips">
-        <Link to="/user">
+        <Link to="/user/1">
           <Button color="primary">Login</Button>
         </Link>
         <Link to="/trip">
-          <Button color="primary">Trips</Button> 
+          <Button color="primary">Trips</Button>
         </Link>
       </div>
     </nav>

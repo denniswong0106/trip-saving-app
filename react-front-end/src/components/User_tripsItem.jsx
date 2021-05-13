@@ -8,6 +8,7 @@ import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
 import UserPopup from "./User_popup.jsx";
+import { Link } from "react-router-dom";
 
 const TripItem = (props) => {
   const [open, setOpen] = useState(false);
@@ -49,7 +50,9 @@ const TripItem = (props) => {
 
   return (
     <article>
-      <h2>{props.trip_name}!</h2>
+      <Link to={`/user/1/trip/${props.id}/`}>
+        <h2>{props.trip_name}!</h2>
+      </Link>
       <h3>{bookingDate}</h3>
       <div className="header-container">
         <div className="header-location">
