@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Menu from '@material-ui/core/Menu';
@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
-import { calculatePercentage } from "../helperfunctions/calculateFunctions";
+import { calculatePercentage, daysRemaining, currentDay } from "../helperfunctions/calculateFunctions";
 import axios from "axios";
 
 import "./Group.scss";
@@ -14,26 +14,15 @@ import "./Group.scss";
 const Group = () => {
 
   // import DataContext functions
-  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, setState } = useContext(DataContext);
+  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, setState, handleAdd } = useContext(DataContext);
 
   // assigns data to variables
   const trip = {...getTripByGroupAndUserId(1, 1)};
   const friendsList = getUsersIdByGroupId(1);
   const allUsers = getUsersIdNotInGroup(1);
 
-  
-  // grabs today's date and the trip date and calculates remaining days
-  const today = new Date();
-  const tripDay = new Date(trip.booking_date);
-  
-  const timeDiff = Math.abs(today - tripDay);
-  const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-  
-  // grabs today's date and converts it to a Month, Day, Year format
-  const currentDay = today.toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
-  
   // state that the menu from material ui uses
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   // click handler that the menu from material ui uses
@@ -45,50 +34,6 @@ const Group = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // adds users to the list
-  const handleAdd = (id, tripName, price, locationName, description) => {
-    console.log("price: ", price);
-    console.log("tripName: ", tripName);
-    console.log("id: ", id);
-    console.log("locationName: ", locationName);
-    console.log("description: ", description);
-
-    const newTrip = { 
-      id:999,
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1
-    };
-
-    axios.put(`/api/trips`, {
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1,
-    }).then((result)=>{
-      console.log("from the front in Group.jsx, res.data: ", result);
-    });
-    
-    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
-    setAnchorEl(null);
-  }
-  
   
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map(friend => {
@@ -116,14 +61,16 @@ const Group = () => {
     return (
       <MenuItem 
         key={friend.id}
-        onClick={() => 
+        onClick={() => {
           handleAdd(
             friend.id,
             tripForEach.trip_name,
             tripForEach.cost,
             tripForEach.location,
             tripForEach.description,
-          )}
+          )
+          setAnchorEl(null)
+        }}
       >
         {friend.name}
       </MenuItem>
@@ -135,8 +82,8 @@ const Group = () => {
     <>
       <div className="group-title">
         <h1>{trip.trip_name}</h1>
-        <h2>Date: {currentDay}</h2>
-        <h4>Only {daysRemaining} days to go!</h4>
+        <h2>Date: {currentDay()}</h2>
+        <h4>Only {daysRemaining(trip.booking_date)} days to go!</h4>
       </div>
       <div>
         <h1>Progress:</h1>
