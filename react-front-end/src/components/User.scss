@@ -1,12 +1,17 @@
 @import './helper_components/ColourPalette.scss';
 
 .user-page {
+  background-color: $neutral-offWhite;
   h2, h4 {
     margin: 0;
   }
 
   .single-trip {
-    background-color: $neutral-offWhite;
+    background-color: $secondary-sand;
+    border-radius: 5px;
+    border: 0 0 5px 5px solid;
+    box-shadow: 5px 5px 5px lightgrey;
+
   }
 
   .user-display {
@@ -14,10 +19,10 @@
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: white;
   }
 
   .user-avatar-info {
+    background-color: $neutral-offWhite;
     flex-direction: column;
     width: 30%;
     display: flex;
@@ -26,6 +31,7 @@
     // max-width: 375px;
 
     .avatar {
+      background-color: $neutral-offWhite;
       width: 10em;
       height: 10em;
       padding: 6em;
@@ -59,9 +65,10 @@
 
 .trips-info {
   width: fill;
+  background-color: $neutral-offWhite;
   .bar {
     height: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 10px;
   }
   .footer-container {
