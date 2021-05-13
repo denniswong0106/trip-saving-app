@@ -25,6 +25,11 @@ export default function apiAccessor() {
     // this callback takes in api call for ids, return an array of only ids
     const findSearchIds = (result) => {
       console.log(`search bar request to API: ${search}`, result.data.results);
+
+      const myArr = result.data.results;
+      console.log("myArr: ", myArr);
+
+
       // map through array, return only an array of ID's
       const idArray = result.data.results.map((tripObj) => {
         return tripObj.id;

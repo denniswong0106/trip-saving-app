@@ -7,14 +7,13 @@ import Fade from '@material-ui/core/Fade';
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
 import { calculatePercentage, daysRemaining, currentDay } from "../helperfunctions/calculateFunctions";
-import axios from "axios";
 
 import "./Group.scss";
 
 const Group = () => {
 
   // import DataContext functions
-  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, setState, handleAdd } = useContext(DataContext);
+  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, handleAdd } = useContext(DataContext);
 
   // assigns data to variables
   const trip = {...getTripByGroupAndUserId(1, 1)};

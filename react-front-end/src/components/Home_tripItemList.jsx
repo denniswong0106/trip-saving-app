@@ -9,10 +9,12 @@ const TripItemList = (props) => {
   // const newArray = props.trips.map((trip) => {
   //   console.log(trip);
   // });
+
   const tripsArray = Array.from(props.trips);
-  const trips = tripsArray.map((trip) => {
+  const trips = tripsArray.map((trip, index) => {
     return (
       <TripItem
+        key={index}
         name={trip.name}
         description={trip.description}
         image={trip.images[2].image_href}

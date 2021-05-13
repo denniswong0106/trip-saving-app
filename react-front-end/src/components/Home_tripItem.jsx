@@ -6,7 +6,7 @@ const TripItem = (props) => {
 
   return (
     <>
-      <div class="trip-block">
+      <div className="trip-block">
         <div className="text-and-heading">
           <h3>{props.name}</h3>
           <p>{props.description}</p>
