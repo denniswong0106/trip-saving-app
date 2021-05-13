@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Trip from "./Trip";
 
 const TripItem = (props) => {
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
