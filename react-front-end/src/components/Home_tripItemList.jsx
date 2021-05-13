@@ -16,6 +16,7 @@ const TripItemList = (props) => {
         name={trip.name}
         description={trip.description}
         image={trip.images[2].image_href}
+        id={trip.id}
       />
     );
   });

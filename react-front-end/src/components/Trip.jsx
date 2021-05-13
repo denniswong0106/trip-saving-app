@@ -7,6 +7,7 @@ import DataContext from "../helperfunctions/DataContext";
 
 const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
+  console.log("trip calls the data state", data);
 
   const info = {
     locationName: "Iceland",
