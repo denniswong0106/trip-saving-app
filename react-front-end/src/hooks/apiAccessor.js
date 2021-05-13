@@ -8,6 +8,9 @@ export default function apiAccessor() {
   // This state keeps track of all data returned from api calls
   const [data, setData] = useState({});
 
+  // This state will keep track if the data's loading state
+  const [ loading, setLoading ] = useState(true);
+
   // --------------------------------------
   // this header is always the same;
   const header = {
@@ -25,6 +28,9 @@ export default function apiAccessor() {
     const searchResults = result.data.results;
     console.log("initial axios call data...", result.data.results);
     let idArray = []; //pulls out the ids of each uniquely named trip object
+
+    // sets the loading boolean to true when called in the first call
+    setLoading(true);
 
     searchResults.reduce((unique, item) => {
       if (unique.includes(item.name)) {
@@ -67,6 +73,9 @@ export default function apiAccessor() {
           return trip.data;
         });
 
+        // sets the loading boolean to false when done
+        setLoading(false);
+
         console.log("creation of trip objects", tripArr);
         setData((prev) => {
           return [...tripArr];
@@ -78,6 +87,7 @@ export default function apiAccessor() {
   return {
     data,
     search,
+    loading,
     setData,
     setSearch,
   };

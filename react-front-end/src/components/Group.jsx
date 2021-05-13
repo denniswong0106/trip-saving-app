@@ -92,7 +92,7 @@ const Group = () => {
       <div>
         <h1>Progress:</h1>
       </div>
-      <ul class="progress-bars">{groupFriendList}</ul>
+      <ul className="progress-bars">{groupFriendList}</ul>
       <div id="add">
         <Fab
           size="large"
