@@ -14,7 +14,7 @@ import "./Group.scss";
 const Group = () => {
 
   // import DataContext functions
-  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, setState } = useContext(DataContext);
+  const { getUsersIdByGroupId, getTripByGroupAndUserId, getUsersIdNotInGroup, setState, handleAdd } = useContext(DataContext);
 
   // assigns data to variables
   const trip = {...getTripByGroupAndUserId(1, 1)};
@@ -34,49 +34,6 @@ const Group = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // adds users to the list
-  const handleAdd = (id, tripName, price, locationName, description) => {
-    console.log("price: ", price);
-    console.log("tripName: ", tripName);
-    console.log("id: ", id);
-    console.log("locationName: ", locationName);
-    console.log("description: ", description);
-
-    const newTrip = { 
-      id:999,
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1
-    };
-
-    axios.put(`/api/trips`, {
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1,
-    }).then((result)=>{
-      console.log("from the front in Group.jsx, res.data: ", result);
-    });
-    
-    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
-    setAnchorEl(null);
-  }
   
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map(friend => {
@@ -104,14 +61,16 @@ const Group = () => {
     return (
       <MenuItem 
         key={friend.id}
-        onClick={() => 
+        onClick={() => {
           handleAdd(
             friend.id,
             tripForEach.trip_name,
             tripForEach.cost,
             tripForEach.location,
             tripForEach.description,
-          )}
+          )
+          setAnchorEl(null)
+        }}
       >
         {friend.name}
       </MenuItem>
