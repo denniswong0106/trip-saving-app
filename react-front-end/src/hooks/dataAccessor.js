@@ -100,6 +100,7 @@ export default function dataAccessor() {
 
   return {
     state,
+    setState,
     getUserTrips,
     getUserById,
     fetchData,

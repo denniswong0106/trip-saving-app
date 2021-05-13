@@ -14,6 +14,7 @@ export default function Application(props) {
   // separated the data fetching logic to ./hooks/dataAccessor
   const {
     state,
+    setState,
     getUserTrips,
     getUserById,
     fetchData,
@@ -32,10 +33,11 @@ export default function Application(props) {
   return (
     <DataContext.Provider
       value={{
-        state,
         data,
+        state,
         search,
         setData,
+        setState,
         setSearch,
         getUserTrips,
         getUserById,
