@@ -51,7 +51,7 @@ const TripItem = (props) => {
           <FriendsIcon group={props.group} />
           {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
-        <div>{dailyPrizeRecieved(props.daily_prize)}</div>
+        <div className="prize-button">{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>
       <LinearWithValueLabel value={value} />
       <div className="footer-container">
