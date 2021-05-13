@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
 import DataContext from "../helperfunctions/DataContext";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import "./Home.scss";
-import Canvas from "./helper_components/Canvas";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
 
@@ -11,7 +10,8 @@ const Home = () => {
   // const { state, fetchData } = useContext(DataContext);
   
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
-  const { search, setSearch, data, setData } = useContext(DataContext);
+  const { search, loading, setSearch, data, setData } = useContext(DataContext);
+  console.log("loading in Home.jsx", loading);
 
   console.log("render data", data);
   return (
@@ -28,7 +28,8 @@ const Home = () => {
       <br />
       <br />
       <div className="trips-container">
-        <TripItemList trips={data} />
+        
+        {loading? <img alt="loading" src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif" /> : <TripItemList trips={data} />}
       </div>
       <br />
       <br />

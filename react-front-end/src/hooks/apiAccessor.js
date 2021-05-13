@@ -8,6 +8,10 @@ export default function apiAccessor() {
   // This state keeps track of all data returned from api calls
   const [data, setData] = useState({});
 
+  // This state will keep track if the data's loading state
+  const [ loading, setLoading ] = useState(true);
+  console.log("initial state of loading: ", loading);
+
   // --------------------------------------
   // this header is always the same;
   const header = {
@@ -25,6 +29,9 @@ export default function apiAccessor() {
     // this callback takes in api call for ids, return an array of only ids
     const findSearchIds = (result) => {
       console.log(`search bar request to API: ${search}`, result.data.results);
+
+      // sets the loading boolean to true when called in the first call
+      setLoading(true);
 
       // map through array, return only an array of ID's
       const idArray = result.data.results.map((tripObj) => {
@@ -55,6 +62,9 @@ export default function apiAccessor() {
           return trip.data;
         });
 
+        // sets the loading boolean to false when done
+        setLoading(false);
+
         console.log("creation of trip objects", tripArr);
         setData((prev) => {
           return [...tripArr];
@@ -66,6 +76,7 @@ export default function apiAccessor() {
   return {
     data,
     search,
+    loading,
     setData,
     setSearch,
   };
