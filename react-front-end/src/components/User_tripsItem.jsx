@@ -42,10 +42,7 @@ const TripItem = (props) => {
         Double my Drip!
       </Button>
     ) : (
-      <Button variant="contained" color="grey">
-        Already claimed
-      </Button>
-      ) : ( <div></div>
+      <div></div>
       // <Button variant="contained" className="disabled" color="grey">
       //   Already claimed
       // </Button>
@@ -54,7 +51,7 @@ const TripItem = (props) => {
 
   return (
     <>
-    <article>
+    <article className="single-trip">
       <Link to={`/user/1/trip/${props.id}/`}>
         <h2>{props.trip_name}!</h2>
       </Link>
