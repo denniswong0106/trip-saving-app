@@ -18,7 +18,7 @@ const Trip = () => {
     (tripObj) => tripObj.id === params.id
   )[0];
 
-  console.log("is trip object returned", trip);
+  console.log("The trip Object", trip);
 
   let redirect;
   let info = {};
@@ -37,22 +37,10 @@ const Trip = () => {
       price: trip.advertised_departures[1]
         ? `$${trip.advertised_departures[1].amount}`
         : "Price currently unavailable",
-      pics: trip.images[2]
-        ? trip.images[2].image_href
-        : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png",
+      pics: trip.images[2].image_href,
     };
   }
 
-  console.log("info", info);
-
-  // const info = {
-  //   locationName: "Iceland",
-  //   description:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras blandit lorem eget aliquam placerat. Nulla eleifend quis felis vitae eleifend. Quisque nec tincidunt tortor, sit amet auctor ipsum. Etiam nec metus eu urna lacinia tempus. Aliquam sed sem urna. Integer sit amet nibh euismod lacus vulputate convallis ac vel purus. Nulla consectetur tristique sapien. Maecenas rhoncus nec lectus ac fringilla. Maecenas in luctus sem. Nunc laoreet accumsan ligula, et bibendum risus tempor venenatis. Nam erat nunc, sagittis vel imperdiet non, dapibus vel dui. Etiam euismod elementum placerat. Suspendisse venenatis ligula augue, cursus ultricies ex lobortis eget. Cras lectus ipsum, sollicitudin in tristique aliquam, rutrum a velit. Nunc nisi diam, ullamcorper eu sollicitudin in, suscipit a mi.",
-  //   tripId: 1,
-  //   price: 6522,
-  //   pics: "../pics/waterfall.jpg",
-  // };
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(1);
   const { locationName, description, tripId, price, pics } = info;
