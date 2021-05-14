@@ -24,7 +24,15 @@ export default function Application(props) {
     getTripByGroupAndUserId,
   } = dataAccessor();
 
-  const { data, search, loading, empty, setData, setSearch } = apiAccessor();
+  const {
+    data,
+    search,
+    loading,
+    empty,
+    setData,
+    setSearch,
+    loadRemainingData,
+  } = apiAccessor();
 
   return (
     <DataContext.Provider
@@ -35,6 +43,7 @@ export default function Application(props) {
         search,
         loading,
         setData,
+        loadRemainingData,
         setState,
         setSearch,
         fetchData,
