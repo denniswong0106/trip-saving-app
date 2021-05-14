@@ -11,7 +11,6 @@ const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
   const params = useParams();
   const history = useHistory();
-  // console.log("trip calls the data state", data);
 
   // filter the overall state with the param id
   // to give the correct trip object;
@@ -55,6 +54,7 @@ const Trip = () => {
     };
   }
 
+  //finds details in unordered array of detail objects
   function findDetail(detail) {
     const found = trip.details.find(element => element.detail_type.label === detail);
     if (found) return found.body;
@@ -100,7 +100,6 @@ const Trip = () => {
     <div>
       <div className="all">
         <img src={pics} alt="pic" />
-        {/* <img src={map} alt="pic" /> */}
         <div className="text-and-price">
           <div className="text-and-heading">
             <h4>{locationName}</h4>
@@ -124,7 +123,6 @@ const Trip = () => {
           </div>
           <div className="card-and-map">
             <Card className="price-card">
-              {/* <h5>5 days</h5> */}
               <div className="price-and-PDF">
                 <h3 className="dolla">$</h3>
                 <h2>{price}</h2>
