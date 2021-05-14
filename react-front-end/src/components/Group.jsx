@@ -53,8 +53,9 @@ const Group = () => {
 
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map((friend) => {
+    console.log("friendslist", friendsList);
     // grabs the specific trip the group is on
-    const tripForEach = getTripByGroupAndUserId(1, friend.id);
+    const tripForEach = getTripByGroupAndUserId(groupId, friend.id);
     // calculates the progress
     const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
 
