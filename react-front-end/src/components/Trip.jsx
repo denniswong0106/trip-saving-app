@@ -38,12 +38,14 @@ const Trip = () => {
         ? parseInt(`${trip.advertised_departures[1].amount}`)
         : "Price currently unavailable",
       pics: trip.images[2].image_href,
+      map: trip.images[0].image_href,
+      PDF: trip.site_links[3].href
     };
   }
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(1);
-  const { locationName, description, tripId, price, pics } = info;
+  const { locationName, description, tripId, price, pics, map, PDF } = info;
 
   //handles if popup is open/closed
   const handleClickOpen = () => {
@@ -63,6 +65,7 @@ const Trip = () => {
     <div>
       <div className="all">
         <img src={pics} alt="pic" />
+        {/* <img src={map} alt="pic" /> */}
         <div className="text-and-price">
           <div className="text-and-heading">
             <h4>{locationName}</h4>
@@ -74,6 +77,7 @@ const Trip = () => {
             <Button size="medium" onClick={handleClickOpen}>
               Book now
             </Button>
+            <a href={PDF} >Trip details</a>
           </Card>
         </div>
       </div>
