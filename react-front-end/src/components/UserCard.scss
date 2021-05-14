@@ -1,0 +1,57 @@
+.main-box {
+  margin: auto;
+  margin-top: 50px;
+  margin-right: 50px;
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 7.5%;
+  text-align: center;
+  box-shadow: 2.5px 2.5px 15px hsl(229, 23%, 23%);
+
+  .bg-pattern-top {
+    height: 150px;
+    background-image: url("https://media.istockphoto.com/vectors/aircraft-destinations-with-planes-icons-on-blue-background-abstract-vector-id1174854848?k=6&m=1174854848&s=612x612&w=0&h=g6jss7xxMSgBz9z2YCPvi_oxV6C3It24REb9wSnrBmM=");
+    background-repeat: repeat-x;
+    max-width: 100%;
+    height: 150px;
+    width: auto;
+    max-width: 400px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .image {
+    margin: auto;
+    border: solid white 5px;
+    border-radius: 50px;
+    position: relative;
+    bottom: 75px;
+  }
+
+  h3 {
+    margin: auto;
+    position: relative;
+    bottom: 65px;
+  }
+
+  .age {
+    color: hsl(0, 0%, 59%);
+    font-weight: 200;
+  }
+  
+  p {
+    margin: auto;
+    position: relative;
+    bottom: 55px;
+    color: hsl(0, 0%, 59%);
+    font-weight: 200;
+  }
+  
+  .bg-pattern-bottom {
+    position: fixed;
+    left: 700px;
+    top: 350px;
+    z-index: -2;
+  }
+  
+}
