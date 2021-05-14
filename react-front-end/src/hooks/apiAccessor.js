@@ -65,8 +65,8 @@ export default function apiAccessor() {
     let idArray = []; //pulls out the ids of each uniquely named trip object
 
     // sets the loading boolean to true when called in the first call
-    setLoading(true);
-    setEmpty(false);
+    // setLoading(true);
+    // setEmpty(false);
 
     searchResults.reduce((unique, item) => {
       if (unique.includes(item.name)) {
@@ -91,15 +91,32 @@ export default function apiAccessor() {
       });
       output.push(promise);
     }
+
     return output;
   };
+
+  // const setEmptyPromise = new Promise((resolve, reject) => {
+  //   console.log("empty promise is called");
+  //   return resolve(setEmpty(false));
+  // });
 
   // ---------------------------------------------------
 
   useEffect(() => {
+    const setLoadingPromise = new Promise((resolve, reject) => {
+      console.log("loading loading promise is  called");
+      setLoading(true);
+      return resolve();
+    });
+    const setEmptyPromise = new Promise((resolve, reject) => {
+      console.log("loading empty promise is  called");
+      setEmpty(false);
+      return resolve();
+    });
     // the first call handles will get ids, and create array of ids:
-    const firstCall = axios.get(firstUrl, header).then(removeRepeats);
-    // .then(findSearchIds);
+    const firstCall = setLoadingPromise.then(setEmptyPromise).then(() => {
+      return axios.get(firstUrl, header).then(removeRepeats);
+    });
 
     // Make axios call for first 5 ids given:
     firstCall.then((result) => {
