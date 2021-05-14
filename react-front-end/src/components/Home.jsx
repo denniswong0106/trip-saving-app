@@ -44,7 +44,7 @@ const Home = () => {
         ) : (
           <></>
         )}
-        {empty ? <h2>No Results Found.</h2> : <></>}
+        {empty ? <h2>No results found.</h2> : <></>}
         {loading ? (
           <img
             className="trips-container--loading-img"
@@ -54,12 +54,12 @@ const Home = () => {
         ) : (
           <TripItemList trips={data} />
         )}
-        {loading ? <h2>Loading Results . . .</h2> : <></>}
+        {loading ? <h2>Searching for trips . . .</h2> : <></>}
       </div>
       <br />
       <br />
       <br />
-      <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>
+      { !loading && !empty && <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>}
     </div>
   );
 };
