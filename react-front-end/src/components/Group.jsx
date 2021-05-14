@@ -11,7 +11,7 @@ import {
   daysRemaining,
   currentDay,
 } from "../helperfunctions/calculateFunctions";
-
+import { useParams, useHistory, Link } from "react-router-dom";
 import "./Group.scss";
 
 const Group = () => {
@@ -23,10 +23,19 @@ const Group = () => {
     handleAdd,
   } = useContext(DataContext);
 
+  const history = useHistory();
+  const { userId, groupId } = useParams();
+
+  console.log("params", userId, groupId);
+
   // assigns data to variables
-  const trip = { ...getTripByGroupAndUserId(1, 1) };
-  const friendsList = getUsersIdByGroupId(1);
-  const allUsers = getUsersIdNotInGroup(1);
+  const trip = {
+    ...getTripByGroupAndUserId(parseInt(groupId), parseInt(userId)),
+  };
+  const friendsList = getUsersIdByGroupId(parseInt(groupId));
+  const allUsers = getUsersIdNotInGroup(parseInt(userId));
+
+  console.log("all the variables set", trip, friendsList, allUsers);
 
   // state that the menu from material ui uses
   const [anchorEl, setAnchorEl] = useState(null);

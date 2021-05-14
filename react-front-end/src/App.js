@@ -58,7 +58,7 @@ export default function Application(props) {
       <Router>
         <NavBar />
         <Switch>
-          <Route path="/user/:id/trip/:id" component={Group} />
+          <Route path="/user/:userId/group/:groupId" component={Group} />
           <Route path="/trip/:id" component={Trip} />
           <Route path="/user/:id" component={User} />
           <Route path="/group" component={Group} />

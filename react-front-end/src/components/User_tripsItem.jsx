@@ -70,7 +70,7 @@ const TripItem = (props) => {
   const doesTripHaveGroupId = () => {
     if (props.groupId) {
       return (
-        <Link to={`/user/${props.user_id}/trip/${props.id}/`}>
+        <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
           <h2>{props.trip_name}!</h2>
         </Link>
       );

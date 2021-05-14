@@ -26,15 +26,18 @@ const UserPopup = (props) => {
   const createGroup = () => {
     console.log("groupName", groupName);
 
+    const groupId = [];
+
     const groupCreate = axios
       .put("/api/groups", {
         name: groupName,
       })
       .then((result) => {
         console.log("do i get groupid back?", result.data[0]);
-        // setState((prev) => {
-        //   return { ...prev, groups: [...prev.groups, result.data[0]] };
-        // });
+        groupId.push(result.data[0]);
+        setState((prev) => {
+          return { ...prev, groups: [...prev.groups, result.data[0]] };
+        });
         return result;
       });
 
@@ -55,7 +58,8 @@ const UserPopup = (props) => {
           return { ...prev, trips: [...filterTrip, result.data[0]] };
         });
         props.handleCloseGroup();
-        history.push(`/user/${props.user_id}/trip/${props.id}`);
+
+        history.push(`/user/${props.user_id}/group/${groupId[0].id}`);
       });
   };
   return (
