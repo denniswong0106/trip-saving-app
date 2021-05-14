@@ -114,10 +114,10 @@ const Trip = () => {
             <p>{meals}</p>
             <p>Includes:</p>
             <p>{mealsIncluded}</p>
-            <h4>What to Take</h4>
+            {/* <h4>What to Take</h4>
             <p>{whatToTake}</p>
             <h4>Packing List</h4>
-            <p>{packingList}</p>
+            <p>{packingList}</p> */}
             <h4>Minimum Age</h4>
             <p>{minimumAge}</p>
             <h4>Important Notes</h4>
@@ -125,21 +125,24 @@ const Trip = () => {
             <h4>Trip Includes</h4>
             <p>{included}</p>
           </div>
-          <Card className="price-card">
-            <h5>5 days</h5>
-            <div className="price-and-PDF">
-              <h3 className="dolla">$</h3>
-              <h2>{price}</h2>
-              <h3>CAD</h3>
-            </div>
-              <div className="PDF">
-                <a href={PDF}>Trip details</a>
-                <PictureAsPdfIcon/>
+          <div className="card-and-map">
+            <Card className="price-card">
+              <h5>5 days</h5>
+              <div className="price-and-PDF">
+                <h3 className="dolla">$</h3>
+                <h2>{price}</h2>
+                <h3>CAD</h3>
               </div>
-            <Button size="medium" onClick={handleClickOpen}>
-              Book now
-            </Button>
-          </Card>
+                <div className="PDF">
+                  <a href={PDF}>Trip details</a>
+                  <PictureAsPdfIcon/>
+                </div>
+              <Button size="medium" onClick={handleClickOpen}>
+                Book now
+              </Button>
+            </Card>
+            <img className="map" src={map} alt="map" />
+          </div>
         </div>
       </div>
       <Popup
