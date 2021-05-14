@@ -9,6 +9,7 @@ import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
 import UserPopup from "./User_popup.jsx";
 import { Link } from "react-router-dom";
+import AddForm from "./User_addForm";
 
 const TripItem = (props) => {
   const [open, setOpen] = useState(false);
@@ -49,38 +50,60 @@ const TripItem = (props) => {
     );
   };
 
+  const doesTripHaveGroupId = () => {
+    if (props.groupId) {
+      return (
+        <Link to={`/user/1/trip/${props.id}/`}>
+          <h2>{props.trip_name}!</h2>
+        </Link>
+      );
+    }
+    return (
+      <>
+        <div>
+          <h2>{props.tripname}!</h2>
+        </div>
+        <AddForm tripname={props.trip_name} />;
+      </>
+    );
+  };
+
   return (
     <>
-    <article className="single-trip">
-      <Link to={`/user/1/trip/${props.id}/`}>
-        <h2>{props.trip_name}!</h2>
-      </Link>
-      <h3>{bookingDate}</h3>
-      <div className="header-container">
-        <div className="header-location">
-          <h4>{props.location}</h4>
-          <FriendsIcon group={props.group} />
-          {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
+      <article className="single-trip">
+        {/* <Link to={`/user/1/trip/${props.id}/`}>
+          <h2>{props.trip_name}!</h2>
+        </Link> */}
+        {doesTripHaveGroupId()}
+        <h3>{bookingDate}</h3>
+        <div className="header-container">
+          <div className="header-location">
+            <h4>{props.location}</h4>
+            <FriendsIcon group={props.group} />
+            {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
+          </div>
+          <div>{dailyPrizeRecieved(props.daily_prize)}</div>
         </div>
-        <div>{dailyPrizeRecieved(props.daily_prize)}</div>
-      </div>
-      <div>
-        <LinearWithValueLabel value={progress} />
-      </div>
-      <div className="footer-container">
-          <b>${props.savings} of ${props.cost} goal!</b>
+        <div>
+          <LinearWithValueLabel value={progress} />
+        </div>
+        <div className="footer-container">
+          <b>
+            ${props.savings} of ${props.cost} goal!
+          </b>
           {/* <div>{daysRemaining} days until you reach your goal!</div> */}
           {finishDate}
-      </div>
-      <div className="trip-description">{props.description}</div>
-      <UserPopup
-        mode={mode}
-        setMode={setMode}
-        open={open}
-        handleClose={handleClose}
-      />
-    </article>
-    <br/><br/>
+        </div>
+        <div className="trip-description">{props.description}</div>
+        <UserPopup
+          mode={mode}
+          setMode={setMode}
+          open={open}
+          handleClose={handleClose}
+        />
+      </article>
+      <br />
+      <br />
     </>
   );
 };
