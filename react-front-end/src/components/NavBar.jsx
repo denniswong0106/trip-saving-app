@@ -30,7 +30,7 @@ const NavBar = (props) => {
           <input type="password" value="Eggerson" name="name"/>
         </>)}
         <Button onClick={(e)=>{logout(e)}}>{loggedIn}</Button>
-        <Button onClick={(e)=>{e.preventDefault(); window.location.href="/user/1"}}>My Trips</Button>
+        {loggedIn === "Logout" && (<Button onClick={(e)=>{e.preventDefault(); window.location.href="/user/1"}}>My Trips</Button>)}
       </div>
     </nav>
   );
