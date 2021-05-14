@@ -26,15 +26,48 @@
             display: flex;
             flex-direction: column;
             background-color: $secondary-sand;
+            background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
             min-width:300px;
             min-height:300px;
             margin: 100px;
             text-align: center;
-            // align-items: flex-end;
-            // justify-content: center;
+            align-items: center;
+            justify-content: center;
+
+            .price-and-PDF {
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                justify-content: space-between;
+                
+                .dolla {
+                    display: flex;
+                    margin: 0;
+                    margin-top: 6px;
+                }
+                h2 {
+                    font-size: 45px;
+                    margin: 0;
+                }
+                h3 {
+                    display: flex;
+                    margin: 0;
+                    margin-top: 30px;
+                    margin-left: 5px;
+                }
+                .PDF {
+                    display: flex;
+                    align-items: flex-end;
+                    .PDF-icon {
+                    }
+                }
+            }
+
             Button {
+                margin-top: 40px;
                 background-color: $primaryDark-teal;
                 color: white;
+                width: 70%;
                 
             }
         }

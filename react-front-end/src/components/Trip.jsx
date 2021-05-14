@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import Popup from "./Popup.jsx";
 import DataContext from "../helperfunctions/DataContext";
 import { useParams, useHistory, Link } from "react-router-dom";
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
@@ -39,13 +40,21 @@ const Trip = () => {
         : "Price currently unavailable",
       pics: trip.images[2].image_href,
       map: trip.images[0].image_href,
-      PDF: trip.site_links[3].href
+      PDF: trip.site_links[3].href,
+      meals: findDetail("Meals")
     };
+  }
+
+  function findDetail(detail) {
+    const found = trip.details.find(element => 
+      element.detail_type.label === detail);
+    // console.log(found.body);
+    return found.body
   }
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(1);
-  const { locationName, description, tripId, price, pics, map, PDF } = info;
+  const { locationName, description, tripId, price, pics, map, PDF, meals } = info;
 
   //handles if popup is open/closed
   const handleClickOpen = () => {
@@ -73,11 +82,18 @@ const Trip = () => {
           </div>
           <Card className="price-card">
             <h5>5 days</h5>
-            <h2>${price}</h2>
+            <div className="price-and-PDF">
+              <h3 className="dolla">$</h3>
+              <h2>{price}</h2>
+              <h3>CAD</h3>
+            </div>
+              <div className="PDF">
+                <a href={PDF} >Trip details</a>
+                <PictureAsPdfIcon className="PDF-icon" />
+              </div>
             <Button size="medium" onClick={handleClickOpen}>
               Book now
             </Button>
-            <a href={PDF} >Trip details</a>
           </Card>
         </div>
       </div>
