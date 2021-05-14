@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.scss";
 import Button from "@material-ui/core/Button";
 
 const NavBar = (props) => {
+  const [loggedIn, setLoggedIn] = useState("Logout");
 
-  
+  function logout(element) {
+    element.preventDefault();
+    if (loggedIn === "Logout") {
+      setLoggedIn("Login");
+    } else {
+      setLoggedIn("Logout");
+    }
+    // window.location.href="/";
+  }
 
   return (
     <nav className="nav-bar">
@@ -16,7 +25,11 @@ const NavBar = (props) => {
         <p>Trickle Trip</p>
       </div>
       <div className="login-trips">
-        <Button onClick={(e)=>{e.preventDefault(); window.location.href="/"}}>Logout</Button>
+        {loggedIn === "Login" && (<>
+          <input type="text" value="Egg@Eggerson.com" name="name"/>
+          <input type="password" value="Eggerson" name="name"/>
+        </>)}
+        <Button onClick={(e)=>{logout(e)}}>{loggedIn}</Button>
         <Button onClick={(e)=>{e.preventDefault(); window.location.href="/user/1"}}>My Trips</Button>
       </div>
     </nav>
