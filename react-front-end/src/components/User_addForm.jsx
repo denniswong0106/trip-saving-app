@@ -54,9 +54,9 @@ const UserPopup = (props) => {
           console.log("filterTrip", filterTrip);
           return { ...prev, trips: [...filterTrip, result.data[0]] };
         });
-        // props.handleCloseGroup();
+        props.handleCloseGroup();
+        history.push(`/user/${props.user_id}/trip/${props.id}`);
       });
-    // history.push(`/user/${props.user_id}/trip/${props.id}`);
   };
   return (
     <>
