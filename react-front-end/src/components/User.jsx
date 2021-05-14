@@ -15,18 +15,16 @@ const User = () => {
 
   return (
     <main className="user-page">
-      <section className="user-display">
         <div className="user-avatar-info">
-          <div>
             <img className="avatar" src={user.avatar} alt="avatar" />
-          </div>
-          <h2 className="username"> {user.name}</h2>
+            <h2 className="username"> {user.name}</h2>
         </div>
         <div className="trips-info">
-          <h2>Trips</h2>
+          <br/><br/><br/>
+          <h1>Trips</h1>
+          <br/>
           <TripItemList trips={trips} />
         </div>
-      </section>
     </main>
   );
 };

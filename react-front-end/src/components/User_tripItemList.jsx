@@ -28,7 +28,7 @@ const TripItemList = (props) => {
   });
 
   return (
-    <div className="trips-container">
+    <div>
       <article>{trips}</article>
     </div>
   );

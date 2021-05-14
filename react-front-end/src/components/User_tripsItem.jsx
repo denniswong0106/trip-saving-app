@@ -42,14 +42,16 @@ const TripItem = (props) => {
         Double my Drip!
       </Button>
     ) : (
-      <Button variant="contained" color="grey">
-        Already claimed
-      </Button>
+      <div></div>
+      // <Button variant="contained" className="disabled" color="grey">
+      //   Already claimed
+      // </Button>
     );
   };
 
   return (
-    <article>
+    <>
+    <article className="single-trip">
       <Link to={`/user/1/trip/${props.id}/`}>
         <h2>{props.trip_name}!</h2>
       </Link>
@@ -58,7 +60,7 @@ const TripItem = (props) => {
         <div className="header-location">
           <h4>{props.location}</h4>
           <FriendsIcon group={props.group} />
-          <h5>Daily Drip Amount: ${props.daily_drip}</h5>
+          {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
         <div>{dailyPrizeRecieved(props.daily_prize)}</div>
       </div>
@@ -66,11 +68,9 @@ const TripItem = (props) => {
         <LinearWithValueLabel value={progress} />
       </div>
       <div className="footer-container">
-        <div>
-          ${props.savings} of ${props.cost} goal!
-        </div>
-        <div>{daysRemaining} days until you reach your goal!</div>
-        <div>{finishDate}</div>
+          <b>${props.savings} of ${props.cost} goal!</b>
+          {/* <div>{daysRemaining} days until you reach your goal!</div> */}
+          {finishDate}
       </div>
       <div className="trip-description">{props.description}</div>
       <UserPopup
@@ -80,6 +80,8 @@ const TripItem = (props) => {
         handleClose={handleClose}
       />
     </article>
+    <br/><br/>
+    </>
   );
 };
 
