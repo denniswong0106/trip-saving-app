@@ -20,7 +20,6 @@ const Home = () => {
   } = useContext(DataContext);
 
   console.log("render data", data);
-  console.log("render remaining", loadRemainingData);
 
   return (
     <div className="App">
