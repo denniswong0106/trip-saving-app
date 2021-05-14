@@ -104,6 +104,26 @@ const Trip = () => {
           <div className="text-and-heading">
             <h4>{locationName}</h4>
             <p>{description}</p>
+            <h4>Highlights</h4>
+            <p>{highlights}</p>
+            <h4>Accommodation</h4>
+            <p>{aboutAccommodation}</p>
+            <p>Includes:</p>
+            <p>{accommodation}</p>
+            <h4>Meals</h4>
+            <p>{meals}</p>
+            <p>Includes:</p>
+            <p>{mealsIncluded}</p>
+            <h4>What to Take</h4>
+            <p>{whatToTake}</p>
+            <h4>Packing List</h4>
+            <p>{packingList}</p>
+            <h4>Minimum Age</h4>
+            <p>{minimumAge}</p>
+            <h4>Important Notes</h4>
+            <p>{importantNotes}</p>
+            <h4>Trip Includes</h4>
+            <p>{included}</p>
           </div>
           <Card className="price-card">
             <h5>5 days</h5>
@@ -113,8 +133,8 @@ const Trip = () => {
               <h3>CAD</h3>
             </div>
               <div className="PDF">
-                <a href={PDF} >Trip details</a>
-                <PictureAsPdfIcon className="PDF-icon" />
+                <a href={PDF}>Trip details</a>
+                <PictureAsPdfIcon/>
               </div>
             <Button size="medium" onClick={handleClickOpen}>
               Book now
