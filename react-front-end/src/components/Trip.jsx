@@ -41,20 +41,45 @@ const Trip = () => {
       pics: trip.images[2].image_href,
       map: trip.images[0].image_href,
       PDF: trip.site_links[3].href,
-      meals: findDetail("Meals")
+      //most common details
+      accommodation: findDetail("Accommodation"),
+      aboutAccommodation: findDetail("About Accommodation"),
+      highlights: findDetail("Highlights"),
+      importantNotes: findDetail("Important Notes"),
+      meals: findDetail("Meals"),
+      mealsIncluded: findDetail("Meals Included"),
+      minimumAge: findDetail("Minimum Age"),
+      packingList: findDetail("Packing List"),
+      whatToTake: findDetail("What to Take"),
+      included: findDetail("What's Included")
     };
   }
 
   function findDetail(detail) {
-    const found = trip.details.find(element => 
-      element.detail_type.label === detail);
-    // console.log(found.body);
+    const found = trip.details.find(element => element.detail_type.label === detail);
     return found.body
   }
 
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(1);
-  const { locationName, description, tripId, price, pics, map, PDF, meals } = info;
+  const { locationName,
+          description,
+          tripId,
+          price,
+          pics,
+          map,
+          PDF,
+          accommodation,
+          aboutAccommodation,
+          highlights,
+          importantNotes,
+          meals,
+          mealsIncluded,
+          minimumAge,
+          packingList,
+          whatToTake,
+          included
+} = info;
 
   //handles if popup is open/closed
   const handleClickOpen = () => {
