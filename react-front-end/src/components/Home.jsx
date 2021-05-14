@@ -39,7 +39,7 @@ const Home = () => {
           <img
             className="trips-container--loading-img"
             alt="empty"
-            src="https://i.pinimg.com/originals/d1/2a/65/d12a65ae002f97284e19a819a0a4f0b0.gif"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/cry-piggy.gif?raw=true"
           />
         ) : (
           <></>
@@ -49,7 +49,7 @@ const Home = () => {
           <img
             className="trips-container--loading-img"
             alt="loading"
-            src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/load-piggy.gif?raw=true"
           />
         ) : (
           <TripItemList trips={data} />
