@@ -9,31 +9,31 @@ exports.seed = function (knex) {
           id: 1,
           name: "Rex Raptor",
           bank_account: 1000,
-          avatar: "https://i.imgur.com/LpaY82x.png",
+          avatar: "https://cdn.fakercloud.com/avatars/reetajayendra_128.jpg",
         },
         {
           id: 2,
           name: "Egg Eggerson",
           bank_account: 1500,
-          avatar: "https://i.imgur.com/Nmx0Qxo.png",
+          avatar: "https://cdn.fakercloud.com/avatars/rehatkathuria_128.jpg",
         },
         {
           id: 3,
           name: "Weavile Underwood",
           bank_account: 1005,
-          avatar: "https://i.imgur.com/FK8V841.jpg",
+          avatar: "https://cdn.fakercloud.com/avatars/n_tassone_128.jpg",
         },
         {
           id: 4,
           name: "Megan Mann",
           bank_account: 1305,
-          avatar: "https://i.imgur.com/TdOAdde.jpg",
+          avatar: "https://cdn.fakercloud.com/avatars/buryaknick_128.jpg",
         },
         {
           id: 5,
           name: "Nima Toed",
           bank_account: 1005,
-          avatar: "https://i.imgur.com/nPywAp1.jpg",
+          avatar: "https://cdn.fakercloud.com/avatars/sunshinedgirl_128.jpg",
         },
       ]);
     });
