@@ -1,8 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
+import React, { useContext } from "react";
 import DataContext from "../helperfunctions/DataContext";
 import "./Home.scss";
-import Canvas from "./helper_components/Canvas";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
 
@@ -13,12 +11,12 @@ const Home = () => {
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const {
     search,
+    loading,
+    empty,
     setSearch,
     data,
     setData,
     loadRemainingData,
-    setRemaining,
-    setSearch2,
   } = useContext(DataContext);
 
   console.log("render data", data);
@@ -38,7 +36,26 @@ const Home = () => {
       <br />
       <br />
       <div className="trips-container">
-        <TripItemList trips={data} />
+        {empty ? (
+          <img
+            className="trips-container--loading-img"
+            alt="empty"
+            src="https://i.pinimg.com/originals/d1/2a/65/d12a65ae002f97284e19a819a0a4f0b0.gif"
+          />
+        ) : (
+          <></>
+        )}
+        {empty ? <h2>No Results Found.</h2> : <></>}
+        {loading ? (
+          <img
+            className="trips-container--loading-img"
+            alt="loading"
+            src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif"
+          />
+        ) : (
+          <TripItemList trips={data} />
+        )}
+        {loading ? <h2>Loading Results . . .</h2> : <></>}
       </div>
       <br />
       <br />

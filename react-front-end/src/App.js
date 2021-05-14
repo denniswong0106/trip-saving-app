@@ -20,18 +20,28 @@ export default function Application(props) {
     getUserById,
     getUserTrips,
     getUsersIdByGroupId,
-    getTripByGroupAndUserId,
     getUsersIdNotInGroup,
+    getTripByGroupAndUserId,
   } = dataAccessor();
 
-  const { data, search, setData, setSearch, loadRemainingData } = apiAccessor();
+  const {
+    data,
+    search,
+    loading,
+    empty,
+    setData,
+    setSearch,
+    loadRemainingData,
+  } = apiAccessor();
 
   return (
     <DataContext.Provider
       value={{
         data,
         state,
+        empty,
         search,
+        loading,
         setData,
         loadRemainingData,
         setState,
@@ -41,8 +51,8 @@ export default function Application(props) {
         getUserById,
         getUserTrips,
         getUsersIdByGroupId,
-        getTripByGroupAndUserId,
         getUsersIdNotInGroup,
+        getTripByGroupAndUserId,
       }}
     >
       <Router>

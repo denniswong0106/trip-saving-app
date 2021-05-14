@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function apiAccessor() {
+  // --------------------------------------------------
+  // STATES
   // This state handles what value is passed into the search function
-  const [search, setSearch] = useState("");
-
   // initial State:
+  const [search, setSearch] = useState("");
+  // initial state for data in page load
   const initialState = [
     {
       name: "Example initial data",
@@ -22,19 +24,14 @@ export default function apiAccessor() {
       id: "20101",
     },
   ];
-
   // This state keeps track of all data returned from api calls
   const [data, setData] = useState(initialState);
   const [remaining, setRemaining] = useState([]);
 
-  console.log("call from api side", setRemaining);
-  const loadRemainingData = () => {
-    console.log("load remaining data being called...");
-    setData((prev) => {
-      console.log([...prev, ...remaining]);
-      return [...prev, ...remaining];
-    });
-  };
+  // Loading State
+  // This state will keep track if the data's loading state
+  const [loading, setLoading] = useState(true);
+  const [empty, setEmpty] = useState(false);
 
   // ---------------------------------------
   // Axios Constants
@@ -44,6 +41,17 @@ export default function apiAccessor() {
     headers: {
       "X-Application-Key": process.env.REACT_APP_SECRET_KEY,
     },
+  };
+  // SETSTATE functions
+  // ----------------------------------------
+
+  // sets state to all results instead of just first five
+  const loadRemainingData = () => {
+    console.log("load remaining data being called...");
+    setData((prev) => {
+      console.log([...prev, ...remaining]);
+      return [...prev, ...remaining];
+    });
   };
 
   // ----------------------------------------
@@ -55,6 +63,10 @@ export default function apiAccessor() {
     const searchResults = result.data.results;
     console.log("initial axios call data...", result.data.results);
     let idArray = []; //pulls out the ids of each uniquely named trip object
+
+    // sets the loading boolean to true when called in the first call
+    setLoading(true);
+    setEmpty(false);
 
     searchResults.reduce((unique, item) => {
       if (unique.includes(item.name)) {
@@ -101,7 +113,11 @@ export default function apiAccessor() {
       Promise.all(firstFiveTrips).then((all) => {
         const tripArr = all.map((trip) => trip.data);
         console.log("creation of first five", tripArr);
-        setData((prev) => [...tripArr]);
+        // checks if the trip array is empty
+        tripArr.length === 0 ? setEmpty(true) : setEmpty(false);
+        // sets the loading boolean to false when done
+        setLoading(false);
+        setData([...tripArr]);
       });
     });
 
@@ -111,10 +127,9 @@ export default function apiAccessor() {
       if (result.length > 5) {
         const remainingTrips = loopPromiseGenerator(result, 5, result.length);
         Promise.all(remainingTrips).then((all) => {
-          const remainingTrips = all.map((trip) => trip.data);
-
-          console.log("creation of remaining trips", remainingTrips);
-          setRemaining(remainingTrips);
+          const remainingTripData = all.map((trip) => trip.data);
+          console.log("creation of remaining trips", remainingTripData);
+          setRemaining([...remainingTripData]);
         });
       }
     });
@@ -124,7 +139,9 @@ export default function apiAccessor() {
 
   return {
     data,
+    empty,
     search,
+    loading,
     setData,
     setSearch,
     setRemaining,
