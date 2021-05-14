@@ -36,4 +36,18 @@ router.put("/", (req, res) => {
   return res.data;
 });
 
+// PATCH /api/trips/groupid
+router.post("/groupid", (req, res) => {
+  console.log("Calling update to trip_savings...", req.body);
+  knex("trip_savings")
+    .where("id", "=", req.body.id)
+    .update({ group_id: req.body.group_id })
+    .returning("*")
+    .then((result) => {
+      console.log("Successful Update", result);
+      return res.json(result);
+    });
+  return res.data;
+});
+
 module.exports = router;

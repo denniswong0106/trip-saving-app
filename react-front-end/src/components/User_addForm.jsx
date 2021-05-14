@@ -14,39 +14,64 @@ import {
   expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
+import axios from "axios";
 
 const UserPopup = (props) => {
   const [groupName, setGroupName] = React.useState("");
+  const history = useHistory();
+
+  // make axios call to create group, then make axios call to update trip
+  const createGroup = () => {
+    console.log("groupName", groupName);
+
+    axios
+      .put("/api/groups", {
+        name: groupName,
+      })
+      .then((result) => {
+        console.log("do i get groupid back?", result.data[0].id);
+        return axios
+          .post("/api/trips/groupid", {
+            id: props.user_id,
+            group_id: result.data[0].id,
+          })
+          .then((result) => {
+            console.log("do i get tripObj back?", result.data[0]);
+            return result.data[0];
+          })
+          .then(() => {});
+      });
+    props.handleCloseGroup();
+    // history.push(`/user/${props.user_id}/trip/${props.id}`);
+  };
   return (
     <>
-      <div>
-        <h2>{props.tripname}!</h2>
-      </div>
       <Dialog
-        open={props.open}
+        open={props.openGroup}
         onClose={props.handleClose}
         aria-labelledby="form-dialog-title"
       >
         <div>
           <DialogTitle id="form-dialog-title">Create a group!</DialogTitle>
           <DialogContent>
-            <img
-              className="loading-gif"
-              src={require("../pics/piggybank.gif")}
-              alt="piggybank"
+            <TextField
+              autoFocus
+              margin="dense"
+              id="trip-name"
+              label="Trip name"
+              value={groupName}
+              onChange={(event) => {
+                setGroupName(event.target.value);
+              }}
+              fullWidth
             />
           </DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="trip-name"
-            label="Trip name"
-            value={groupName}
-            onChange={(event) => {
-              setGroupName(event.target.value);
-            }}
-            fullWidth
-          />
+          <Button id="set-group" onClick={createGroup}>
+            Set Group!
+          </Button>
+          <Button id="cancel" onClick={props.handleCloseGroup}>
+            Cancel
+          </Button>
         </div>
       </Dialog>
     </>

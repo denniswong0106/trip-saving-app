@@ -14,6 +14,10 @@ import AddForm from "./User_addForm";
 const TripItem = (props) => {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState("");
+  const [openGroup, setOpenGroup] = useState(false);
+
+  // ------------------------------------------
+  // Click functions that handle the opening and closing of popups
 
   const handleClickOpen = () => {
     setMode("SAVING");
@@ -22,6 +26,16 @@ const TripItem = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleClickOpenGroup = () => {
+    setOpenGroup(true);
+  };
+  const handleCloseGroup = () => {
+    setOpenGroup(false);
+  };
+
+  // --------------------------------------------
+  // Math helper Functions
 
   const progress = calculatePercentage(props.savings, props.cost);
   const daysRemaining = calculateDaysRemaining(
@@ -36,6 +50,9 @@ const TripItem = (props) => {
     month: "long",
     day: "numeric",
   });
+
+  // ------------------------------------------------------------
+  // component Helper Functions
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
@@ -53,17 +70,24 @@ const TripItem = (props) => {
   const doesTripHaveGroupId = () => {
     if (props.groupId) {
       return (
-        <Link to={`/user/1/trip/${props.id}/`}>
+        <Link to={`/user/${props.user_id}/trip/${props.id}/`}>
           <h2>{props.trip_name}!</h2>
         </Link>
       );
     }
     return (
       <>
-        <div>
-          <h2>{props.tripname}!</h2>
+        <div onClick={handleClickOpenGroup}>
+          <h2 onClick={handleClickOpenGroup}>{props.trip_name}!</h2>
         </div>
-        <AddForm tripname={props.trip_name} />;
+        <AddForm
+          trip_name={props.trip_name}
+          openGroup={openGroup}
+          handleCloseGroup={handleCloseGroup}
+          id={props.id}
+          user_id={props.user_id}
+        />
+        ;
       </>
     );
   };
@@ -71,9 +95,6 @@ const TripItem = (props) => {
   return (
     <>
       <article className="single-trip">
-        {/* <Link to={`/user/1/trip/${props.id}/`}>
-          <h2>{props.trip_name}!</h2>
-        </Link> */}
         {doesTripHaveGroupId()}
         <h3>{bookingDate}</h3>
         <div className="header-container">
