@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./User.scss";
 import { useParams, useHistory, Link } from "react-router-dom";
 
@@ -15,33 +15,47 @@ import {
 } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
 import axios from "axios";
+import DataContext from "../helperfunctions/DataContext";
 
 const UserPopup = (props) => {
   const [groupName, setGroupName] = React.useState("");
   const history = useHistory();
+  const { setState } = useContext(DataContext);
 
   // make axios call to create group, then make axios call to update trip
   const createGroup = () => {
     console.log("groupName", groupName);
 
-    axios
+    const groupCreate = axios
       .put("/api/groups", {
         name: groupName,
       })
       .then((result) => {
-        console.log("do i get groupid back?", result.data[0].id);
-        return axios
-          .post("/api/trips/groupid", {
-            id: props.user_id,
-            group_id: result.data[0].id,
-          })
-          .then((result) => {
-            console.log("do i get tripObj back?", result.data[0]);
-            return result.data[0];
-          })
-          .then(() => {});
+        console.log("do i get groupid back?", result.data[0]);
+        // setState((prev) => {
+        //   return { ...prev, groups: [...prev.groups, result.data[0]] };
+        // });
+        return result;
       });
-    props.handleCloseGroup();
+
+    groupCreate
+      .then((result) => {
+        return axios.post("/api/trips/groupid", {
+          id: props.id,
+          group_id: result.data[0].id,
+        });
+      })
+      .then((result) => {
+        console.log("do i get tripObj back?", result.data[0]);
+        setState((prev) => {
+          const filterTrip = prev.trips.filter((trip) => {
+            return trip.id !== props.id;
+          });
+          console.log("filterTrip", filterTrip);
+          return { ...prev, trips: [...filterTrip, result.data[0]] };
+        });
+        // props.handleCloseGroup();
+      });
     // history.push(`/user/${props.user_id}/trip/${props.id}`);
   };
   return (
