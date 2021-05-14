@@ -57,7 +57,8 @@ const Trip = () => {
 
   function findDetail(detail) {
     const found = trip.details.find(element => element.detail_type.label === detail);
-    return found.body
+    if (found) return found.body;
+    else return null
   }
 
   const [open, setOpen] = React.useState(false);
@@ -104,30 +105,26 @@ const Trip = () => {
           <div className="text-and-heading">
             <h4>{locationName}</h4>
             <p>{description}</p>
-            <h4>Highlights</h4>
+            {highlights && <h4>Highlights</h4>}
             <p>{highlights}</p>
-            <h4>Accommodation</h4>
+            {(aboutAccommodation || accommodation) && <h4>Accommodation</h4>}
             <p>{aboutAccommodation}</p>
-            <p>Includes:</p>
-            <p>{accommodation}</p>
-            <h4>Meals</h4>
+            <p>Includes: {accommodation}.</p>
+            {(meals || mealsIncluded) && <h4>Meals</h4>}
             <p>{meals}</p>
-            <p>Includes:</p>
-            <p>{mealsIncluded}</p>
-            {/* <h4>What to Take</h4>
-            <p>{whatToTake}</p>
-            <h4>Packing List</h4>
-            <p>{packingList}</p> */}
-            <h4>Minimum Age</h4>
-            <p>{minimumAge}</p>
-            <h4>Important Notes</h4>
-            <p>{importantNotes}</p>
-            <h4>Trip Includes</h4>
+            <p>Includes: {mealsIncluded}.</p>
+            {included && <h4>Trip Includes</h4>}
             <p>{included}</p>
+            {(importantNotes || minimumAge) && <h4>Important Notes</h4>}
+            <div className="some-conditions-apply">
+              <p>Minimum age: {minimumAge}</p>
+              <p>{importantNotes}</p>
+            </div>
+            <br/><br/><br/>
           </div>
           <div className="card-and-map">
             <Card className="price-card">
-              <h5>5 days</h5>
+              {/* <h5>5 days</h5> */}
               <div className="price-and-PDF">
                 <h3 className="dolla">$</h3>
                 <h2>{price}</h2>
