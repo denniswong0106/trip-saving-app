@@ -143,18 +143,24 @@ export default function dataAccessor() {
   const surpriseMechanic = (groupId, id) => {
     const userTrip = getTripByGroupAndUserId(groupId , id)
     const randomizedPrize = Number(userTrip.daily_drip * 2) + Number((Math.random() * 5).toFixed(2));
-    const userSavings = Number(userTrip.savings) + Number(randomizedPrize)
+    const userSavings = Number(userTrip.savings) + Number(randomizedPrize);
 
     axios.post(`/api/trips`, {
       id: userTrip.id,
-      savings: randomizedPrize,
+      savings: userSavings,
       daily_prize: false
     }).then((result)=>{
       console.log("from the front in Canvas.jsx, res.data: ", result);
     });
+    
+    // userTrip = {...userTrip, savings: userSavings, daily_prize: false };
 
-    console.log("userTrip in surpriseMechanic: ", userTrip);
-    console.log("randomizedPrize: ", randomizedPrize);
+    console.log("surpriseMechanic function called----------------------------------------------");
+
+    setState((prev) => ({...prev, trips: [... prev.trips, prev.trips.map( trip =>  trip.id === userTrip.id ? { savings: userSavings, daily_prize: false } : trip)] }));
+
+
+    return randomizedPrize;
   }
 
   return {

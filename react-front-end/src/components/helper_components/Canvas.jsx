@@ -18,20 +18,20 @@ function Canvas(props) {
     
     const { surpriseMechanic } = useContext(DataContext);
     
-    const handleClick = () => {
-      surpriseMechanic(1, 1);
-    }
+    // const handleClick = () => {
+    //   surpriseMechanic(1, 1);
+    // }
 
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        explosion(canvas, context, bag, sfx, sfx2, sfxShake);
+        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic);
     }, [explosion])
 
     return (
     <>
         {/* <img src={require('../../pics/coin.gif')} /> */}
-        <canvas onClick={handleClick} ref={canvasRef} {...props}/>
+        <canvas ref={canvasRef} {...props}/>
     </>
     )
 }
