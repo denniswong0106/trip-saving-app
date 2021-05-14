@@ -7,9 +7,30 @@
   align-items: center;
   background-color: $primary-teal;
   height: 50px;
-}
 
-.login-trips {
-  display: flex;
-  flex-direction: row;
+  .trickle-logo {
+    display: flex;
+    flex-direction: row;
+    font-weight: bolder;
+    font-size: 25px;
+    align-items: center;
+    img {
+      margin-left: 10px;
+      margin-right: 5px;
+      height: 40px;
+      width: 78px; //pig 2.png
+      // width: 43px; //pig 6.png
+      // width: 37px; //pig 16.png
+    }
+  }
+
+  .login-trips {
+    display: flex;
+    flex-direction: row;
+    Button {
+      margin-right: 15px;
+      background-color: $primaryDark-teal;
+      color: white;
+    }
+  }
 }
