@@ -6,6 +6,12 @@
   animation: fadeIn 700ms ease-in-out 1s both;
   cursor: pointer;
   
+  &--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &--scroll-img {
     height: 150px;
     width: 150px;
