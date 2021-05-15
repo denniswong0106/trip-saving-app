@@ -92,8 +92,10 @@ const TripItem = (props) => {
   return (
     <>
       <article className="single-trip">
-        <h2>{props.trip_name}!</h2>
-        {doesTripHaveGroupId()}
+        <div className="single-trip-title">
+          <h2>{props.trip_name}!</h2>
+          {doesTripHaveGroupId()}
+        </div>
         <h3>{bookingDate}</h3>
         <div className="header-container">
           <div className="header-location">
