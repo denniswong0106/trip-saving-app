@@ -16,16 +16,13 @@ function Canvas(props) {
     let sfxShake = document.createElement("audio");
     sfxShake.src = require('../../pics/change-drop3.mp3')
     
+    // used use context to use surpriseMechanic
     const { surpriseMechanic } = useContext(DataContext);
-    
-    // const handleClick = () => {
-    //   surpriseMechanic(1, 1);
-    // }
 
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic);
+        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic, props.trip_id);
     }, [explosion])
 
     return (
