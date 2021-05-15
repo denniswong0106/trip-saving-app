@@ -24,6 +24,8 @@ const UserPopup = (props) => {
   };
   return (
     <Dialog
+      width="300"
+      height="300"
       open={props.open}
       onClose={props.handleClose}
       aria-labelledby="form-dialog-title"
@@ -64,7 +66,7 @@ const UserPopup = (props) => {
         <div>
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
           <DialogContent>
-            <Canvas trip_id={props.trip_id}/>
+            <Canvas trip_id={props.trip_id} />
           </DialogContent>
           <div className="dialog-actions">
             <Button id="start" onClick={props.handleClose}>
