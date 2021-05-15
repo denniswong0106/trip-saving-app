@@ -20,7 +20,7 @@ const UserPopup = (props) => {
     // setTimeout to mimic saving for 3 seconds:
     setTimeout(function () {
       props.setMode("TRANSITION");
-    }, 3000);
+    }, 1500);
   };
   return (
     <Dialog

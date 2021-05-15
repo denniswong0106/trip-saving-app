@@ -8,6 +8,7 @@ import DataContext from "./helperfunctions/DataContext";
 import dataAccessor from "./hooks/dataAccessor";
 import apiAccessor from "./hooks/apiAccessor";
 import NavBar from "./components/NavBar";
+import ScrollToTop from "./components/helper_components/ScrollToTop";
 import "./App.scss";
 
 export default function Application(props) {
@@ -58,6 +59,7 @@ export default function Application(props) {
       }}
     >
       <Router>
+        <ScrollToTop />
         <NavBar />
         <Switch>
           <Route path="/user/:id/trip/:id" component={Group} />
