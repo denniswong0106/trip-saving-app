@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ScrollToTopButton.scss";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,10 +27,10 @@ const ScrollToTopButton = () => {
   }, []);
 
   return (
-    <div className="scroll-to-top">
+    <div className="scroll-to-top-button">
       {isVisible && 
         <div onClick={scrollToTop}>
-          <img src='https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/piggyAssets/16transparent.png?raw=true' alt='Go to top'/>
+          <img className="scroll-to-top-button--scroll-img" src='https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/piggyAssets/16transparent.png?raw=true' alt='Go to top'/>
           <h3>Go to top</h3>
         </div>}
     </div>
