@@ -31,7 +31,7 @@ const ScrollToTopButton = () => {
     <div className="scroll-to-top-button">
       {isVisible && 
         <div className="scroll-to-top-button--container" onClick={scrollToTop}>
-          <img className="scroll-to-top-button--arrow-img" src={require('../../pics/loadingGifs/dark-up-arrow.gif')} alt='up-arrow'/>
+          <img className="scroll-to-top-button--arrow-img" src={require('../../pics/gifAssets/dark-up-arrow.gif')} alt='up-arrow'/>
           <img className="scroll-to-top-button--scroll-img" src={require('../../pics/piggyAssets/16transparent.png')} alt='Go-to-top'/>
           <h3>Go to top</h3>
         </div>}
