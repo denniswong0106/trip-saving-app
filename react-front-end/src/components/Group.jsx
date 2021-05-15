@@ -33,7 +33,7 @@ const Group = () => {
     ...getTripByGroupAndUserId(parseInt(groupId), parseInt(userId)),
   };
   const friendsList = getUsersIdByGroupId(parseInt(groupId));
-  const allUsers = getUsersIdNotInGroup(parseInt(userId));
+  const allUsers = getUsersIdNotInGroup(parseInt(groupId));
 
   console.log("all the variables set", trip, friendsList, allUsers);
 
@@ -53,9 +53,9 @@ const Group = () => {
 
   // maps through an array of users that are already in the group
   const groupFriendList = friendsList.map((friend) => {
-    console.log("friendslist", friendsList);
     // grabs the specific trip the group is on
-    const tripForEach = getTripByGroupAndUserId(groupId, friend.id);
+    const tripForEach = getTripByGroupAndUserId(parseInt(groupId), friend.id);
+    console.log(tripForEach);
     // calculates the progress
     const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
 
@@ -71,8 +71,8 @@ const Group = () => {
 
   // maps through an array of "friends" not yet added to the group
   const addGroupFriendsList = allUsers.map((friend) => {
-    const tripForEach = getTripByGroupAndUserId(1, 1);
-
+    const tripForEach = getTripByGroupAndUserId(parseInt(groupId), friend.id);
+    console.log("tripForEach", friend);
     return (
       <MenuItem
         key={friend.id}

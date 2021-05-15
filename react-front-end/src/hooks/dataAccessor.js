@@ -28,7 +28,7 @@ export default function dataAccessor() {
     });
   }, []);
 
-  // function that generates array of userIds for a given groupId
+  // function that generates array of user objects for a given groupId
   const getUsersIdByGroupId = (groupId) => {
     // first filter out trips with same group id
     const tripsInGroup = state.trips.filter(
@@ -47,21 +47,23 @@ export default function dataAccessor() {
 
   // gets all the users that are not in the group array
   const getUsersIdNotInGroup = (groupId) => {
-    
     const usersInGroup = getUsersIdByGroupId(groupId);
-    const mappedIds = usersInGroup.map((user) => user.id)
+    const mappedIds = usersInGroup.map((user) => user.id);
     const allUsers = state.users;
-    const usersNotIncluded = allUsers.filter((users) => !mappedIds.includes(users.id));
-    
+
+    const usersNotIncluded = allUsers.filter((users) => {
+      console.log(!mappedIds.includes(users.id));
+      return !mappedIds.includes(users.id);
+    });
+
     return usersNotIncluded;
   };
-
 
   const getTripByGroupAndUserId = (groupId, userId) => {
     const tripsInWithGroupId = state.trips.filter(
       (trip) => trip.group_id === groupId
     );
-    
+
     const tripWithUserId = tripsInWithGroupId.filter(
       (trip) => trip.user_id === userId
     );
@@ -106,22 +108,8 @@ export default function dataAccessor() {
     console.log("locationName: ", locationName);
     console.log("description: ", description);
 
-    const newTrip = { 
-      id:999,
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1
-    };
-
-    axios.put(`/api/trips`, {
+    const newTrip = {
+      id: 999,
       savings: 0,
       daily_drip: 0,
       trip_name: tripName,
@@ -133,12 +121,28 @@ export default function dataAccessor() {
       stretch_goal: 0,
       user_id: id,
       group_id: 1,
-    }).then((result)=>{
-      console.log("from the front in Group.jsx, res.data: ", result);
-    });
-    
-    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
-  }
+    };
+
+    axios
+      .put(`/api/trips`, {
+        savings: 0,
+        daily_drip: 0,
+        trip_name: tripName,
+        cost: price,
+        location: locationName,
+        description: description,
+        daily_prize: true,
+        booking_date: "2021-11-20",
+        stretch_goal: 0,
+        user_id: id,
+        group_id: 1,
+      })
+      .then((result) => {
+        console.log("from the front in Group.jsx, res.data: ", result);
+      });
+
+    setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
+  };
 
   return {
     state,
@@ -149,6 +153,6 @@ export default function dataAccessor() {
     getUsersIdByGroupId,
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
-    handleAdd
+    handleAdd,
   };
 }
