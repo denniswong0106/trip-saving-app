@@ -16,10 +16,6 @@ const User = () => {
 
   return (
     <main className="user-page">
-        {/* <div className="user-avatar-info">
-            <img className="avatar" src={user.avatar} alt="avatar" />
-            <h2 className="username"> {user.name}</h2>
-        </div> */}
         <UserCard />
         <div className="trips-info">
           <br/><br/><br/>

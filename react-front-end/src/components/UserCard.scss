@@ -1,17 +1,19 @@
+@import './helper_components/ColourPalette.scss';
+
 .main-box {
   margin: auto;
   margin-top: 50px;
   margin-right: 50px;
   width: 400px;
   height: 300px;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 7.5%;
   text-align: center;
   box-shadow: 5px 5px 5px rgb(196, 195, 195);
 
   .bg-pattern-top {
     height: 150px;
-    background-image: url("https://media.istockphoto.com/vectors/aircraft-destinations-with-planes-icons-on-blue-background-abstract-vector-id1174854848?k=6&m=1174854848&s=612x612&w=0&h=g6jss7xxMSgBz9z2YCPvi_oxV6C3It24REb9wSnrBmM=");
+    background-image: url("../pics/planes_back.jpg");
     background-repeat: repeat-x;
     max-width: 100%;
     height: 150px;
@@ -22,7 +24,7 @@
 
   .image {
     margin: auto;
-    border: solid white 5px;
+    border: solid whitesmoke 5px;
     border-radius: 50px;
     position: relative;
     bottom: 75px;
