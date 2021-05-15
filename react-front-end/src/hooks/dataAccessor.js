@@ -28,7 +28,7 @@ export default function dataAccessor() {
     });
   }, []);
 
-  // function that generates array of userIds for a given groupId
+  // function that generates array of user objects for a given groupId
   const getUsersIdByGroupId = (groupId) => {
     // first filter out trips with same group id
     const tripsInGroup = state.trips.filter(
@@ -47,21 +47,22 @@ export default function dataAccessor() {
 
   // gets all the users that are not in the group array
   const getUsersIdNotInGroup = (groupId) => {
-    
     const usersInGroup = getUsersIdByGroupId(groupId);
-    const mappedIds = usersInGroup.map((user) => user.id)
+    const mappedIds = usersInGroup.map((user) => user.id);
     const allUsers = state.users;
-    const usersNotIncluded = allUsers.filter((users) => !mappedIds.includes(users.id));
-    
+
+    const usersNotIncluded = allUsers.filter((users) => {
+      return !mappedIds.includes(users.id);
+    });
+
     return usersNotIncluded;
   };
-
 
   const getTripByGroupAndUserId = (groupId, userId) => {
     const tripsInWithGroupId = state.trips.filter(
       (trip) => trip.group_id === groupId
     );
-    
+
     const tripWithUserId = tripsInWithGroupId.filter(
       (trip) => trip.user_id === userId
     );
@@ -99,63 +100,84 @@ export default function dataAccessor() {
   };
 
   // adds users to the group list
-  const handleAdd = (id, tripName, price, locationName, description) => {
+  const handleAdd = (
+    id,
+    tripName,
+    price,
+    locationName,
+    description,
+    groupId
+  ) => {
     console.log("price: ", price);
     console.log("tripName: ", tripName);
     console.log("id: ", id);
     console.log("locationName: ", locationName);
     console.log("description: ", description);
+    console.log("group id", groupId);
 
-    const newTrip = { 
-      id:999,
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1
-    };
+    // const newTrip = {
+    //   id: 999,
+    //   savings: 0,
+    //   daily_drip: 0,
+    //   trip_name: tripName,
+    //   cost: price,
+    //   location: locationName,
+    //   description: description,
+    //   daily_prize: true,
+    //   booking_date: "2021-11-20",
+    //   stretch_goal: 0,
+    //   user_id: id,
+    //   group_id: groupId,
+    // };
 
-    axios.put(`/api/trips`, {
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1,
-    }).then((result)=>{
-      console.log("from the front in Group.jsx, res.data: ", result);
-    });
-    
-    setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
-  }
+    axios
+      .put(`/api/trips`, {
+        savings: 0,
+        daily_drip: 0,
+        trip_name: tripName,
+        cost: price,
+        location: locationName,
+        description: description,
+        daily_prize: true,
+        booking_date: "2021-11-20",
+        stretch_goal: 0,
+        user_id: id,
+        group_id: groupId,
+      })
+      .then((result) => {
+        console.log("from the front in Group.jsx, res.data: ", result.data[0]);
+        const newTrip = result.data[0];
+        setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
+      });
+  };
 
   const surpriseMechanic = (tripId) => {
     // grabs the user
-    const userTripArr = state.trips.filter( trip => trip.id === tripId );
+    const userTripArr = state.trips.filter((trip) => trip.id === tripId);
     const userTrip = userTripArr[0];
     // randomizes and adds to savings
     const randomizedPrize = Number(userTrip.daily_drip * 2) + Number((Math.random() * 5));
     const userSavings = Number(userTrip.savings) + Number(randomizedPrize.toFixed(2));
 
     // updates the trips savings and daily prize
-    axios.post(`/api/trips`, {
-      id: userTrip.id,
-      savings: userSavings,
-      daily_prize: false
-    }).then((result)=>{
-      console.log("from the front in Canvas.jsx, res.data: ", result);
-    });
+    axios
+      .post(`/api/trips`, {
+        id: userTrip.id,
+        savings: userSavings,
+        daily_prize: false,
+      })
+      .then((result) => {
+        console.log("from the front in Canvas.jsx, res.data: ", result);
+      });
+
+    setState((prev) => ({
+      ...prev,
+      trips: prev.trips.map((trip) =>
+        trip.id === userTrip.id
+          ? { ...trip, savings: userSavings, daily_prize: false }
+          : trip
+      ),
+    }));
 
     setState((prev) => ({...prev, trips:  prev.trips.map( trip =>  trip.id === userTrip.id ? { ...trip, savings: userSavings, daily_prize: false } : trip)  }));
  
@@ -172,6 +194,7 @@ export default function dataAccessor() {
     surpriseMechanic,
     getUsersIdByGroupId,
     getUsersIdNotInGroup,
-    getTripByGroupAndUserId
+    handleAdd,
+    getTripByGroupAndUserId,
   };
 }

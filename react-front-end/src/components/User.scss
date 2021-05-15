@@ -1,4 +1,4 @@
-@import './helper_components/ColourPalette.scss';
+@import "./helper_components/ColourPalette.scss";
 
 body {
   background-color: $neutral-offWhite;
@@ -13,7 +13,8 @@ body {
   background-color: $neutral-offWhite;
   // background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
   background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
-  h2, h4 {
+  h2,
+  h4 {
     margin: 0;
   }
 
@@ -47,6 +48,15 @@ body {
       padding-left: 20px;
       background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 
+      .single-trip-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        h2 {
+          margin-right: 20px;
+        }
+      }
+
       Button {
         margin-bottom: 10px;
         background-color: $primaryDark-teal;
@@ -56,14 +66,14 @@ body {
         display: flex;
         flex-direction: row;
         align-items: center;
-        
+
         .bar {
           height: 20px;
           border-radius: 7px;
           margin: 10px;
           margin-left: 0;
           background-color: $secondary-teal;
-          color:black;
+          color: black;
           //change color
         }
 
@@ -71,18 +81,19 @@ body {
           font-weight: bolder;
           color: black;
         }
-      } 
-    
+      }
+
       .footer-container {
         display: flex;
         justify-content: space-between;
       }
-    
+
       .trip-description {
         margin-top: 1em;
       }
     }
   }
+
   .header-container {
     display: flex;
     justify-content: space-between;

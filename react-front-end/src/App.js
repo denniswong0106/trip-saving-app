@@ -63,7 +63,7 @@ export default function Application(props) {
         <ScrollToTop />
         <NavBar />
         <Switch>
-          <Route path="/user/:id/trip/:id" component={Group} />
+          <Route path="/user/:user_id/group/:group_id" component={Group} />
           <Route path="/trip/:id" component={Trip} />
           <Route path="/user/:id" component={User} />
           <Route path="/group" component={Group} />
