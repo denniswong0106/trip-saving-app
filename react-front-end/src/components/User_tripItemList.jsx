@@ -2,11 +2,6 @@ import React from "react";
 import TripItem from "./User_tripsItem";
 
 const TripItemList = (props) => {
-  // Test function that allows for button click in users page
-  const onClick = (tripId) => {
-    console.log(tripId, "from TripItemList");
-  };
-
   const trips = props.trips.map((trip) => {
     return (
       <TripItem
@@ -23,6 +18,7 @@ const TripItemList = (props) => {
         user_id={trip.user_id}
         key={trip.id}
         bookingDate={trip.booking_date}
+        groupId={trip.group_id}
       />
     );
   });

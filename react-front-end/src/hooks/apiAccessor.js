@@ -104,18 +104,15 @@ export default function apiAccessor() {
   // ---------------------------------------------------
 
   useEffect(() => {
-    const setLoadingPromise = new Promise((resolve, reject) => {
-      console.log("loading loading promise is  called");
+    const setLoadAndEmptyPromise = new Promise((resolve, reject) => {
+      console.log("Setting loading as true, empty as false");
       setLoading(true);
-      return resolve();
-    });
-    const setEmptyPromise = new Promise((resolve, reject) => {
-      console.log("loading empty promise is  called");
       setEmpty(false);
       return resolve();
     });
+
     // the first call handles will get ids, and create array of ids:
-    const firstCall = setLoadingPromise.then(setEmptyPromise).then(() => {
+    const firstCall = setLoadAndEmptyPromise.then(() => {
       return axios.get(firstUrl, header).then(removeRepeats);
     });
 
