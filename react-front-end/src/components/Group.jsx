@@ -122,37 +122,38 @@ const Group = () => {
           </div>
         </div>
       </div>
+      <div className="bottom-container">
+        <h1>Progress:</h1>
+        <ul className="progress-bars">
+          {groupFriendList}
+        </ul>
 
-      <h1>Progress:</h1>
-      <ul className="progress-bars">
-        {groupFriendList}
-      </ul>
-
-      <div id="add">
-        <Fab
-          size="large"
-          color="primary"
-          aria-label="add"
-          onClick={handleClick}
-        >
-          <AddIcon fontSize="large" />
-        </Fab>
-        <List
-          id="fade-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Fade}
-        >
-          <ListSubheader component="div" id="nested-list-subheader">
-            Add a friend
-          </ListSubheader>
-            {addGroupFriendsList}
-          <ListItem onClick={handleClose}>
-            <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>Cancel
-          </ListItem>
-        </List>
+        <div id="add">
+          <Fab
+            size="large"
+            color="primary"
+            aria-label="add"
+            onClick={handleClick}
+          >
+            <AddIcon fontSize="large" />
+          </Fab>
+          <List
+            id="fade-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+          >
+            <ListSubheader component="div" id="nested-list-subheader">
+              Add a friend
+            </ListSubheader>
+              {addGroupFriendsList}
+            <ListItem onClick={handleClose}>
+              <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>Cancel
+            </ListItem>
+          </List>
+        </div>
       </div>
       <br/><br/><br/>
     </>
