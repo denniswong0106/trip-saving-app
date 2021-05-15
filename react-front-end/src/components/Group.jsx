@@ -75,7 +75,6 @@ const Group = () => {
     console.log(tripForEach);
     // calculates the progress
     const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
-
     return (
       <GroupItem
         key={friend.id}
@@ -100,12 +99,9 @@ const Group = () => {
             trip.description,
             groupId
           );
-          setAnchorEl(null);
-        }}
+          setAnchorEl(null);}}
       >
-      <ListItemAvatar>
         <Avatar alt="avatar" src={friend.avatar} />
-      </ListItemAvatar>
         {friend.name}
       </ListItem>
     );
@@ -118,11 +114,13 @@ const Group = () => {
         <h1>{trip.trip_name}</h1>
         <h2>Date: {date}</h2>
         <h4>Only {daysRemaining(date)} days to go!</h4>
-      </div>
-      <div>
         <h1>Progress:</h1>
       </div>
-      <ul className="progress-bars">{groupFriendList}</ul>
+      
+      <ul className="progress-bars">
+        {groupFriendList}
+      </ul>
+
       <div id="add">
         <Fab
           size="large"
@@ -143,12 +141,9 @@ const Group = () => {
           <ListSubheader component="div" id="nested-list-subheader">
             Add a friend
           </ListSubheader>
-          {addGroupFriendsList}
+            {addGroupFriendsList}
           <ListItem onClick={handleClose}>
-            <ListItemAvatar>
-              <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>
-            </ListItemAvatar>
-            Cancel
+            <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>Cancel
           </ListItem>
         </List>
       </div>

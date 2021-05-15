@@ -1,12 +1,5 @@
 @import './helper_components/ColourPalette.scss';
 
-.group-progress {
-  display: flex;
-  align-items: center;
-  align-content: space-between;
-  width: 80%;
-}
-
 .group-title {
   display: flex;
   flex-direction: column;
@@ -22,9 +15,24 @@
   }
 }
 
-.progress-bars {
-  margin-left: 5%;
+.group-titles {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  width: 80%;
 }
+.image-and-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .avatar-img {
+    border-radius: 100px;
+  }
+ .bar {
+    margin: 50px;
+  }
+}
+
 
 #add {
   display: flex;
