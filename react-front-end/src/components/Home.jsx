@@ -3,6 +3,7 @@ import DataContext from "../helperfunctions/DataContext";
 import "./Home.scss";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
     data,
     setData,
     loadRemainingData,
+    remaining
   } = useContext(DataContext);
 
   console.log("render data", data);
@@ -59,7 +61,11 @@ const Home = () => {
       <br />
       <br />
       <br />
-      { !loading && !empty && <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>}
+      { (!loading && !empty) && (<div className="load-more" onClick={loadRemainingData}>
+        <h3>Load More Trips</h3>
+        <ExpandMoreIcon style={{ fontSize: 100, marginTop: 0}} />
+      </div>)}
+      {/* { !loading && !empty && <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>} */}
     </div>
   );
 };
