@@ -3,7 +3,7 @@ import TripItemList from "./User_tripItemList";
 import DataContext from "../helperfunctions/DataContext";
 import "./User.scss";
 
-const User = () => {
+const User = (props) => {
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const { getUserTrips, getUserById } = useContext(DataContext);
 
