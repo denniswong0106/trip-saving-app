@@ -1,3 +1,4 @@
+import { requirePropFactory } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./ScrollToTopButton.scss";
 
@@ -29,8 +30,9 @@ const ScrollToTopButton = () => {
   return (
     <div className="scroll-to-top-button">
       {isVisible && 
-        <div onClick={scrollToTop}>
-          <img className="scroll-to-top-button--scroll-img" src='https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/piggyAssets/16transparent.png?raw=true' alt='Go to top'/>
+        <div className="scroll-to-top-button--container" onClick={scrollToTop}>
+          <img className="scroll-to-top-button--arrow-img" src={require('../../pics/loadingGifs/dark-up-arrow.gif')} alt='up-arrow'/>
+          <img className="scroll-to-top-button--scroll-img" src={require('../../pics/piggyAssets/16transparent.png')} alt='Go-to-top'/>
           <h3>Go to top</h3>
         </div>}
     </div>
