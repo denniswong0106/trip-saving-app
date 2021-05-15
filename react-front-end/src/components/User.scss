@@ -41,7 +41,8 @@ body {
       background-color: $secondary-sand;
       border-radius: 5px;
       border: 0 0 5px 5px solid;
-      box-shadow: 5px 5px 5px lightgrey;
+      // box-shadow: 5px 5px 5px lightgrey;
+      box-shadow: 5px 5px 5px rgb(196, 195, 195);
       padding: 10px;
       padding-right: 20px;
       padding-left: 20px;
@@ -108,6 +109,7 @@ body {
         width: 2em;
         height: 2em;
         margin-left: 1em;
+        border-radius: 20px;
       }
     }
   }

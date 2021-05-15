@@ -64,7 +64,7 @@ const UserPopup = (props) => {
         <div>
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
           <DialogContent>
-            <Canvas />
+            <Canvas trip_id={props.trip_id}/>
           </DialogContent>
           <div className="dialog-actions">
             <Button id="start" onClick={props.handleClose}>

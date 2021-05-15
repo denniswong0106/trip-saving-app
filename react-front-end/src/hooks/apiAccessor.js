@@ -35,7 +35,7 @@ export default function apiAccessor() {
 
   // ---------------------------------------
   // Axios Constants
-  const firstUrl = `https://rest.gadventures.com/tour_dossiers/?name=${search}`;
+  const firstUrl = `https://rest.gadventures.com/tour_dossiers/?name__like=${search}*`;
   const secondUrl = `https://rest.gadventures.com/tour_dossiers/`;
   const header = {
     headers: {
@@ -49,6 +49,7 @@ export default function apiAccessor() {
   const loadRemainingData = () => {
     console.log("load remaining data being called...");
     setData((prev) => {
+      setRemaining([]);
       console.log([...prev, ...remaining]);
       return [...prev, ...remaining];
     });

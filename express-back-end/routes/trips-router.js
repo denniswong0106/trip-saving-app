@@ -38,10 +38,26 @@ router.put("/", (req, res) => {
 
 // PATCH /api/trips/groupid
 router.post("/groupid", (req, res) => {
-  console.log("Calling update to trip_savings...", req.body);
+  console.log("Calling update to groupid in trip_savings...", req.body);
   knex("trip_savings")
     .where("id", "=", req.body.id)
     .update({ group_id: req.body.group_id })
+    .returning("*")
+    .then((result) => {
+      console.log("Successful Update", result);
+      return res.json(result);
+    });
+  return res.data;
+});
+// PUT /api/trips
+router.post("/", (req, res) => {
+  console.log(
+    "Calling update to savings and daily prize in trip_savings...",
+    req.body
+  );
+  knex("trip_savings")
+    .where("id", "=", req.body.id)
+    .update({ savings: req.body.savings, daily_prize: req.body.daily_prize })
     .returning("*")
     .then((result) => {
       console.log("Successful Update", result);

@@ -3,6 +3,7 @@ import DataContext from "../helperfunctions/DataContext";
 import "./Home.scss";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
     data,
     setData,
     loadRemainingData,
+    remaining
   } = useContext(DataContext);
 
   console.log("render data", data);
@@ -39,27 +41,31 @@ const Home = () => {
           <img
             className="trips-container--loading-img"
             alt="empty"
-            src="https://i.pinimg.com/originals/d1/2a/65/d12a65ae002f97284e19a819a0a4f0b0.gif"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/cry-piggy.gif?raw=true"
           />
         ) : (
           <></>
         )}
-        {empty ? <h2>No Results Found.</h2> : <></>}
+        {empty ? <h2>No results found.</h2> : <></>}
         {loading ? (
           <img
             className="trips-container--loading-img"
             alt="loading"
-            src="https://cdn.dribbble.com/users/826577/screenshots/3146242/piggy-walking-with-umbrella-whitebg-3.gif"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/load-piggy.gif?raw=true"
           />
         ) : (
           <TripItemList trips={data} />
         )}
-        {loading ? <h2>Loading Results . . .</h2> : <></>}
+        {loading ? <h2>Searching for trips . . .</h2> : <></>}
       </div>
       <br />
       <br />
       <br />
-      <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>
+      { (!loading && !empty) && (<div className="load-more" onClick={loadRemainingData}>
+        <h3>Load More Trips</h3>
+        <ExpandMoreIcon style={{ fontSize: 100, marginTop: 0}} />
+      </div>)}
+      {/* { !loading && !empty && <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>} */}
     </div>
   );
 };

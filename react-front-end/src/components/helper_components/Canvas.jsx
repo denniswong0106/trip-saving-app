@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
 import explosion from '../../helperfunctions/explosion';
+import DataContext from "../../helperfunctions/DataContext";
 
 function Canvas(props) {
     const canvasRef = useRef(null);
@@ -14,11 +15,14 @@ function Canvas(props) {
 
     let sfxShake = document.createElement("audio");
     sfxShake.src = require('../../pics/change-drop3.mp3')
+    
+    // used use context to use surpriseMechanic
+    const { surpriseMechanic } = useContext(DataContext);
 
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        explosion(canvas, context, bag, sfx, sfx2, sfxShake);
+        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic, props.trip_id);
     }, [explosion])
 
     return (

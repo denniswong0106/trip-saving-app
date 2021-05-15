@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import List from "@material-ui/core/Menu";
+import ListItem from "@material-ui/core/MenuItem";
+import Avatar from '@material-ui/core/Avatar';
 import Fade from "@material-ui/core/Fade";
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import {
   calculatePercentage,
   daysRemaining,
@@ -85,7 +89,7 @@ const Group = () => {
   // maps through an array of "friends" not yet added to the group
   const addGroupFriendsList = allUsers.map((friend) => {
     return (
-      <MenuItem
+      <ListItem
         key={friend.id}
         onClick={() => {
           handleAdd(
@@ -99,8 +103,11 @@ const Group = () => {
           setAnchorEl(null);
         }}
       >
+      <ListItemAvatar>
+        <Avatar alt="avatar" src={friend.avatar} />
+      </ListItemAvatar>
         {friend.name}
-      </MenuItem>
+      </ListItem>
     );
   });
 
@@ -125,7 +132,7 @@ const Group = () => {
         >
           <AddIcon fontSize="large" />
         </Fab>
-        <Menu
+        <List
           id="fade-menu"
           anchorEl={anchorEl}
           keepMounted
@@ -133,9 +140,17 @@ const Group = () => {
           onClose={handleClose}
           TransitionComponent={Fade}
         >
+          <ListSubheader component="div" id="nested-list-subheader">
+            Add a friend
+          </ListSubheader>
           {addGroupFriendsList}
-          <MenuItem onClick={handleClose}>Cancel</MenuItem>
-        </Menu>
+          <ListItem onClick={handleClose}>
+            <ListItemAvatar>
+              <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>
+            </ListItemAvatar>
+            Cancel
+          </ListItem>
+        </List>
       </div>
     </>
   );

@@ -1,0 +1,59 @@
+@import './helper_components/ColourPalette.scss';
+
+.main-box {
+  margin: auto;
+  margin-top: 50px;
+  margin-right: 50px;
+  width: 400px;
+  height: 300px;
+  background-color: whitesmoke;
+  border-radius: 7.5%;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgb(196, 195, 195);
+
+  .bg-pattern-top {
+    height: 150px;
+    background-image: url("../pics/planes_back.jpg");
+    background-repeat: repeat-x;
+    max-width: 100%;
+    height: 150px;
+    width: auto;
+    max-width: 400px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .image {
+    margin: auto;
+    border: solid whitesmoke 5px;
+    border-radius: 50px;
+    position: relative;
+    bottom: 75px;
+  }
+
+  .bg-pattern-bottom {
+    position: fixed;
+    left: 700px;
+    top: 350px;
+    z-index: -2;
+  }
+
+  .name {
+    margin: auto;
+    position: relative;
+    bottom: 65px;
+
+    .age {
+      color: hsl(0, 0%, 59%);
+      font-weight: 200;
+    }
+  }
+  
+  .location {
+    margin: auto;
+    position: relative;
+    bottom: 55px;
+    color: hsl(0, 0%, 59%);
+    font-weight: 200;
+  }
+  
+}

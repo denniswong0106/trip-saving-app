@@ -4,34 +4,80 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
 
-img {
-    max-width: 100%;
-    max-height:50%;
-}
-
-.text-and-price {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    .text-and-heading {
-        text-align: left;
-        max-width: 450px;
-        max-height: 450px;
-        margin: 50px;
+    img {
+        max-width: 100%;
+        max-height:50%;
     }
-    .price-card {
-        background-color: blueviolet;
-        min-width:300px;
-        min-height:300px;
-        margin: 100px;
-        text-align: center;
-        // align-items: flex-end;
-        // justify-content: center;
-        Button {
-            background-color: green;
+
+    .text-and-price {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .text-and-heading {
+            text-align: left;
+            max-width: 450px;
+            max-height: 450px;
+            margin: 50px;
+        }
+        
+        .card-and-map {
+            display: flex;
+            flex-direction: column;
+            .price-card {
+                display: flex;
+                flex-direction: column;
+                background-color: $secondary-sand;
+                background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+                min-width:300px;
+                min-height:300px;
+                margin: 100px;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+
+                .price-and-PDF {
+                    display: flex;
+                    flex-direction: row;
+                    margin: 0;
+                    justify-content: space-between;
+
+                    .dolla {
+                        display: flex;
+                        margin: 0;
+                        margin-top: 6px;
+                    }
+                    h2 {
+                        font-size: 45px;
+                        margin: 0;
+                    }
+                    h3 {
+                        display: flex;
+                        margin: 0;
+                        margin-top: 30px;
+                        margin-left: 5px;
+                    }
+                    .PDF {
+                        display: flex;
+                        align-items: flex-end;
+                    }
+                }
+
+                Button {
+                    margin-top: 40px;
+                    background-color: $primaryDark-teal;
+                    color: white;
+                    width: 70%;
+                    
+                }
+            }
+
+            .map {
+                min-width:400px;
+                min-height:400px;
+                margin: 50px;
+            }
         }
     }
 }
@@ -40,6 +86,7 @@ img {
     text-align: center;
     margin: 50px;
     #start {
-        background-color: green;
+        background-color: $primaryDark-teal;
+        color: white;
     }
 }

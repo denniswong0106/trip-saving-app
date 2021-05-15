@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   calculatePercentage,
   calculateDaysRemaining,
@@ -121,6 +121,7 @@ const TripItem = (props) => {
           setMode={setMode}
           open={open}
           handleClose={handleClose}
+          trip_id={props.id}
         />
       </article>
       <br />

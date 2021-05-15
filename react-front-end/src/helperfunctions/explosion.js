@@ -1,6 +1,6 @@
 // taken from https://codepen.io/deanwagman/pen/EjLBdQ and modified
 
-function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
+function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake, surpriseMechanic, trip_id) {
     // Set Canvas to be window size
     canvas.width = 500;//window.innerWidth;
     canvas.height = 500;//window.innerHeight;
@@ -18,7 +18,7 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
     let showBag = true;
     let shake = false;
     ctx.font = "30px Arial";
-    let text = "$4.50 added to your account!";
+    let text = `$0 added to your account!`;
 
     // Colors
     var colorPalette = {
@@ -165,7 +165,8 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake) {
             (x < ((canvas.width/2)-imageSize/2)+imageSize) &&
             (y > (canvas.height/2)-imageSize/2) &&
             (y < ((canvas.height/2)-imageSize/2)+imageSize) &&
-            (showBag === true)
+            (showBag === true) &&
+            (text = `$${surpriseMechanic(trip_id)} added to your account!`)
         ) {
             // Sfx on opening
             sfx2Boom.play();
