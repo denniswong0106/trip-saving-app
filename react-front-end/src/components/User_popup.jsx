@@ -49,6 +49,7 @@ const UserPopup = (props) => {
           <DialogContent>
             <img
               id="loading-gif"
+              className="loaded-img"
               src={require("../pics/piggyAssets/12.jpg")}
               alt="piggybank"
             />
