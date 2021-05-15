@@ -49,6 +49,7 @@ export default function apiAccessor() {
   const loadRemainingData = () => {
     console.log("load remaining data being called...");
     setData((prev) => {
+      setRemaining([]);
       console.log([...prev, ...remaining]);
       return [...prev, ...remaining];
     });
