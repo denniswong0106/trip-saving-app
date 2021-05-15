@@ -9,6 +9,7 @@ import dataAccessor from "./hooks/dataAccessor";
 import apiAccessor from "./hooks/apiAccessor";
 import NavBar from "./components/NavBar";
 import ScrollToTop from "./components/helper_components/ScrollToTop";
+import ScrollToTopButton from "./components/helper_components/ScrollToTopButton";
 import "./App.scss";
 
 export default function Application(props) {
@@ -68,6 +69,7 @@ export default function Application(props) {
           <Route path="/group" component={Group} />
           <Route path="/" component={Home} />
         </Switch>
+        <ScrollToTopButton />
       </Router>
     </DataContext.Provider>
   );
