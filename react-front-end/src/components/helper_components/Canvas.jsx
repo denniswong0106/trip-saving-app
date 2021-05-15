@@ -25,7 +25,7 @@ function Canvas(props) {
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
-        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic);
+        explosion(canvas, context, bag, sfx, sfx2, sfxShake, surpriseMechanic, props.trip_id);
     }, [explosion])
 
     return (

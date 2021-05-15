@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
   console.log("Calling update to trip_savings...", req.body);
   knex("trip_savings")
     .where("id", "=", req.body.id)
-    .update({ savings: req.body.savings, daily_prize: req.body.daily_prize }) // update this !
+    .update({ savings: req.body.savings, daily_prize: req.body.daily_prize })
     .returning("*")
     .then((result) => {
       console.log("Successful Update", result);

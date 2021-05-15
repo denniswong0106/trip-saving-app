@@ -20,7 +20,7 @@ const UserPopup = (props) => {
     // setTimeout to mimic saving for 3 seconds:
     setTimeout(function () {
       props.setMode("TRANSITION");
-    }, 500); // remember to change back to 3000
+    }, 3000);
   };
   return (
     <Dialog
@@ -64,7 +64,7 @@ const UserPopup = (props) => {
         <div>
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
           <DialogContent>
-            <Canvas />
+            <Canvas trip_id={props.trip_id}/>
           </DialogContent>
           <div className="dialog-actions">
             <Button id="start" onClick={props.handleClose}>

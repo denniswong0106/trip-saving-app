@@ -140,8 +140,9 @@ export default function dataAccessor() {
     setState((prev) => ({...prev, trips: [ ...prev.trips, newTrip ]}));
   }
 
-  const surpriseMechanic = (groupId, id) => {
-    const userTrip = getTripByGroupAndUserId(groupId , id)
+  const surpriseMechanic = (tripId) => {
+    const userTripArr = state.trips.filter( trip => trip.id === tripId );
+    const userTrip = userTripArr[0];
     const randomizedPrize = Number(userTrip.daily_drip * 2) + Number((Math.random() * 5).toFixed(2));
     const userSavings = Number(userTrip.savings) + Number(randomizedPrize);
 
@@ -156,9 +157,9 @@ export default function dataAccessor() {
     // userTrip = {...userTrip, savings: userSavings, daily_prize: false };
 
     console.log("surpriseMechanic function called----------------------------------------------");
+    console.log("userTrip in surpriseMechanic: ", userTrip);
 
-    setState((prev) => ({...prev, trips: [... prev.trips, prev.trips.map( trip =>  trip.id === userTrip.id ? { savings: userSavings, daily_prize: false } : trip)] }));
-
+    setState((prev) => ({...prev, trips: prev.trips.map( trip =>  trip.id === userTrip.id ? { ...trip, savings: userSavings, daily_prize: false } : trip) }));
 
     return randomizedPrize;
   }
