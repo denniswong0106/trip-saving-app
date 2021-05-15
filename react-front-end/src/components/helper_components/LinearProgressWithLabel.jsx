@@ -4,6 +4,7 @@ import { makeStyles, withStyles, lighten } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import "../Group.scss";
 
 // function LinearProgressWithLabel(props) {
 //   return (

@@ -25,26 +25,40 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  // align-content: center;
+  // justify-content: center;
   .avatar-img {
     border-radius: 100px;
   }
-  .whole-bar {
+  .name-and-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    h4 {
+      margin: 0;
+      margin-left: 50px;
+    }
+    .whole-bar {
     margin: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    .bar {
-        height: 20px;
-        border-radius: 7px;
-        margin: 10px;
-        margin-left: 0;
-        background-color: $secondary-teal;
-        color: black;
-      }
-      .barText {
-        font-weight: bolder;
-        color: black;
-      }
+    margin-top: 0;
+      .bar {
+          height: 20px;
+          border-radius: 7px;
+          margin: 10px;
+          margin-left: 0;
+          background-color: $secondary-teal;
+          color: black;
+          margin-top: 0;
+        }
+        .barText {
+          font-weight: bolder;
+          color: black;
+        }
+    }
   }
 }
 
