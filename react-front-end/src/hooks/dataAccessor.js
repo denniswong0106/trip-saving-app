@@ -52,7 +52,6 @@ export default function dataAccessor() {
     const allUsers = state.users;
 
     const usersNotIncluded = allUsers.filter((users) => {
-      console.log(!mappedIds.includes(users.id));
       return !mappedIds.includes(users.id);
     });
 
@@ -101,27 +100,35 @@ export default function dataAccessor() {
   };
 
   // adds users to the group list
-  const handleAdd = (id, tripName, price, locationName, description) => {
+  const handleAdd = (
+    id,
+    tripName,
+    price,
+    locationName,
+    description,
+    groupId
+  ) => {
     console.log("price: ", price);
     console.log("tripName: ", tripName);
     console.log("id: ", id);
     console.log("locationName: ", locationName);
     console.log("description: ", description);
+    console.log("group id", groupId);
 
-    const newTrip = {
-      id: 999,
-      savings: 0,
-      daily_drip: 0,
-      trip_name: tripName,
-      cost: price,
-      location: locationName,
-      description: description,
-      daily_prize: true,
-      booking_date: "2021-11-20",
-      stretch_goal: 0,
-      user_id: id,
-      group_id: 1,
-    };
+    // const newTrip = {
+    //   id: 999,
+    //   savings: 0,
+    //   daily_drip: 0,
+    //   trip_name: tripName,
+    //   cost: price,
+    //   location: locationName,
+    //   description: description,
+    //   daily_prize: true,
+    //   booking_date: "2021-11-20",
+    //   stretch_goal: 0,
+    //   user_id: id,
+    //   group_id: groupId,
+    // };
 
     axios
       .put(`/api/trips`, {
@@ -135,13 +142,13 @@ export default function dataAccessor() {
         booking_date: "2021-11-20",
         stretch_goal: 0,
         user_id: id,
-        group_id: 1,
+        group_id: groupId,
       })
       .then((result) => {
-        console.log("from the front in Group.jsx, res.data: ", result);
+        console.log("from the front in Group.jsx, res.data: ", result.data[0]);
+        const newTrip = result.data[0];
+        setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
       });
-
-    setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
   };
 
   return {

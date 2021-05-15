@@ -71,15 +71,13 @@ const TripItem = (props) => {
     if (props.groupId) {
       return (
         <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
-          <h2>{props.trip_name}!</h2>
+          <Button>View Group</Button>
         </Link>
       );
     }
     return (
       <>
-        <div onClick={handleClickOpenGroup}>
-          <h2 onClick={handleClickOpenGroup}>{props.trip_name}!</h2>
-        </div>
+        <Button onClick={handleClickOpenGroup}>Create group</Button>
         <AddForm
           trip_name={props.trip_name}
           openGroup={openGroup}
@@ -87,7 +85,6 @@ const TripItem = (props) => {
           id={props.id}
           user_id={props.user_id}
         />
-        ;
       </>
     );
   };
@@ -95,6 +92,7 @@ const TripItem = (props) => {
   return (
     <>
       <article className="single-trip">
+        <h2>{props.trip_name}!</h2>
         {doesTripHaveGroupId()}
         <h3>{bookingDate}</h3>
         <div className="header-container">
