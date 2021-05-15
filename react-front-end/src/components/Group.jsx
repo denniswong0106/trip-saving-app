@@ -25,6 +25,7 @@ const Group = () => {
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
     handleAdd,
+    pics
   } = useContext(DataContext);
 
   const history = useHistory();
@@ -110,13 +111,17 @@ const Group = () => {
   console.log(date);
   return (
     <>
-      <div className="group-title">
-        <h1>{trip.trip_name}</h1>
-        <h2>Date: {date}</h2>
-        <h4>Only {daysRemaining(date)} days to go!</h4>
-        <h1>Progress:</h1>
+      <div className="top-container">
+        <img src={require("../pics/trip_img.jpg")} alt="pic" />
+        <h1 className="group-title" >{trip.trip_name}</h1>
+        <div className="group-details">
+          <h5>{trip.location}</h5>
+          <h4>Date: {date}</h4>
+          <h5>Only {daysRemaining(date)} days remaining</h5>
+        </div>
       </div>
-      
+
+      <h1>Progress:</h1>
       <ul className="progress-bars">
         {groupFriendList}
       </ul>
@@ -147,6 +152,7 @@ const Group = () => {
           </ListItem>
         </List>
       </div>
+      <br/><br/><br/>
     </>
   );
 };

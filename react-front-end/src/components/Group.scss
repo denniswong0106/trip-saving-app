@@ -1,32 +1,40 @@
 @import './helper_components/ColourPalette.scss';
 
-.group-title {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5%;
-  h1 {
-    margin-bottom: 0;
+.top-container {
+  position: relative;
+  img {
+    width: 75%;
   }
-  h2 {
-    margin-bottom: 0;
+  .group-title {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: black;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    opacity: 0.7;
   }
-  p {
-    margin: 0;
+
+  .group-details {
+    display: flex;
+    flex-direction: row;
+    margin: 5%;
+    position: absolute;
+    top: 18px;
+    left: 16px;
+    background-color: white;
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
-.group-titles {
-  display: flex;
-  align-items: center;
-  align-content: space-between;
-  width: 80%;
-}
 .image-and-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  // align-content: center;
-  // justify-content: center;
   .avatar-img {
     border-radius: 100px;
   }

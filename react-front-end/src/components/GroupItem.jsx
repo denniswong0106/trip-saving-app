@@ -1,6 +1,5 @@
 import React from 'react';
 import LinearProgressWithLabel from "./helper_components/LinearProgressWithLabel";
-import "./Group.scss";
 
 const GroupItem = (props) => {
   return (
