@@ -112,7 +112,7 @@ const Group = () => {
   return (
     <>
       <div className="top-container">
-        <img src={require("../pics/trip_img.jpg")} alt="pic" />
+        <img src={trip.pics} alt="pic" />
         <div className="text">
           <h1 className="group-title" >{trip.trip_name}</h1>
           <div className="group-details">
