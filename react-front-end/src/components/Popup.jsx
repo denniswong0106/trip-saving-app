@@ -126,7 +126,7 @@ const Popup = (props) => {
           }}
           fullWidth
         />
-        <h3>Iceland ${props.price}</h3>
+        <h3>{props.locationName} ${props.price}</h3>
         <IOSSlider
           defaultValue={props.value}
           valueLabelDisplay="auto"
