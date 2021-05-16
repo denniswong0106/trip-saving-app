@@ -1,22 +1,10 @@
 import React, { useContext } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import TextField from "@material-ui/core/TextField";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DataContext from "../helperfunctions/DataContext";
 import { useHistory } from "react-router-dom";
-
-import {
-  calculateDaysRemaining,
-  expectedDate,
-} from "../helperfunctions/calculateFunctions";
+import { Button, TextField, Dialog, DialogContent, DialogTitle, Slider, withStyles } from "@material-ui/core/";
+import DataContext from "../helperfunctions/DataContext";
+import { calculateDaysRemaining, expectedDate, } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
 import axios from "axios";
-
-//slider
-import Slider from "@material-ui/core/Slider";
-import { withStyles } from "@material-ui/core/styles";
 
 const Popup = (props) => {
   const [tripName, setTripName] = React.useState("");
@@ -34,23 +22,6 @@ const Popup = (props) => {
 
   //database put call
   function bookTrip() {
-    //db call
-    console.log("-----Booked!------");
-    //ID
-    //savings 0
-    console.log("drip", props.value);
-    console.log("trip name", tripName);
-    console.log("cost", props.price);
-    console.log("location", props.locationName);
-    console.log("description", props.description);
-    //daily prize true
-    //booking date today
-    //streatch goal
-    //user ID
-    //group ID
-    console.log("trip ID", props.tripId);
-
-    //axios call with term
     axios
       .put(`/api/trips`, {
         savings: 0,
@@ -68,8 +39,6 @@ const Popup = (props) => {
         PDF: props.PDF
       })
       .then((result) => {
-        console.log("from the front, res.data: ", result.data);
-
         const newTrip = result.data[0];
         setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
         history.push(`/user/1`);
@@ -103,12 +72,6 @@ const Popup = (props) => {
       backgroundColor: "currentColor",
     },
   })(Slider);
-
-  //for days estimate
-  function days(drip, goal) {
-    const daysTotal = goal / drip;
-    return daysTotal.toFixed(1);
-  }
 
   return (
     <Dialog
