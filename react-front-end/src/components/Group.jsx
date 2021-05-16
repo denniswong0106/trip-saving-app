@@ -17,6 +17,7 @@ import {
 } from "../helperfunctions/calculateFunctions";
 import { useParams, useHistory, Link } from "react-router-dom";
 import "./Group.scss";
+import { requirePropFactory } from "@material-ui/core";
 
 const Group = () => {
   // import DataContext functions
@@ -112,12 +113,12 @@ const Group = () => {
   return (
     <>
       <div className="top-container">
-        <img src={trip.pics} alt="pic" />
+        <img src={require("../pics/trip_img.jpg")} alt="pic" />
         <div className="text">
           <h1 className="group-title" >{trip.trip_name}</h1>
           <div className="group-details">
             <h5>{trip.location}{'\u00A0'}</h5>
-            <h5 id="date">•{'\u00A0'}Date: {date}{'\u00A0'}•</h5>
+            <h5 id="date">• Date: {date} •</h5>
             <h5>{'\u00A0'}{daysRemaining(date)} days remaining</h5>
           </div>
         </div>
