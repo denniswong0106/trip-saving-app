@@ -37,6 +37,7 @@ body {
 
   .trips-info {
     width: fill;
+   
     .single-trip {
       background-color: $secondary-sand;
       border-radius: 5px;
@@ -48,6 +49,10 @@ body {
       padding-left: 20px;
       background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
       margin-bottom: 25px;
+      &:hover {
+        cursor: pointer;
+        box-shadow: 5px 5px 5px rgb(95, 95, 95);
+      }
 
       .single-trip-title {
         display: flex;

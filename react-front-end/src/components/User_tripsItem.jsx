@@ -6,11 +6,13 @@ import Button from "@material-ui/core/Button";
 import UserPopup from "./User_popup.jsx";
 import { Link } from "react-router-dom";
 import AddForm from "./User_addForm";
+import { useHistory } from "react-router-dom";
 
 const TripItem = (props) => {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState("");
   const [openGroup, setOpenGroup] = useState(false);
+  const history = useHistory();
 
   // ------------------------------------------
   // Click functions that handle the opening and closing of popups
@@ -82,11 +84,20 @@ const TripItem = (props) => {
     );
   };
 
+  function divClick() {
+    if (props.groupId) {
+    history.push(`/user/${props.user_id}/group/${props.groupId}/`);
+    } else {
+      handleClickOpenGroup()
+    }
+    console.log("you clicked the card");
+  }
+
   return (
-      <article className="single-trip">
+      <article className="single-trip" onClick={() => divClick()} >
         <div className="single-trip-title">
           <h2>{props.trip_name}</h2>
-          {doesTripHaveGroupId()}
+          {/* {doesTripHaveGroupId()} */}
         </div>
         <h3>{bookingDate}</h3>
         <div className="header-container">
