@@ -22,6 +22,8 @@ const Home = () => {
     remaining
   } = useContext(DataContext);
 
+  console.log("remaining", remaining);
+
   console.log("render data", data);
 
   return (
@@ -62,7 +64,7 @@ const Home = () => {
       <br />
       <br />
       <br />
-      { (!loading && !empty) && (<div className="load-more" onClick={loadRemainingData}>
+      { (!loading && !empty) && (remaining.length === 0 ? <></> : <div className="load-more" onClick={loadRemainingData}>
         <h3>Load More Trips</h3>
         <img className="trips-container--load-more-arrow" alt="load more arrow" src={require('../pics/gifAssets/dark-down-arrow.gif')} />
         {/* <ExpandMoreIcon style={{ fontSize: 100, marginTop: 0}} /> */}
