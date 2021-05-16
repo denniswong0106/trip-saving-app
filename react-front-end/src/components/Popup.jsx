@@ -61,6 +61,8 @@ const Popup = (props) => {
         stretch_goal: 0,
         user_id: 1,
         group_id: null,
+        pic: props.pic,
+        PDF: props.PDF
       })
       .then((result) => {
         console.log("from the front, res.data: ", result.data);

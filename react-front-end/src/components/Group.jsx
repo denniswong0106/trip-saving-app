@@ -17,6 +17,7 @@ import {
 } from "../helperfunctions/calculateFunctions";
 import { useParams, useHistory, Link } from "react-router-dom";
 import "./Group.scss";
+import { requirePropFactory } from "@material-ui/core";
 
 const Group = () => {
   // import DataContext functions
@@ -25,6 +26,8 @@ const Group = () => {
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
     handleAdd,
+    pic,
+    PDF
   } = useContext(DataContext);
 
   const history = useHistory();
@@ -75,7 +78,6 @@ const Group = () => {
     console.log(tripForEach);
     // calculates the progress
     const progress = calculatePercentage(tripForEach.savings, tripForEach.cost);
-
     return (
       <GroupItem
         key={friend.id}
@@ -98,14 +100,13 @@ const Group = () => {
             trip.cost,
             trip.location,
             trip.description,
-            groupId
+            groupId,
+            trip.pic,
+            trip.PDF
           );
-          setAnchorEl(null);
-        }}
+          setAnchorEl(null);}}
       >
-      <ListItemAvatar>
         <Avatar alt="avatar" src={friend.avatar} />
-      </ListItemAvatar>
         {friend.name}
       </ListItem>
     );
@@ -114,44 +115,52 @@ const Group = () => {
   console.log(date);
   return (
     <>
-      <div className="group-title">
-        <h1>{trip.trip_name}</h1>
-        <h2>Date: {date}</h2>
-        <h4>Only {daysRemaining(date)} days to go!</h4>
+      <div className="top-container">
+        <img src={trip.pic} alt="pic" />
+        {/* <img src={require("../pics/trip_img.jpg")} alt="pic" /> */}
+        <div className="text">
+          <h1 className="group-title" >{trip.trip_name}</h1>
+          <div className="group-details">
+            <h5>{trip.location}{'\u00A0'}</h5>
+            <h5 id="date">• Date: {date} •</h5>
+            <h5>{'\u00A0'}{daysRemaining(date)} days remaining</h5>
+          </div>
+        </div>
       </div>
-      <div>
+      <div className="bottom-container">
         <h1>Progress:</h1>
+        <ul className="progress-bars">
+          {groupFriendList}
+        </ul>
+
+        <div id="add">
+          <Fab
+            size="large"
+            color="primary"
+            aria-label="add"
+            onClick={handleClick}
+          >
+            <AddIcon fontSize="large" />
+          </Fab>
+          <List
+            id="fade-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+          >
+            <ListSubheader component="div" id="nested-list-subheader">
+              Add a friend
+            </ListSubheader>
+              {addGroupFriendsList}
+            <ListItem onClick={handleClose}>
+              <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>Cancel
+            </ListItem>
+          </List>
+        </div>
       </div>
-      <ul className="progress-bars">{groupFriendList}</ul>
-      <div id="add">
-        <Fab
-          size="large"
-          color="primary"
-          aria-label="add"
-          onClick={handleClick}
-        >
-          <AddIcon fontSize="large" />
-        </Fab>
-        <List
-          id="fade-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Fade}
-        >
-          <ListSubheader component="div" id="nested-list-subheader">
-            Add a friend
-          </ListSubheader>
-          {addGroupFriendsList}
-          <ListItem onClick={handleClose}>
-            <ListItemAvatar>
-              <CancelOutlinedIcon color="secondary" style={{ fontSize: 35 }}/>
-            </ListItemAvatar>
-            Cancel
-          </ListItem>
-        </List>
-      </div>
+      <br/><br/><br/>
     </>
   );
 };

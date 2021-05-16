@@ -18,6 +18,8 @@ exports.seed = function (knex) {
           stretch_goal: 200,
           user_id: 1,
           group_id: 1,
+          pic: "https://en.wikipedia.org/wiki/Borneo#/media/File:MountKinabalu_from_CheSuiKhorPagodaKK-01.jpg",
+          PDF: "https://en.wikipedia.org/wiki/PDF"
         },
         {
           id: 2,
@@ -32,6 +34,8 @@ exports.seed = function (knex) {
           stretch_goal: 500,
           user_id: 2,
           group_id: 1,
+          pic: "https://en.wikipedia.org/wiki/Borneo#/media/File:MountKinabalu_from_CheSuiKhorPagodaKK-01.jpg",
+          PDF: "https://en.wikipedia.org/wiki/PDF"
         },
         {
           id: 3,
@@ -47,6 +51,8 @@ exports.seed = function (knex) {
           stretch_goal: 0,
           user_id: 3,
           group_id: 1,
+          pic: "https://en.wikipedia.org/wiki/Borneo#/media/File:MountKinabalu_from_CheSuiKhorPagodaKK-01.jpg",
+          PDF: "https://en.wikipedia.org/wiki/PDF"
         },
         {
           id: 4,
@@ -62,6 +68,8 @@ exports.seed = function (knex) {
           stretch_goal: 500,
           user_id: 1,
           group_id: 2,
+          pic: "https://en.wikipedia.org/wiki/Borneo#/media/File:MountKinabalu_from_CheSuiKhorPagodaKK-01.jpg",
+          PDF: "https://en.wikipedia.org/wiki/PDF"
         },
         {
           id: 5,
@@ -77,6 +85,8 @@ exports.seed = function (knex) {
           stretch_goal: 500,
           user_id: 1,
           group_id: 3,
+          pic: "https://en.wikipedia.org/wiki/Borneo#/media/File:MountKinabalu_from_CheSuiKhorPagodaKK-01.jpg",
+          PDF: "https://en.wikipedia.org/wiki/PDF"
         },
       ]);
     });

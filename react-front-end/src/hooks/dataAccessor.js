@@ -106,7 +106,9 @@ export default function dataAccessor() {
     price,
     locationName,
     description,
-    groupId
+    groupId,
+    pic,
+    PDF
   ) => {
     console.log("price: ", price);
     console.log("tripName: ", tripName);
@@ -143,6 +145,8 @@ export default function dataAccessor() {
         stretch_goal: 0,
         user_id: id,
         group_id: groupId,
+        pic: pic, 
+        PDF: PDF
       })
       .then((result) => {
         console.log("from the front in Group.jsx, res.data: ", result.data[0]);
