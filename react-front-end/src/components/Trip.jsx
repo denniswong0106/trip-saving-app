@@ -4,13 +4,12 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Popup from "./Popup.jsx";
 import DataContext from "../helperfunctions/DataContext";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
   const params = useParams();
-  const history = useHistory();
 
   // filter the overall state with the param id
   // to give the correct trip object;
@@ -88,7 +87,6 @@ const Trip = () => {
   };
   const handleClose = () => {
     setOpen(false);
-    history.push(`/user/1`);
   };
 
   //updates state from slider

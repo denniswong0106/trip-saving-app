@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DataContext from "../helperfunctions/DataContext";
+import { useHistory } from "react-router-dom";
 
 import {
   calculateDaysRemaining,
@@ -20,6 +21,8 @@ import { withStyles } from "@material-ui/core/styles";
 const Popup = (props) => {
   const [tripName, setTripName] = React.useState("");
   const { setState } = useContext(DataContext);
+  const history = useHistory();
+
   //where the tick marks are on the slider
   const marks = [
     { value: 0, label: "0" },
@@ -69,7 +72,7 @@ const Popup = (props) => {
 
         const newTrip = result.data[0];
         setState((prev) => ({ ...prev, trips: [...prev.trips, newTrip] }));
-        //redirect
+        history.push(`/user/1`);
         props.handleClose();
       });
   }
