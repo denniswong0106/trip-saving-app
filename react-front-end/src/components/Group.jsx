@@ -18,6 +18,7 @@ import {
 import { useParams, useHistory, Link } from "react-router-dom";
 import "./Group.scss";
 import { requirePropFactory } from "@material-ui/core";
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Group = () => {
   // import DataContext functions
@@ -125,6 +126,10 @@ const Group = () => {
             <h5 id="date">• Date: {date} •</h5>
             <h5>{'\u00A0'}{daysRemaining(date)} days remaining</h5>
           </div>
+        </div>
+        <div className="PDF">
+          <a href={PDF}>Trip details</a>
+          <PictureAsPdfIcon/>
         </div>
       </div>
       <div className="bottom-container">
