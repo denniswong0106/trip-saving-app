@@ -29,9 +29,10 @@ export default function Application(props) {
 
   const {
     data,
+    empty,
     search,
     loading,
-    empty,
+    remaining,
     setData,
     setSearch,
     loadRemainingData,
@@ -45,6 +46,7 @@ export default function Application(props) {
         empty,
         search,
         loading,
+        remaining,
         setData,
         setState,
         setSearch,
