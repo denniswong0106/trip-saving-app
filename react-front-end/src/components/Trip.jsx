@@ -25,7 +25,7 @@ const Trip = () => {
   if (!trip) {
     console.log("No trip object found:");
     info = {
-      pics:
+      pic:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png",
     };
   } else {
@@ -37,7 +37,7 @@ const Trip = () => {
       price: trip.advertised_departures[1]
         ? parseInt(`${trip.advertised_departures[1].amount}`)
         : "Price currently unavailable",
-      pics: trip.images[2].image_href,
+      pic: trip.images[2].image_href,
       map: trip.images[0].image_href,
       PDF: trip.site_links[3].href,
       //most common details
@@ -67,7 +67,7 @@ const Trip = () => {
           description,
           tripId,
           price,
-          pics,
+          pic,
           map,
           PDF,
           accommodation,
@@ -99,7 +99,7 @@ const Trip = () => {
   return (
     <div>
       <div className="all">
-        <img src={pics} alt="pic" />
+        <img src={pic} alt="pic" />
         <div className="text-and-price">
           <div className="text-and-heading">
             <h4>{locationName}</h4>
@@ -149,6 +149,8 @@ const Trip = () => {
         value={value}
         open={open}
         handleClose={handleClose}
+        pic={pic}
+        PDF={PDF}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-
+//new entries for group display
 exports.up = function(knex) {
     return knex.schema.alterTable("trip_savings", (table) => {
         table.string("pic").notNullable();
