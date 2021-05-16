@@ -128,7 +128,7 @@ const Group = () => {
           </div>
         </div>
         <div className="PDF">
-          <a href={PDF}>Trip details</a>
+          <a href={trip.PDF}>Trip details</a>
           <PictureAsPdfIcon/>
         </div>
       </div>

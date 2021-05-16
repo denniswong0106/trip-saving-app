@@ -128,10 +128,10 @@ const Trip = () => {
                 <h2>{price}</h2>
                 <h3>CAD</h3>
               </div>
-                <div className="PDF">
-                  <a href={PDF}>Trip details</a>
-                  <PictureAsPdfIcon/>
-                </div>
+              <div className="PDF">
+                <a href={PDF}>Trip details</a>
+                <PictureAsPdfIcon/>
+              </div>
               <Button size="medium" onClick={handleClickOpen}>
                 Book now
               </Button>
