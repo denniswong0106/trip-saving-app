@@ -1,9 +1,5 @@
-import React, { useState, useContext } from "react";
-import {
-  calculatePercentage,
-  calculateDaysRemaining,
-  expectedDate,
-} from "../helperfunctions/calculateFunctions";
+import React, { useState } from "react";
+import { calculatePercentage, calculateDaysRemaining, expectedDate } from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
@@ -60,10 +56,7 @@ const TripItem = (props) => {
         Double my Drip!
       </Button>
     ) : (
-      <div></div>
-      // <Button variant="contained" className="disabled" color="grey">
-      //   Already claimed
-      // </Button>
+      <></>
     );
   };
 
@@ -90,10 +83,9 @@ const TripItem = (props) => {
   };
 
   return (
-    <>
       <article className="single-trip">
         <div className="single-trip-title">
-          <h2>{props.trip_name}!</h2>
+          <h2>{props.trip_name}</h2>
           {doesTripHaveGroupId()}
         </div>
         <h3>{bookingDate}</h3>
@@ -103,11 +95,9 @@ const TripItem = (props) => {
             <FriendsIcon group={props.group} />
             {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
           </div>
-          <div>{dailyPrizeRecieved(props.daily_prize)}</div>
+          {dailyPrizeRecieved(props.daily_prize)}
         </div>
-        <div>
           <LinearWithValueLabel value={progress} />
-        </div>
         <div className="footer-container">
           <b>
             ${props.savings} of ${props.cost} goal!
@@ -124,9 +114,6 @@ const TripItem = (props) => {
           trip_id={props.id}
         />
       </article>
-      <br />
-      <br />
-    </>
   );
 };
 

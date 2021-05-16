@@ -1,24 +1,15 @@
 import React, { useContext, useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
-import Fab from "@material-ui/core/Fab";
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import { Fab, Avatar, Fade, ListSubheader } from "@material-ui/core/";
 import List from "@material-ui/core/Menu";
 import ListItem from "@material-ui/core/MenuItem";
-import Avatar from '@material-ui/core/Avatar';
-import Fade from "@material-ui/core/Fade";
 import GroupItem from "./GroupItem";
 import DataContext from "../helperfunctions/DataContext";
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
-import {
-  calculatePercentage,
-  daysRemaining,
-  currentDay,
-} from "../helperfunctions/calculateFunctions";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { calculatePercentage, daysRemaining } from "../helperfunctions/calculateFunctions";
+import { useParams, useHistory } from "react-router-dom";
 import "./Group.scss";
-import { requirePropFactory } from "@material-ui/core";
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Group = () => {
   // import DataContext functions
@@ -27,8 +18,6 @@ const Group = () => {
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
     handleAdd,
-    pic,
-    PDF
   } = useContext(DataContext);
 
   const history = useHistory();
@@ -116,9 +105,8 @@ const Group = () => {
   console.log(date);
   return (
     <>
-      <div className="top-container">
+      <container className="top-container">
         <img src={trip.pic} alt="pic" />
-        {/* <img src={require("../pics/trip_img.jpg")} alt="pic" /> */}
         <div className="text">
           <h1 className="group-title" >{trip.trip_name}</h1>
           <div className="group-details">
@@ -131,7 +119,7 @@ const Group = () => {
           <a href={trip.PDF}>Trip details</a>
           <PictureAsPdfIcon/>
         </div>
-      </div>
+      </container>
       <div className="bottom-container">
         <h1>Progress:</h1>
         <ul className="progress-bars">
