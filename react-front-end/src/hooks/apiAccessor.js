@@ -157,6 +157,7 @@ export default function apiAccessor() {
     empty,
     search,
     loading,
+    remaining,
     setData,
     setSearch,
     setRemaining,

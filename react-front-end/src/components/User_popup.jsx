@@ -20,7 +20,7 @@ const UserPopup = (props) => {
     // setTimeout to mimic saving for 3 seconds:
     setTimeout(function () {
       props.setMode("TRANSITION");
-    }, 3000);
+    }, 1500);
   };
   return (
     <Dialog
@@ -51,6 +51,7 @@ const UserPopup = (props) => {
           <DialogContent>
             <img
               id="loading-gif"
+              className="loaded-img"
               src={require("../pics/piggyAssets/12.jpg")}
               alt="piggybank"
             />

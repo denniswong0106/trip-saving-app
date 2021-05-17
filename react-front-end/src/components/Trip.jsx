@@ -4,13 +4,12 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Popup from "./Popup.jsx";
 import DataContext from "../helperfunctions/DataContext";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Trip = () => {
   const { search, setSearch, data, setData } = useContext(DataContext);
   const params = useParams();
-  const history = useHistory();
 
   // filter the overall state with the param id
   // to give the correct trip object;
@@ -25,7 +24,7 @@ const Trip = () => {
   if (!trip) {
     console.log("No trip object found:");
     info = {
-      pics:
+      pic:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png",
     };
   } else {
@@ -37,7 +36,7 @@ const Trip = () => {
       price: trip.advertised_departures[1]
         ? parseInt(`${trip.advertised_departures[1].amount}`)
         : "Price currently unavailable",
-      pics: trip.images[2].image_href,
+      pic: trip.images[2].image_href,
       map: trip.images[0].image_href,
       PDF: trip.site_links[3].href,
       //most common details
@@ -67,7 +66,7 @@ const Trip = () => {
           description,
           tripId,
           price,
-          pics,
+          pic,
           map,
           PDF,
           accommodation,
@@ -88,7 +87,6 @@ const Trip = () => {
   };
   const handleClose = () => {
     setOpen(false);
-    history.push(`/user/1`);
   };
 
   //updates state from slider
@@ -99,7 +97,7 @@ const Trip = () => {
   return (
     <div>
       <div className="all">
-        <img src={pics} alt="pic" />
+        <img src={pic} alt="pic" />
         <div className="text-and-price">
           <div className="text-and-heading">
             <h4>{locationName}</h4>
@@ -128,10 +126,10 @@ const Trip = () => {
                 <h2>{price}</h2>
                 <h3>CAD</h3>
               </div>
-                <div className="PDF">
-                  <a href={PDF}>Trip details</a>
-                  <PictureAsPdfIcon/>
-                </div>
+              <div className="PDF">
+                <a href={PDF}>Trip details</a>
+                <PictureAsPdfIcon/>
+              </div>
               <Button size="medium" onClick={handleClickOpen}>
                 Book now
               </Button>
@@ -149,6 +147,8 @@ const Trip = () => {
         value={value}
         open={open}
         handleClose={handleClose}
+        pic={pic}
+        PDF={PDF}
       />
     </div>
   );

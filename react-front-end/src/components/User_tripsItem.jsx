@@ -1,20 +1,18 @@
-import React, { useState, useContext } from "react";
-import {
-  calculatePercentage,
-  calculateDaysRemaining,
-  expectedDate,
-} from "../helperfunctions/calculateFunctions";
+import React, { useState } from "react";
+import { calculatePercentage, calculateDaysRemaining, expectedDate } from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
 import UserPopup from "./User_popup.jsx";
 import { Link } from "react-router-dom";
 import AddForm from "./User_addForm";
+import { useHistory } from "react-router-dom";
 
 const TripItem = (props) => {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState("");
   const [openGroup, setOpenGroup] = useState(false);
+  const history = useHistory();
 
   // ------------------------------------------
   // Click functions that handle the opening and closing of popups
@@ -60,19 +58,17 @@ const TripItem = (props) => {
         Double my Drip!
       </Button>
     ) : (
-      <div></div>
-      // <Button variant="contained" className="disabled" color="grey">
-      //   Already claimed
-      // </Button>
+      <></>
     );
   };
 
   const doesTripHaveGroupId = () => {
     if (props.groupId) {
-      return (
-        <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
-          <Button>View Group</Button>
-        </Link>
+      return ( 
+        <></>
+        // <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
+        //   <Button>View Group</Button>
+        // </Link>
       );
     }
     return (
@@ -89,25 +85,30 @@ const TripItem = (props) => {
     );
   };
 
+  function divClick() {
+    if (props.groupId) {
+      history.push(`/user/${props.user_id}/group/${props.groupId}/`);
+    }
+    console.log("you clicked the card");
+  }
+
   return (
-    <>
-      <article className="single-trip">
+      <article className="single-trip" onClick={() => divClick()} >
         <div className="single-trip-title">
-          <h2>{props.trip_name}!</h2>
+          <h2>{props.trip_name}</h2>
           {doesTripHaveGroupId()}
         </div>
         <h3>{bookingDate}</h3>
         <div className="header-container">
           <div className="header-location">
             <h4>{props.location}</h4>
+            {handleClickOpenGroup}
             <FriendsIcon group={props.group} />
             {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
           </div>
-          <div>{dailyPrizeRecieved(props.daily_prize)}</div>
+          {dailyPrizeRecieved(props.daily_prize)}
         </div>
-        <div>
           <LinearWithValueLabel value={progress} />
-        </div>
         <div className="footer-container">
           <b>
             ${props.savings} of ${props.cost} goal!
@@ -124,9 +125,6 @@ const TripItem = (props) => {
           trip_id={props.id}
         />
       </article>
-      <br />
-      <br />
-    </>
   );
 };
 

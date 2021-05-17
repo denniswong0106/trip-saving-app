@@ -8,6 +8,8 @@ import DataContext from "./helperfunctions/DataContext";
 import dataAccessor from "./hooks/dataAccessor";
 import apiAccessor from "./hooks/apiAccessor";
 import NavBar from "./components/NavBar";
+import ScrollToTop from "./components/helper_components/ScrollToTop";
+import ScrollToTopButton from "./components/helper_components/ScrollToTopButton";
 import "./App.scss";
 
 export default function Application(props) {
@@ -27,9 +29,10 @@ export default function Application(props) {
 
   const {
     data,
+    empty,
     search,
     loading,
-    empty,
+    remaining,
     setData,
     setSearch,
     loadRemainingData,
@@ -43,6 +46,7 @@ export default function Application(props) {
         empty,
         search,
         loading,
+        remaining,
         setData,
         setState,
         setSearch,
@@ -58,6 +62,7 @@ export default function Application(props) {
       }}
     >
       <Router>
+        <ScrollToTop />
         <NavBar />
         <Switch>
           <Route path="/user/:user_id/group/:group_id" component={Group} />
@@ -66,6 +71,7 @@ export default function Application(props) {
           <Route path="/group" component={Group} />
           <Route path="/" component={Home} />
         </Switch>
+        <ScrollToTopButton />
       </Router>
     </DataContext.Provider>
   );

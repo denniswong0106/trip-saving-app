@@ -4,6 +4,7 @@ import "./Home.scss";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { requirePropFactory } from "@material-ui/core";
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -20,6 +21,8 @@ const Home = () => {
     loadRemainingData,
     remaining
   } = useContext(DataContext);
+
+  console.log("remaining", remaining);
 
   console.log("render data", data);
 
@@ -41,7 +44,7 @@ const Home = () => {
           <img
             className="trips-container--loading-img"
             alt="empty"
-            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/cry-piggy.gif?raw=true"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/gifAssets/cry-piggy.gif?raw=true"
           />
         ) : (
           <></>
@@ -51,7 +54,7 @@ const Home = () => {
           <img
             className="trips-container--loading-img"
             alt="loading"
-            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/loadingGifs/load-piggy.gif?raw=true"
+            src="https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/gifAssets/load-piggy.gif?raw=true"
           />
         ) : (
           <TripItemList trips={data} />
@@ -61,9 +64,10 @@ const Home = () => {
       <br />
       <br />
       <br />
-      { (!loading && !empty) && (<div className="load-more" onClick={loadRemainingData}>
+      { (!loading && !empty) && (remaining.length === 0 ? <></> : <div className="load-more" onClick={loadRemainingData}>
         <h3>Load More Trips</h3>
-        <ExpandMoreIcon style={{ fontSize: 100, marginTop: 0}} />
+        <img className="trips-container--load-more-arrow" alt="load more arrow" src={require('../pics/gifAssets/dark-down-arrow.gif')} />
+        {/* <ExpandMoreIcon style={{ fontSize: 100, marginTop: 0}} /> */}
       </div>)}
       {/* { !loading && !empty && <button onClick={loadRemainingData}>TEST LOAD MORE DATA</button>} */}
     </div>
