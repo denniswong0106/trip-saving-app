@@ -26,6 +26,7 @@ const UserPopup = (props) => {
     <Dialog
       open={props.open}
       onClose={props.handleClose}
+      onClick={(event => event.stopPropagation())}
       aria-labelledby="form-dialog-title"
     >
       {props.mode === "SAVING" && (
@@ -55,7 +56,7 @@ const UserPopup = (props) => {
             />
           </DialogContent>
           <div className="dialog-actions">
-            <Button id="start" onClick={() => props.setMode("LOOTPRIZE")}>
+            <Button id="start" onClick={() => {props.setMode("LOOTPRIZE");}}>
               Click Here to For Your Chance to Win!
             </Button>
           </div>
