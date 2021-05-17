@@ -23,7 +23,7 @@ const User = (props) => {
         <br />
         <br />
         <br />
-        <h1>Trips</h1>
+        <h1>My Trips</h1>
         <br />
         <TripItemList trips={trips} />
       </div>
