@@ -12,7 +12,7 @@ const UserPopup = (props) => {
   const { setState } = useContext(DataContext);
 
   // make axios call to create group, then make axios call to update trip
-  const createGroup = () => {
+  const createGroup = (event) => {
     console.log("groupName", groupName);
     const groupId = [];
 
@@ -45,7 +45,7 @@ const UserPopup = (props) => {
           console.log("filterTrip", filterTrip);
           return { ...prev, trips: [...filterTrip, result.data[0]] };
         });
-        props.handleCloseGroup();
+        props.handleCloseGroup(event);
 
         history.push(`/user/${props.user_id}/group/${groupId[0].id}`);
       });
@@ -70,7 +70,7 @@ const UserPopup = (props) => {
             fullWidth
           />
         </DialogContent>
-        <Button id="set-group" onClick={createGroup}>
+        <Button id="set-group" onClick={(event) => createGroup(event)}>
           Set Group!
         </Button>
         <Button id="cancel" onClick={props.handleCloseGroup}>
