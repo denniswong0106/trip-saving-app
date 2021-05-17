@@ -19,9 +19,18 @@ const UserPopup = (props) => {
   const mimicAddSavings = () => {
     // setTimeout to mimic saving for 3 seconds:
     setTimeout(function () {
-      props.setMode("TRANSITION");
-    }, 1500);
+      toggle();
+      // props.setMode("TRANSITION");
+    }, 4000);
   };
+
+  function toggle() {
+    document.getElementById("loading-gif").className = "hidden";
+    document.getElementById("loaded-img").className = "show";
+    document.getElementById("message-savings").className = "hidden";
+    document.getElementById("message-successful").className = "show";
+  }
+
   return (
     <Dialog
       width="300"
@@ -34,18 +43,36 @@ const UserPopup = (props) => {
         <div>
           {mimicAddSavings()}
           <DialogTitle id="form-dialog-title">
-            Adding to your savings...
+            <h2 id="message-savings" className="show">
+              Adding to your savings...
+            </h2>
+            <h2 id="message-successful" className="hidden">
+              Successfully Added!
+            </h2>
           </DialogTitle>
-          <DialogContent>
+
+          <DialogContent className="loading">
             <img
-              className="loading-gif"
+              id="loading-gif"
+              className="show"
               src={require("../pics/piggybank.gif")}
               alt="piggybank"
             />
+            <img
+              id="loaded-img"
+              className="hidden"
+              src={require("../pics/piggyAssets/12.jpg")}
+              alt="piggybank"
+            />
           </DialogContent>
+          <div className="dialog-actions">
+            <Button id="start" onClick={() => props.setMode("LOOTPRIZE")}>
+              Click Here to For Your Chance to Win!
+            </Button>
+          </div>
         </div>
       )}
-      {props.mode === "TRANSITION" && (
+      {/* {props.mode === "TRANSITION" && (
         <div>
           <DialogTitle id="form-dialog-title">Succesfully Added!</DialogTitle>
           <DialogContent>
@@ -62,7 +89,7 @@ const UserPopup = (props) => {
             </Button>
           </div>
         </div>
-      )}
+      )} */}
       {props.mode === "LOOTPRIZE" && (
         <div>
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
