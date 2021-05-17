@@ -1,21 +1,10 @@
 import React, { useContext } from "react";
-import "./User.scss";
-import { useParams, useHistory, Link } from "react-router-dom";
-
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import TextField from "@material-ui/core/TextField";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Canvas from "./helper_components/Canvas";
-import explosion from "../helperfunctions/explosion";
-import {
-  calculateDaysRemaining,
-  expectedDate,
-} from "../helperfunctions/calculateFunctions";
-import "./Popup.scss";
+import { useHistory } from "react-router-dom";
+import { Button, Dialog, TextField, DialogContent, DialogTitle } from "@material-ui/core/";
 import axios from "axios";
 import DataContext from "../helperfunctions/DataContext";
+import "./User.scss";
+import "./Popup.scss";
 
 const UserPopup = (props) => {
   const [groupName, setGroupName] = React.useState("");
@@ -25,7 +14,6 @@ const UserPopup = (props) => {
   // make axios call to create group, then make axios call to update trip
   const createGroup = () => {
     console.log("groupName", groupName);
-
     const groupId = [];
 
     const groupCreate = axios
@@ -63,36 +51,32 @@ const UserPopup = (props) => {
       });
   };
   return (
-    <>
       <Dialog
         open={props.openGroup}
         onClose={props.handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <div>
-          <DialogTitle id="form-dialog-title">Create a group!</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="trip-name"
-              label="Trip name"
-              value={groupName}
-              onChange={(event) => {
-                setGroupName(event.target.value);
-              }}
-              fullWidth
-            />
-          </DialogContent>
-          <Button id="set-group" onClick={createGroup}>
-            Set Group!
-          </Button>
-          <Button id="cancel" onClick={props.handleCloseGroup}>
-            Cancel
-          </Button>
-        </div>
+        <DialogTitle id="form-dialog-title">Create a group!</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="trip-name"
+            label="Trip name"
+            value={groupName}
+            onChange={(event) => {
+              setGroupName(event.target.value);
+            }}
+            fullWidth
+          />
+        </DialogContent>
+        <Button id="set-group" onClick={createGroup}>
+          Set Group!
+        </Button>
+        <Button id="cancel" onClick={props.handleCloseGroup}>
+          Cancel
+        </Button>
       </Dialog>
-    </>
   );
 };
 
