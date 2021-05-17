@@ -64,10 +64,11 @@ const TripItem = (props) => {
 
   const doesTripHaveGroupId = () => {
     if (props.groupId) {
-      return (
-        <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
-          <Button>View Group</Button>
-        </Link>
+      return ( 
+        <></>
+        // <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
+        //   <Button>View Group</Button>
+        // </Link>
       );
     }
     return (
@@ -86,9 +87,7 @@ const TripItem = (props) => {
 
   function divClick() {
     if (props.groupId) {
-    history.push(`/user/${props.user_id}/group/${props.groupId}/`);
-    } else {
-      handleClickOpenGroup()
+      history.push(`/user/${props.user_id}/group/${props.groupId}/`);
     }
     console.log("you clicked the card");
   }
@@ -97,12 +96,13 @@ const TripItem = (props) => {
       <article className="single-trip" onClick={() => divClick()} >
         <div className="single-trip-title">
           <h2>{props.trip_name}</h2>
-          {/* {doesTripHaveGroupId()} */}
+          {doesTripHaveGroupId()}
         </div>
         <h3>{bookingDate}</h3>
         <div className="header-container">
           <div className="header-location">
             <h4>{props.location}</h4>
+            {handleClickOpenGroup}
             <FriendsIcon group={props.group} />
             {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
           </div>
