@@ -17,6 +17,7 @@ const Group = () => {
     getUsersIdByGroupId,
     getTripByGroupAndUserId,
     getUsersIdNotInGroup,
+    getGroupByGroupId,
     handleAdd,
   } = useContext(DataContext);
 
@@ -39,7 +40,8 @@ const Group = () => {
   };
   const friendsList = getUsersIdByGroupId(groupId);
   const allUsers = getUsersIdNotInGroup(groupId);
-
+  const group = getGroupByGroupId(groupId);
+  
   const date = new Date(trip.booking_date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -108,7 +110,7 @@ const Group = () => {
       <container className="top-container">
         <img src={trip.pic} alt="pic" />
         <div className="text">
-          <h1 className="group-title" >{trip.trip_name}</h1>
+          <h1 className="group-title" >{group? group.name : "group name unavailable"}</h1>
           <div className="group-details">
             <h5>{trip.location}{'\u00A0'}</h5>
             <h5 id="date">• Date: {date} •</h5>

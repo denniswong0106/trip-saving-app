@@ -21,18 +21,22 @@ const TripItem = (props) => {
   // ------------------------------------------
   // Click functions that handle the opening and closing of popups
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (event) => {
+    event.stopPropagation();
     setMode("SAVING");
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (event) => {
+    event.stopPropagation();
     setOpen(false);
   };
 
-  const handleClickOpenGroup = () => {
+  const handleClickOpenGroup = (event) => {
+    event.stopPropagation();
     setOpenGroup(true);
   };
-  const handleCloseGroup = () => {
+  const handleCloseGroup = (event) => {
+    event.stopPropagation();
     setOpenGroup(false);
   };
 
@@ -58,7 +62,11 @@ const TripItem = (props) => {
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={(event) => handleClickOpen(event)}
+      >
         Double my Drip!
       </Button>
     ) : (
@@ -77,11 +85,13 @@ const TripItem = (props) => {
     }
     return (
       <>
-        <Button onClick={handleClickOpenGroup}>Create group</Button>
+        <Button onClick={(event) => handleClickOpenGroup(event)}>
+          Create group
+        </Button>
         <AddForm
           trip_name={props.trip_name}
           openGroup={openGroup}
-          handleCloseGroup={handleCloseGroup}
+          handleCloseGroup={(event) => handleCloseGroup(event)}
           id={props.id}
           user_id={props.user_id}
         />
@@ -89,12 +99,12 @@ const TripItem = (props) => {
     );
   };
 
-  function divClick() {
+  const divClick = () => {
     if (props.groupId) {
       history.push(`/user/${props.user_id}/group/${props.groupId}/`);
     }
     console.log("you clicked the card");
-  }
+  };
 
   return (
     <article className="single-trip" onClick={() => divClick()}>
@@ -125,7 +135,7 @@ const TripItem = (props) => {
         mode={mode}
         setMode={setMode}
         open={open}
-        handleClose={handleClose}
+        handleClose={(event) => handleClose(event)}
         trip_id={props.id}
       />
     </article>

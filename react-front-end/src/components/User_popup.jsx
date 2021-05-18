@@ -26,11 +26,16 @@ const UserPopup = (props) => {
   };
 
   function toggle() {
-    document.getElementById("loading-gif").className = "hidden";
-    document.getElementById("loaded-img").className = "show";
-    document.getElementById("message-savings").className = "hidden";
-    document.getElementById("message-successful").className = "show";
-    document.getElementById("lootbox").className += " show";
+    document.getElementById("loading-gif") &&
+      (document.getElementById("loading-gif").className = "hidden");
+    document.getElementById("loaded-img") &&
+      (document.getElementById("loaded-img").className = "show");
+    document.getElementById("message-savings") &&
+      (document.getElementById("message-savings").className = "hidden");
+    document.getElementById("message-successful") &&
+      (document.getElementById("message-successful").className = "show");
+    document.getElementById("lootbox") &&
+      (document.getElementById("lootbox").className += " show");
   }
 
   return (
@@ -39,6 +44,7 @@ const UserPopup = (props) => {
       height="300"
       open={props.open}
       onClose={props.handleClose}
+      onClick={(event) => event.stopPropagation()}
       aria-labelledby="form-dialog-title"
     >
       {props.mode === "SAVING" && (
@@ -90,7 +96,7 @@ const UserPopup = (props) => {
             />
           </DialogContent>
           <div className="dialog-actions">
-            <Button id="start" onClick={() => props.setMode("LOOTPRIZE")}>
+            <Button id="start" onClick={() => {props.setMode("LOOTPRIZE");}}>
               Click Here to For Your Chance to Win!
             </Button>
           </div>
