@@ -110,7 +110,7 @@ const Group = () => {
       <container className="top-container">
         <img src={trip.pic} alt="pic" />
         <div className="text">
-          <h1 className="group-title" >{group? group.name : "group name unavaible"}</h1>
+          <h1 className="group-title" >{group? group.name : "group name unavailable"}</h1>
           <div className="group-details">
             <h5>{trip.location}{'\u00A0'}</h5>
             <h5 id="date">• Date: {date} •</h5>
