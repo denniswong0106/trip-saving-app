@@ -5,12 +5,14 @@ import TextField from "@material-ui/core/TextField";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Canvas from "./helper_components/Canvas";
+import Canvas2 from "./helper_components/Canvas2";
 import explosion from "../helperfunctions/explosion";
 import {
   calculateDaysRemaining,
   expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
+import "./Canvas2.scss";
 
 //slider
 import { withStyles } from "@material-ui/core/styles";
@@ -20,8 +22,7 @@ const UserPopup = (props) => {
     // setTimeout to mimic saving for 3 seconds:
     setTimeout(function () {
       toggle();
-      // props.setMode("TRANSITION");
-    }, 4000);
+    }, 2500);
   };
 
   function toggle() {
@@ -29,6 +30,7 @@ const UserPopup = (props) => {
     document.getElementById("loaded-img").className = "show";
     document.getElementById("message-savings").className = "hidden";
     document.getElementById("message-successful").className = "show";
+    document.getElementById("lootbox").className += " show";
   }
 
   return (
@@ -65,8 +67,12 @@ const UserPopup = (props) => {
               alt="piggybank"
             />
           </DialogContent>
-          <div className="dialog-actions">
-            <Button id="start" onClick={() => props.setMode("LOOTPRIZE")}>
+          <div id="lootbox" className="dialog-actions">
+            <Button
+              id="start"
+              className="open-loot-box"
+              onClick={() => props.setMode("LOOTPRIZE")}
+            >
               Click Here to For Your Chance to Win!
             </Button>
           </div>
@@ -94,7 +100,8 @@ const UserPopup = (props) => {
         <div>
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
           <DialogContent>
-            <Canvas trip_id={props.trip_id} />
+            {/* <img src={require("../pics/piggyAssets/12.jpg")} alt="piggybank" /> */}
+            <Canvas2 trip_id={props.trip_id} />
           </DialogContent>
           <div className="dialog-actions">
             <Button id="start" onClick={props.handleClose}>

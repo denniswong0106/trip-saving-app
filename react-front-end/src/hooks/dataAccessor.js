@@ -79,7 +79,7 @@ export default function dataAccessor() {
     return userTrips.map((trip) => {
       return {
         ...trip,
-        group: getUsersIdByGroupId(trip.id),
+        group: getUsersIdByGroupId(trip.group_id),
       };
     });
   };
@@ -145,8 +145,8 @@ export default function dataAccessor() {
         stretch_goal: 0,
         user_id: id,
         group_id: groupId,
-        pic: pic, 
-        PDF: PDF
+        pic: pic,
+        PDF: PDF,
       })
       .then((result) => {
         console.log("from the front in Group.jsx, res.data: ", result.data[0]);
@@ -160,8 +160,10 @@ export default function dataAccessor() {
     const userTripArr = state.trips.filter((trip) => trip.id === tripId);
     const userTrip = userTripArr[0];
     // randomizes and adds to savings
-    const randomizedPrize = Number(userTrip.daily_drip * 2) + Number((Math.random() * 5));
-    const userSavings = Number(userTrip.savings) + Number(randomizedPrize.toFixed(2));
+    const randomizedPrize =
+      Number(userTrip.daily_drip * 2) + Number(Math.random() * 5);
+    const userSavings =
+      Number(userTrip.savings) + Number(randomizedPrize.toFixed(2));
 
     // updates the trips savings and daily prize
     axios
@@ -183,10 +185,17 @@ export default function dataAccessor() {
       ),
     }));
 
-    setState((prev) => ({...prev, trips:  prev.trips.map( trip =>  trip.id === userTrip.id ? { ...trip, savings: userSavings, daily_prize: false } : trip)  }));
- 
+    setState((prev) => ({
+      ...prev,
+      trips: prev.trips.map((trip) =>
+        trip.id === userTrip.id
+          ? { ...trip, savings: userSavings, daily_prize: false }
+          : trip
+      ),
+    }));
+
     return randomizedPrize.toFixed(2);
-  }
+  };
 
   return {
     state,
