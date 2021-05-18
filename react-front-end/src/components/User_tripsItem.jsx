@@ -97,7 +97,7 @@ const TripItem = (props) => {
   }
 
   return (
-    <article className="single-trip" /*onClick={() => divClick()}*/>
+    <article className="single-trip" onClick={() => divClick()}>
       <div className="single-trip-title">
         <h2>{props.trip_name}</h2>
         {doesTripHaveGroupId()}

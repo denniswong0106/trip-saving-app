@@ -101,7 +101,7 @@ const UserPopup = (props) => {
           <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
           <DialogContent>
             {/* <img src={require("../pics/piggyAssets/12.jpg")} alt="piggybank" /> */}
-            <Canvas2 trip_id={props.trip_id} />
+            <Canvas trip_id={props.trip_id} />
           </DialogContent>
           <div className="dialog-actions">
             <Button id="start" onClick={props.handleClose}>
