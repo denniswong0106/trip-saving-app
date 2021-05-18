@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { calculatePercentage, calculateDaysRemaining, expectedDate } from "../helperfunctions/calculateFunctions";
+import {
+  calculatePercentage,
+  calculateDaysRemaining,
+  expectedDate,
+} from "../helperfunctions/calculateFunctions";
 import LinearWithValueLabel from "./helper_components/LinearProgressWithLabel";
 import FriendsIcon from "./FriendsIcon";
 import Button from "@material-ui/core/Button";
@@ -58,7 +62,11 @@ const TripItem = (props) => {
 
   const dailyPrizeRecieved = (prize) => {
     return prize ? (
-      <Button variant="contained" color="primary" onClick={(event) => handleClickOpen(event)}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={(event) => handleClickOpen(event)}
+      >
         Double my Drip!
       </Button>
     ) : (
@@ -68,7 +76,7 @@ const TripItem = (props) => {
 
   const doesTripHaveGroupId = () => {
     if (props.groupId) {
-      return ( 
+      return (
         <></>
         // <Link to={`/user/${props.user_id}/group/${props.groupId}/`}>
         //   <Button>View Group</Button>
@@ -77,7 +85,9 @@ const TripItem = (props) => {
     }
     return (
       <>
-        <Button onClick={(event) => handleClickOpenGroup(event)}>Create group</Button>
+        <Button onClick={(event) => handleClickOpenGroup(event)}>
+          Create group
+        </Button>
         <AddForm
           trip_name={props.trip_name}
           openGroup={openGroup}
@@ -94,41 +104,41 @@ const TripItem = (props) => {
       history.push(`/user/${props.user_id}/group/${props.groupId}/`);
     }
     console.log("you clicked the card");
-  }
+  };
 
   return (
-      <article className="single-trip" onClick={() => divClick()} >
-        <div className="single-trip-title">
-          <h2>{props.trip_name}</h2>
-          {doesTripHaveGroupId()}
+    <article className="single-trip" onClick={() => divClick()}>
+      <div className="single-trip-title">
+        <h2>{props.trip_name}</h2>
+        {doesTripHaveGroupId()}
+      </div>
+      <h3>{bookingDate}</h3>
+      <div className="header-container">
+        <div className="header-location">
+          <h4>{props.location}</h4>
+          {handleClickOpenGroup}
+          <FriendsIcon group={props.group} />
+          {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
         </div>
-        <h3>{bookingDate}</h3>
-        <div className="header-container">
-          <div className="header-location">
-            <h4>{props.location}</h4>
-            {handleClickOpenGroup}
-            <FriendsIcon group={props.group} />
-            {/* <h5>Daily Drip Amount: ${props.daily_drip}</h5> */}
-          </div>
-          {dailyPrizeRecieved(props.daily_prize)}
-        </div>
-          <LinearWithValueLabel value={progress} />
-        <div className="footer-container">
-          <b>
-            ${props.savings} of ${props.cost} goal!
-          </b>
-          {/* <div>{daysRemaining} days until you reach your goal!</div> */}
-          {finishDate}
-        </div>
-        <div className="trip-description">{props.description}</div>
-        <UserPopup
-          mode={mode}
-          setMode={setMode}
-          open={open}
-          handleClose={(event) => handleClose(event)}
-          trip_id={props.id}
-        />
-      </article>
+        {dailyPrizeRecieved(props.daily_prize)}
+      </div>
+      <LinearWithValueLabel value={progress} />
+      <div className="footer-container">
+        <b>
+          ${props.savings} of ${props.cost} goal!
+        </b>
+        {/* <div>{daysRemaining} days until you reach your goal!</div> */}
+        {finishDate}
+      </div>
+      <div className="trip-description">{props.description}</div>
+      <UserPopup
+        mode={mode}
+        setMode={setMode}
+        open={open}
+        handleClose={(event) => handleClose(event)}
+        trip_id={props.id}
+      />
+    </article>
   );
 };
 

@@ -1,13 +1,66 @@
-@import './helper_components/ColourPalette.scss';
+@import "./helper_components/ColourPalette.scss";
 
 .math {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.loaded-img {
-  height: 400px;
-  width: 300px;
-  margin-left: 45px;
+#lootbox {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+#lootbox.show {
+  opacity: 1;
+}
+
+#form-dialog-title {
+  #message-savings {
+    position: fixed;
+    opacity: 1;
+  }
+  #message-successful {
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+  #message-savings.hidden {
+    opacity: 0;
+  }
+  #message-successful.show {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.loading {
+  height: 420px;
+  width: 500px;
+  #loading-gif {
+    position: fixed;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 400px;
+    width: 400px;
+    margin-left: 45px;
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+  }
+  #loaded-img {
+    position: relative;
+    height: 400px;
+    width: 300px;
+    margin-left: 100px;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+  }
+}
+
+#loading-gif.hidden {
+  opacity: 0;
+}
+
+#loaded-img.show {
+  opacity: 1;
 }
