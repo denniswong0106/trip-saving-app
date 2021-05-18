@@ -5,7 +5,7 @@ import "./ScrollToTopButton.scss";
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scorlled upto given distance
+  // Show button when page is scrolled up to a given distance
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
