@@ -13,7 +13,7 @@ function explosion2(
 ) {
   // Set Canvas to be window size
   canvas.width = 500; //window.innerWidth;
-  canvas.height = 500; //window.innerHeight;
+  canvas.height = 600; //window.innerHeight;
 
   // Configuration, Play with these
   var config = {
@@ -155,12 +155,29 @@ function explosion2(
     );
   })();
 
+  drawBg2 = function (ctx, background) {
+    ctx.drawImage(background, x, y, canvas.width, canvas.height);
+  };
+
   // Our Frame function
+  // let y = canvas.height / 2 - imageSize / 2;
+  let y = 0;
+  let gravity = 0.3;
+  let gravitySpeed = 0;
   var frame = function () {
+    function stopMotion() {
+      let stopValue = canvas.height / 2 - imageSize / 2;
+      if (y > stopValue) {
+        y = stopValue;
+      }
+    }
     let x = canvas.width / 2 - imageSize / 2;
-    let y = canvas.height / 2 - imageSize / 2;
+    gravitySpeed += gravity;
+    y += gravitySpeed;
+    stopMotion();
     // Draw background first
-    // drawBg(ctx, colorPalette.bg);
+    drawBg2(ctx, background);
+    drawBg(ctx, colorPalette.bg);
     // Update Particle models to new position
     particles.map((p) => {
       return updateParticleModel(p);
