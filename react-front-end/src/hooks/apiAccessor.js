@@ -146,6 +146,8 @@ export default function apiAccessor() {
           console.log("creation of remaining trips", remainingTripData);
           setRemaining([...remainingTripData]);
         });
+      } else {
+        setRemaining([]);
       }
     });
   }, [search]);
