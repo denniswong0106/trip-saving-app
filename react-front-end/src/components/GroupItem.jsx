@@ -2,6 +2,7 @@ import React from 'react';
 import LinearProgressWithLabel from "./helper_components/LinearProgressWithLabel";
 
 const GroupItem = (props) => {
+  console.log("group props:", props)
   return (
     <>
     <div className="group-titles">

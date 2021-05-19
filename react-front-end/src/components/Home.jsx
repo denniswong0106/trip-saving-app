@@ -3,8 +3,6 @@ import DataContext from "../helperfunctions/DataContext";
 import "./Home.scss";
 import Searchbar from "./Searchbar";
 import TripItemList from "./Home_tripItemList";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { requirePropFactory } from "@material-ui/core";
 
 //Moved from App.js then props passed in
 const Home = () => {
@@ -12,12 +10,10 @@ const Home = () => {
 
   // uses useContext to grab the appropriate functions to use it instead of prop drilling
   const {
-    search,
     loading,
     empty,
     setSearch,
     data,
-    setData,
     loadRemainingData,
     remaining
   } = useContext(DataContext);

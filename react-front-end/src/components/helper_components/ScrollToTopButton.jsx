@@ -1,4 +1,3 @@
-import { requirePropFactory } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./ScrollToTopButton.scss";
 

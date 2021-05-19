@@ -107,7 +107,7 @@ const Group = () => {
   console.log(date);
   return (
     <>
-      <container className="top-container">
+      <div className="top-container">
         <img src={trip.pic} alt="pic" />
         <div className="text">
           <h1 className="group-title" >{group? group.name : "group name unavailable"}</h1>
@@ -121,7 +121,7 @@ const Group = () => {
           <a href={trip.PDF}>Trip details</a>
           <PictureAsPdfIcon/>
         </div>
-      </container>
+      </div>
       <div className="bottom-container">
         <h1>Progress:</h1>
         <ul className="progress-bars">
