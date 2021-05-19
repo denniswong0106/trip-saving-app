@@ -1,6 +1,6 @@
 // taken from https://codepen.io/deanwagman/pen/EjLBdQ and modified
 
-function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake, surpriseMechanic, trip_id) {
+function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake, surpriseMechanic, trip_id, horns) {
     // Set Canvas to be window size
     canvas.width = 500;//window.innerWidth;
     canvas.height = 500;//window.innerHeight;
@@ -169,8 +169,9 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake, surpriseMechan
             (text = `$${surpriseMechanic(trip_id)} added to your account!`)
         ) {
             // Sfx on opening
-            sfx2Boom.play();
+            // sfx2Boom.play();
             sfxBoom.play();
+            horns.play();
             showBag = false;
             cleanUpArray();
             initParticles(config.particleNumber, x, y);
