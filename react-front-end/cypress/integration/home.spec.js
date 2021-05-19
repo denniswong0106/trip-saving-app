@@ -1,4 +1,4 @@
-describe('Go to home page', () => {
+describe('Home page', () => {
   
   beforeEach(() => {
   
@@ -7,11 +7,11 @@ describe('Go to home page', () => {
   });
 
   it('should be able to show invalid searches', () => {
-    cy.wait(5000)
+    cy.wait(6000)
 
     cy.get('#standard-basic')
       .type("canda", {delay: 150})
-      .wait(3000)
+      .wait(4000)
       .type('{backspace}{backspace}{backspace}{backspace}{backspace}Ca', {delay: 350})
       .wait(6000)
       .type("na", {delay: 350})
@@ -20,22 +20,26 @@ describe('Go to home page', () => {
       .wait(5000)
   });
 
-  it('should be able to go to a trips page', () => {
+  it('should be able to load more trips', () => {
     cy.wait(5000)
 
-    cy.get('.trip-container')
-      .first()
+    cy.scrollTo('bottom', { duration: 2000 })
+      .wait(1000)
+      .get('.scroll-to-top-button--scroll-img')
       .click()
-      
+    
+    cy.scrollTo('bottom', { duration: 500 })
+      .wait(1000)
+      .get('.load-more')
+      .click()
+    
     cy.scrollTo('bottom', { duration: 2000 })
       .wait(1000)
       .get('.scroll-to-top-button--scroll-img')
       .click()
 
-    cy.get('[alt=trickle-logo]')
-      .wait(1000)
-      .click()
-    
+    cy.wait(2000)
+
   });
 
   it('should be able to search for Japan and visit a location', () => {
@@ -59,25 +63,24 @@ describe('Go to home page', () => {
       .click()
   });
 
-  it('should be able to load more trips', () => {
+  it('should be able to go to a trips page', () => {
+    cy.wait(5000)
 
-    cy.scrollTo('bottom', { duration: 2000 })
-      .wait(1000)
-      .get('.scroll-to-top-button--scroll-img')
+    cy.get('.trip-container')
+      .first()
       .click()
-    
-    cy.scrollTo('bottom', { duration: 500 })
-      .wait(1000)
-      .get('.load-more')
-      .click()
-    
+      
     cy.scrollTo('bottom', { duration: 2000 })
       .wait(1000)
       .get('.scroll-to-top-button--scroll-img')
       .click()
 
-    cy.wait(2000)
-
+    cy.get('[alt=trickle-logo]')
+      .wait(1000)
+      .click()
+    
   });
+
+ 
 
 });
