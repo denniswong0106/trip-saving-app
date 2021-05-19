@@ -1,8 +1,19 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, TextField, Dialog, DialogContent, DialogTitle, Slider, withStyles } from "@material-ui/core/";
+import {
+  Button,
+  TextField,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Slider,
+  withStyles,
+} from "@material-ui/core/";
 import DataContext from "../helperfunctions/DataContext";
-import { calculateDaysRemaining, expectedDate, } from "../helperfunctions/calculateFunctions";
+import {
+  calculateDaysRemaining,
+  expectedDate,
+} from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
 import axios from "axios";
 
@@ -20,6 +31,16 @@ const Popup = (props) => {
     { value: 10, label: "10" },
   ];
 
+  const createBookingDate = expectedDate(
+    new Date(),
+    calculateDaysRemaining(props.value, props.price)
+  );
+  // const createBookingDate = new Date(
+  //   expectedDate(new Date(), calculateDaysRemaining(props.value, props.price))
+  // );
+  const bookingDate = new Date(createBookingDate).toLocaleDateString("en-US");
+  console.log("bookingDate", bookingDate);
+
   //database put call
   function bookTrip() {
     axios
@@ -31,12 +52,12 @@ const Popup = (props) => {
         location: props.locationName,
         description: props.description,
         daily_prize: true,
-        booking_date: "2021-11-20",
+        booking_date: bookingDate,
         stretch_goal: 0,
         user_id: 1,
         group_id: null,
         pic: props.pic,
-        PDF: props.PDF
+        PDF: props.PDF,
       })
       .then((result) => {
         const newTrip = result.data[0];
@@ -92,7 +113,9 @@ const Popup = (props) => {
           }}
           fullWidth
         />
-        <h3>{props.locationName} ${props.price}</h3>
+        <h3>
+          {props.locationName} ${props.price}
+        </h3>
         <IOSSlider
           defaultValue={props.value}
           valueLabelDisplay="auto"
