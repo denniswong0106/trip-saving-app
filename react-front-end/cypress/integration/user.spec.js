@@ -1,4 +1,4 @@
-describe('Go to home page', () => {
+describe('Users page', () => {
 
   beforeEach(() => {
   
@@ -9,8 +9,7 @@ describe('Go to home page', () => {
   it('should be able to edit add friends in group', () => {
     cy.wait(2000)
 
-    cy.get('.single-trip')
-      .first()
+    cy.get('.single-trip').contains('Iceland Adventures')
       .click()
     
     cy.scrollTo('bottom', { duration: 2000 })
@@ -32,10 +31,10 @@ describe('Go to home page', () => {
   });
 
   it('should be able to double drip in users page', () => {
-    cy.wait(1000)
+    cy.wait(2000)
     
-    cy.get('.single-trip')
-      .first().contains('Double my Drip!')
+    cy.get('.single-trip').contains('Iceland Adventures')
+      .get('.MuiButton-label').contains('Double my Drip!')
       .click()
       .wait(2000)
 
