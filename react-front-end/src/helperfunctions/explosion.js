@@ -169,7 +169,7 @@ function explosion(canvas, ctx, bag, sfxBoom, sfx2Boom, sfxShake, surpriseMechan
             (text = `$${surpriseMechanic(trip_id)} added to your account!`)
         ) {
             // Sfx on opening
-            // sfx2Boom.play();
+            sfx2Boom.play();
             sfxBoom.play();
             horns.play();
             showBag = false;
