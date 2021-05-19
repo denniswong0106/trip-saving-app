@@ -6,7 +6,22 @@ describe('Go to home page', () => {
   
   });
 
+  it('should be able to show invalid searches', () => {
+    cy.wait(5000)
+
+    cy.get('#standard-basic')
+      .type("canda", {delay: 150})
+      .wait(3000)
+      .type('{backspace}{backspace}{backspace}{backspace}{backspace}Ca', {delay: 350})
+      .wait(6000)
+      .type("na", {delay: 350})
+      .wait(6000)
+      .type("da", {delay: 350})
+      .wait(5000)
+  });
+
   it('should be able to go to a trips page', () => {
+    cy.wait(5000)
 
     cy.get('.trip-container')
       .first()
@@ -51,7 +66,7 @@ describe('Go to home page', () => {
       .get('.scroll-to-top-button--scroll-img')
       .click()
     
-    cy.scrollTo('bottom', { duration: 2000 })
+    cy.scrollTo('bottom', { duration: 500 })
       .wait(1000)
       .get('.load-more')
       .click()
@@ -60,6 +75,8 @@ describe('Go to home page', () => {
       .wait(1000)
       .get('.scroll-to-top-button--scroll-img')
       .click()
+
+    cy.wait(2000)
 
   });
 
