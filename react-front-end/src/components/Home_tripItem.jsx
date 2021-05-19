@@ -1,6 +1,4 @@
-import React, { useState, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Trip from "./Trip";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 const TripItem = (props) => {

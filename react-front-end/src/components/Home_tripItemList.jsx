@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-
+import React from "react";
 import TripItem from "./Home_tripItem";
 
 const TripItemList = (props) => {
