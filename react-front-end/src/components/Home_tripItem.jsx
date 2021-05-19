@@ -11,7 +11,7 @@ const TripItem = (props) => {
             <h3>{props.name}</h3>
             <p>{props.description}</p>
           </div>
-          <img src={props.image} alt="waterfall" />
+          <img src={props.image} alt="postcard" />
         </div>
       </div>
   );
