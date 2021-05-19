@@ -122,9 +122,9 @@ const Trip = () => {
           <div className="card-and-map">
             <Card className="price-card">
               <div className="price-and-PDF">
-                <h3 className="dolla">$</h3>
-                <h2>{price}</h2>
-                <h3>CAD</h3>
+                {(price !== "Price currently unavailable") && <h3 className="dolla">$</h3>}
+                { (price !== "Price currently unavailable") ? <h2>{price}</h2> : <h4>{price}</h4>}
+                {(price !== "Price currently unavailable") && <h3>CAD</h3>}
               </div>
               <div className="PDF">
                 <a href={PDF}>Trip details</a>
