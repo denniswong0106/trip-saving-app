@@ -52,6 +52,9 @@
                         font-size: 45px;
                         margin: 0;
                     }
+                    h4 {
+                        font-size: 20px;
+                    }
                     h3 {
                         display: flex;
                         margin: 0;
@@ -91,7 +94,8 @@
 
 .dialog-actions {
     text-align: center;
-    margin: 50px;
+    margin: 75px;
+
     #start {
         background-color: $primaryDark-teal;
         color: white;

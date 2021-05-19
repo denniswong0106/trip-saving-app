@@ -1,6 +1,4 @@
-import React, { useState, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Trip from "./Trip";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 const TripItem = (props) => {
@@ -13,7 +11,7 @@ const TripItem = (props) => {
             <h3>{props.name}</h3>
             <p>{props.description}</p>
           </div>
-          <img src={props.image} alt="waterfall" />
+          <img src={props.image} alt="postcard" />
         </div>
       </div>
   );

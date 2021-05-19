@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Trip.scss";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Popup from "./Popup.jsx";
 import DataContext from "../helperfunctions/DataContext";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const Trip = () => {
-  const { search, setSearch, data, setData } = useContext(DataContext);
+  const { data } = useContext(DataContext);
   const params = useParams();
 
   // filter the overall state with the param id
@@ -122,9 +122,9 @@ const Trip = () => {
           <div className="card-and-map">
             <Card className="price-card">
               <div className="price-and-PDF">
-                <h3 className="dolla">$</h3>
-                <h2>{price}</h2>
-                <h3>CAD</h3>
+                {(price !== "Price currently unavailable") && <h3 className="dolla">$</h3>}
+                { (price !== "Price currently unavailable") ? <h2>{price}</h2> : <h4>{price}</h4>}
+                {(price !== "Price currently unavailable") && <h3>CAD</h3>}
               </div>
               <div className="PDF">
                 <a href={PDF}>Trip details</a>
