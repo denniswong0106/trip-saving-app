@@ -20,7 +20,7 @@ const NavBar = (props) => {
     <nav className="nav-bar">
       <div className="trickle-logo">
         <Link to="/">
-          <img src={require("../pics/piggyAssets/2transparent.png")} alt="pic" ></img>
+          <img src={require("../pics/piggyAssets/2transparent.png")} alt="trickle-logo" ></img>
         </Link>
         <p>Trickle Trip</p>
       </div>

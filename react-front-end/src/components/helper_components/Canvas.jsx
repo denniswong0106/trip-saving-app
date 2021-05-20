@@ -14,7 +14,7 @@ function Canvas(props) {
     sfx2.src = require('../../pics/explosion.mp3')
 
     let horns = document.createElement("audio");
-    sfx2.src = require('../../pics/horns.mp3')
+    sfx2.src = require('../../pics/horns2.mp3')
 
     let sfxShake = document.createElement("audio");
     sfxShake.src = require('../../pics/change-drop3.mp3')

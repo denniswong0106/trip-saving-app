@@ -174,7 +174,7 @@ export default function dataAccessor() {
     const userTrip = userTripArr[0];
     // randomizes and adds to savings
     const randomizedPrize =
-      Number(userTrip.daily_drip * 2) + Number(Math.random() * 5);
+      100; // Number(userTrip.daily_drip * 2) + Number(Math.random() * 5);
     const userSavings =
       Number(userTrip.savings) + Number(randomizedPrize.toFixed(2));
 
