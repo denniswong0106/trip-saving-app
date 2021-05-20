@@ -9,11 +9,12 @@ function explosion2(
   sfxShake,
   surpriseMechanic,
   trip_id,
-  background
+  background1,
+  background2
 ) {
   // Set Canvas to be window size
   canvas.width = 500; //window.innerWidth;
-  canvas.height = 600; //window.innerHeight;
+  canvas.height = 650; //window.innerHeight;
 
   // Configuration, Play with these
   var config = {
@@ -155,18 +156,18 @@ function explosion2(
     );
   })();
 
-  drawBg2 = function (ctx, background) {
-    ctx.drawImage(background, x, y, canvas.width, canvas.height);
+  let drawBg2 = function (imageSand, imageSky) {
+    ctx.drawImage(imageSand, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(imageSky, 0, 0, canvas.width, canvas.height);
   };
-
   // Our Frame function
   // let y = canvas.height / 2 - imageSize / 2;
   let y = 0;
-  let gravity = 0.3;
+  let gravity = 0.2;
   let gravitySpeed = 0;
   var frame = function () {
     function stopMotion() {
-      let stopValue = canvas.height / 2 - imageSize / 2;
+      let stopValue = 300;
       if (y > stopValue) {
         y = stopValue;
       }
@@ -176,8 +177,8 @@ function explosion2(
     y += gravitySpeed;
     stopMotion();
     // Draw background first
-    drawBg2(ctx, background);
-    drawBg(ctx, colorPalette.bg);
+    drawBg2(background1, background2);
+    // drawBg(ctx, colorPalette.bg);
     // Update Particle models to new position
     particles.map((p) => {
       return updateParticleModel(p);
@@ -194,8 +195,8 @@ function explosion2(
         x = x + Math.random() * 10;
         y = y + Math.random() * 10;
       }
-      ctx.drawImage(bag, x, y, imageSize, imageSize);
-      ctx.drawImage(bag, x, y, imageSize, imageSize);
+      ctx.drawImage(bag, x, y, imageSize, (imageSize * 3) / 4);
+      ctx.drawImage(bag, x, y, imageSize, (imageSize * 3) / 4);
     } else {
       // Draw text after opening
       ctx.fillStyle = "black";

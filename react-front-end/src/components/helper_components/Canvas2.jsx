@@ -16,8 +16,11 @@ function Canvas(props) {
   let sfxShake = document.createElement("audio");
   sfxShake.src = require("../../pics/change-drop3.mp3");
 
-  let background = document.createElement("img");
-  sfxShake.src = require("../../pics/change-drop3.mp3");
+  let background1 = document.createElement("img");
+  background1.src = require("../../pics/sandBottm.png");
+
+  let background2 = document.createElement("img");
+  background2.src = require("../../pics/skybeach.png");
 
   // used use context to use surpriseMechanic
   const { surpriseMechanic } = useContext(DataContext);
@@ -34,7 +37,8 @@ function Canvas(props) {
       sfxShake,
       surpriseMechanic,
       props.trip_id,
-      background
+      background1,
+      background2
     );
   }, [explosion2]);
 
