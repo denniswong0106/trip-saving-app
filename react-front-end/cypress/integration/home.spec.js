@@ -10,13 +10,13 @@ describe('Home page', () => {
     cy.wait(6000)
 
     cy.get('#standard-basic')
-      .type("canda", {delay: 150})
+      .type("canda", {delay: 450})
       .wait(4000)
-      .type('{backspace}{backspace}{backspace}{backspace}{backspace}Ca', {delay: 350})
+      .type('{backspace}{backspace}{backspace}{backspace}{backspace}Ca', {delay: 450})
       .wait(6000)
-      .type("na", {delay: 350})
+      .type("na", {delay: 450})
       .wait(6000)
-      .type("da", {delay: 350})
+      .type("da", {delay: 450})
       .wait(5000)
   });
 
@@ -46,7 +46,7 @@ describe('Home page', () => {
     cy.wait(4000)
 
     cy.get('#standard-basic')
-      .type("Jj{backspace}aon{backspace}{backspace}pan", {delay: 150});
+      .type("Jj{backspace}aon{backspace}{backspace}pan", {delay: 250});
 
     cy.wait(6000)
       .get('.trip-container')
@@ -81,6 +81,5 @@ describe('Home page', () => {
     
   });
 
- 
 
 });
