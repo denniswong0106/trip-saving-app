@@ -59,18 +59,14 @@ export default function dataAccessor() {
   };
 
   const getGroupByGroupId = (groupId) => {
-  
-    const groupArr = state.groups.filter(
-        (group) => group.id === groupId
-    );
-    
+    const groupArr = state.groups.filter((group) => group.id === groupId);
+
     const group = groupArr[0];
     if (group) {
       return group;
     }
-    
-  }
-  
+  };
+
   const getTripByGroupAndUserId = (groupId, userId) => {
     const tripsInWithGroupId = state.trips.filter(
       (trip) => trip.group_id === groupId
@@ -173,10 +169,9 @@ export default function dataAccessor() {
     const userTripArr = state.trips.filter((trip) => trip.id === tripId);
     const userTrip = userTripArr[0];
     // randomizes and adds to savings
-    const randomizedPrize =
-      100; // Number(userTrip.daily_drip * 2) + Number(Math.random() * 5);
+    const randomizedPrize = 100; // Number(userTrip.daily_drip * 2) + Number(Math.random() * 5);
     const userSavings =
-      Number(userTrip.savings) + Number(randomizedPrize.toFixed(2));
+      Number(userTrip.savings) + Number(randomizedPrize.toFixed(0)) + Number(5);
 
     // updates the trips savings and daily prize
     axios
@@ -207,7 +202,7 @@ export default function dataAccessor() {
       ),
     }));
 
-    return randomizedPrize.toFixed(2);
+    return randomizedPrize.toFixed(0);
   };
 
   return {

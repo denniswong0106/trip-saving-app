@@ -12,7 +12,6 @@ import {
   expectedDate,
 } from "../helperfunctions/calculateFunctions";
 import "./Popup.scss";
-import "./Canvas2.scss";
 
 //slider
 import { withStyles } from "@material-ui/core/styles";
@@ -55,7 +54,7 @@ const UserPopup = (props) => {
               Adding to your savings...
             </h2>
             <h2 id="message-successful" className="hidden">
-              Successfully Added!
+              Successfully Doubled your Drip!
             </h2>
           </DialogTitle>
 
@@ -103,10 +102,11 @@ const UserPopup = (props) => {
         </div>
       )} */}
       {props.mode === "LOOTPRIZE" && (
-        <div>
-          <DialogTitle id="form-dialog-title">Click the Chest!</DialogTitle>
+        <div id="lootprize-popup">
+          <DialogTitle id="form-dialog-title">
+            <h3 id="lootbag-title">Click the Lootbag for a chance to win!</h3>
+          </DialogTitle>
           <DialogContent>
-            {/* <img src={require("../pics/piggyAssets/12.jpg")} alt="piggybank" /> */}
             <Canvas trip_id={props.trip_id} />
           </DialogContent>
           <div className="dialog-actions">

@@ -5,7 +5,17 @@
   flex-direction: row;
   justify-content: space-between;
 }
+#lootbag-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
 
+#lootprize-popup .dialog-actions {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
 #lootbox {
   opacity: 0;
   transition: opacity 1s ease-in;
@@ -45,7 +55,7 @@
     width: 400px;
     margin-left: 45px;
     opacity: 1;
-    transition: opacity 1.5s ease-out;
+    transition: opacity 1s ease-out;
   }
   #loaded-img {
     position: relative;
@@ -53,7 +63,7 @@
     width: 300px;
     margin-left: 100px;
     opacity: 0;
-    transition: opacity 2s ease-in;
+    transition: opacity 1.5s ease-in;
   }
 }
 
