@@ -1,5 +1,7 @@
 # Trickle-Trip
 
+
+
 ## Running the projects
 
 You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
@@ -56,4 +58,7 @@ For debug see below:
 ### Debug
 
 To revert database to original:
-clear data using 1. , then run `npx knex migrate:rollback` to rollback to the original database. You can choose specifically which migration to rollback to by doing `knex migrate:down xxxx_migration_name.js` to move up a migration, do `knex migrate:up xxxx_migration_name.js`
+
+1. clear data using step 1. in "How to reset the database" 
+2. run `npx knex migrate:rollback` to rollback to the original database.
+3. You can choose specifically which migration to rollback to by doing `knex migrate:down xxxx_migration_name.js` to move up a migration, do `knex migrate:up xxxx_migration_name.js`
