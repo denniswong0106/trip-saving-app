@@ -2,6 +2,17 @@
 
 Trickle-Trip is a group savings app that lets users save money for their desired trip along with their friends. This app has a search function that utilizes the [G-Adventures API](https://developers.gadventures.com/) that has over 1,300 trips that users can book that include information such as itinerary, meals, accommodation, and many more. Users can also double their drip (daily withdrawal from their chequing account) once per day that has a very small chance of winning prizes through the app's "Surprise Mechanic".
 
+## Developed by:
+
+- Philip Hansen&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/philip-hansen/)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/P-Hansen)
+- Ted Pampilon&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/ted-pampilon/)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/tpampilon)
+- Dennis Wong&nbsp;&nbsp;[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/denniswong0106)
+
+
 ## Tech Stacks
 - Node.js
 - Express
@@ -13,19 +24,13 @@ Trickle-Trip is a group savings app that lets users save money for their desired
 - Axios
 - Cypress (for testing)
 
-## Developed by:
-
-- Philip Hansen&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/philip-hansen/)
-&nbsp;
-[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/P-Hansen)
-- Ted Pampilon&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/ted-pampilon/)
-&nbsp;
-[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/tpampilon)
-- Dennis Wong&nbsp;&nbsp;[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/denniswong0106)
-
 ## Screenshots
 
-
+![home-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/home-page.png?raw=true)
+![book-trip.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/book-trip.png?raw=true)
+![user-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/user-page.png?raw=true)
+![surprise-mechanic.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/surprise-mechanic.png?raw=true)
+![groups-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/groups-page.png?raw=true)
 
 ## Running the projects
 
