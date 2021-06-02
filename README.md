@@ -1,5 +1,30 @@
 # Trickle-Trip
 
+Trickle-Trip is a group savings app that lets users save money for their desired trip along with their friends. This app has a search function that utilizes the [G-Adventures API](https://developers.gadventures.com/) that has over 1,300 trips that users can book that include information such as itinerary, meals, accommodation, and many more. Users can also double their drip (daily withdrawal from their chequing account) once per day that has a very small chance of winning prizes through the app's "Surprise Mechanic".
+
+## Tech Stacks
+- Node.js
+- Express
+- React
+- React-Router-Dom
+- CSS and SASS
+- PostgreSQL
+- Knex
+- Axios
+- Cypress (for testing)
+
+## Developed by:
+
+- Philip Hansen&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/philip-hansen/)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/P-Hansen)
+- Ted Pampilon&nbsp;&nbsp;[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/ted-pampilon/)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/tpampilon)
+- Dennis Wong&nbsp;&nbsp;[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/denniswong0106)
+
+## Screenshots
+
 
 
 ## Running the projects
@@ -9,16 +34,6 @@ You need **TWO** terminal windows/tabs for this (or some other plan for running 
 In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser.
 
 In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
-
-In the browser, you can click on the button and see the data get loaded.
-
-If this doesn't work, please message me!
-
-## Next steps
-
-From here, you can start working on your project!
-
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
 
 ### How to set up database
 
@@ -32,9 +47,9 @@ first try npm install, if you run into errors relating to these, you may need to
 1. In express-back-end root, add .env file (use .env.example as template)
 2. set:
 
-   username as development
-   password as development
-   database name as trip_savr
+   - username as development
+   - password as development
+   - database name as trip_savr
 
 3. on command line, `cd [path to]/express-back-end`
 4. type `psql -U development`
