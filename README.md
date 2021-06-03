@@ -26,10 +26,10 @@ Trickle-Trip is a group savings app that lets users save money for their desired
 
 ## Screenshots
 
-![home-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/home-page.png?raw=true)
+![home-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/search.gif?raw=true)
 ![book-trip.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/book-trip.png?raw=true)
 ![user-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/user-page.png?raw=true)
-![surprise-mechanic.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/surprise-mechanic.png?raw=true)
+![surprise-mechanic.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/loot-bag.gif?raw=true)
 ![groups-page.png](https://github.com/denniswong0106/trip-saving-app/blob/master/react-front-end/src/pics/screenshots/groups-page.png?raw=true)
 
 ## Running the projects
